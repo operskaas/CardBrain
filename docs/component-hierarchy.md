@@ -29,6 +29,7 @@ Path                                  |	Component                 | onEnter (red
 * mode: 'login' vs 'signup'
 * dispatch(login)
 * dispatch(signup)
+
 ### State
 * controlled text inputs
 
@@ -36,6 +37,7 @@ Path                                  |	Component                 | onEnter (red
 ### Props
 * store.current_user
 * router - for search button
+
 ### Children
 * SubjectListContainer
 * DeckListContainer
@@ -44,6 +46,7 @@ Path                                  |	Component                 | onEnter (red
 ## SubjectListContainer
 ### Props
 * router - for clicking on subjects
+
 ### State
 * user_subjects (shared and owned)
   * subject_title
