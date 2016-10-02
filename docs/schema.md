@@ -41,7 +41,14 @@ column name	        |     data type	    |   details
 --------------------|-------------------|----------------------------
 id	                |integer	          |not null, primary key
 deck_id          	  |integer            |not null, foreign key (references decks), indexed
-tag      	          |string	            |not null, indexed
+tag_id      	      |integer	          |not null, foreign key (references tags), indexed
+
+## tags
+
+column name	        |     data type	    |   details
+--------------------|-------------------|----------------------------
+id	                |integer	          |not null, primary key
+tag             	  |string             |not null, indexed
 
 ## confidence_ratings
 
