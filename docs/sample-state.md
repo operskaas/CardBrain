@@ -7,29 +7,33 @@
   forms: {
     signUp: {errors: []},
     logIn: {errors: []},
-    createNote: {errors: ["body can't be blank"]}
+    createSubject: {errors: ["title"]},
+    editSubject: {errors: []},
+    editSubject: {errors: []},
   },
-  notes: {
+  subjects: {
+    1: {
+      title: "Redux",
+      ownerId: 1,
+      description: "is cool"
+    }
+  },
+  decks: {
     1: {
       title: "Sample State",
       body: "is useful to plan",
-      author_id: 1,
-      notebook_id: 1
-      tags: {
-        1: {
-          id: 1
-          name: "Coding"
-        }
-      }
+      subjectId: 1,
+      numCards: 14
     }
   },
-  notebooks: {
+  cards: {
     1: {
-      title: "Redux",
-      author_id: 1,
-      description: "is cool"
+      question: "What is Redux?",
+      answer: "",
+      currentUserConfidence: 3,
+      deck_id: 1
     }
-  }
-  tagFilters: [1, 7, 14] // Used to track selected Tags for filtering of notes
+  },
+  subjectSearchQuery: "Red"
 }
 ```

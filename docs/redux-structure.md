@@ -36,3 +36,37 @@ Using this document, you should be able to trace an action starting with where i
 * removeCurrentUser
   1. invoked from an API callback
   2. the SessionReducer removes currentUser from the application's state
+
+## Error Cycles
+
+### Error API Response Actions
+
+* setErrors
+  1. invoked from API callbacks on error for actions that generate POST requests
+  2. the ErrorReducer stores the form in the application's state; errors are mapped to their respective forms
+* removeErrors
+  1. invoked from API callbacks on success for actions that generate POST requests
+  2. the ErrorReducer removes errors for a given form in the application's state.
+
+## Subject Cycles
+
+### Subject API Request Actions
+
+* createSubject
+  1. invoked on newSubjectForm submit
+  2. POST api/subjects is called
+  3. receiveSubject is set as success callback
+* editSubject
+  1. invoked on editSubjectForm submit
+  2. PATCH api/subjects/:id is called
+  3. receiveSubject is set as success callback
+* deleteSubject
+  1. invoked on deleteSubjectButton click
+  2. DELETE api/subjects/:id is called
+  3. removeSubject is set as success callback
+
+### Subject API Response Actions
+
+* receiveSubject
+  1. invoked from API callback
+  2. SubjectReducer adds subject to array of subjects
