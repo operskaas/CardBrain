@@ -62,5 +62,5 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 **Objective:** Decks can be searched based on name or category tag
 
 ###Bonus Features (TBD)
-* Progress Badges
 * Animation
+* Add Images to flashcards
