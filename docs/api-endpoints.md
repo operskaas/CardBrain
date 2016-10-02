@@ -4,45 +4,46 @@
 
 ### Root
 
-* `GET /` - loads React web app
+* `GET /` - returns React web app
 
 ## JSON API
 
 ### Users
 
-* `POST /api/users`
-* `PATCH /api/users`
+* `POST /api/users` - needs `username` and `password`, returns `current_user`
 
 ### Session
 
-* POST /api/session
-* DELETE /api/session
-* GET /api/session
+* `POST /api/session` - needs `username` and `password`, returns `current_user`
+* `DELETE /api/session` - returns `current_user`
+* `GET /api/session` - needs something...., returns `current_user`
 
-### Notes
+### Subjects
 
-GET /api/notes
-Notes index/search
-accepts tag_name query param to list notes by tag
-accepts pagination params (if I get there)
-POST /api/notes
-GET /api/notes/:id
-PATCH /api/notes/:id
-DELETE /api/notes/:id
-Notebooks
+* `GET /api/subjects`
+  * can take `tag_name` and/or `search_string`
+  * returns matched `subjects` or all `subjects`
+* `GET /api/subjects/:id`
+PATCH /api/subjects/:id
+DELETE /api/subjects/:id
 
-GET /api/notebooks
-POST /api/notebooks
-GET /api/notebooks/:id
-DELETE /api/notebooks/:id
-GET /api/notebooks/:id/notes
-index of all notes for a notebook
-accepts pagination params (if I get there)
-Tags
+### Decks
 
-A note's tags will be included in the note show template
-GET /api/tags
-includes query param for typeahead suggestions
-POST /api/notes/:note_id/tags: add tag to note by name
-if note doesn't already exist, it will be created
-DELETE /api/notes/:note_id/tags/:tag_name: remove tag from note by name
+* `GET /api/decks`
+  * can take `user_id`, otherwise returns all decks
+  * used when getting list of user's decks
+* `POST /api/decks`
+  * needs `title`, `user_id`, `subject`, can take `description`
+  * creates `new Subject` if did not exist
+  * returns `deck` with same params, might have `errors`
+* `GET /api/decks/:id`
+  * needs `id`, can take `user_id`
+  * returns `deck` with `num_cards`, `title`, `description`
+    * if `user_id` supplied, returns `mastery_percentage` and `cards_studied`
+  * used for browsing decks, and if logged-in, for seeing stats in library
+* `DELETE /api/decks/:id`
+  * needs `id`
+  * only deletes if `current_user` corresponds to `owner_id`
+* `GET /api/decks/:id/cards`
+  * index of all cards for a given deck `id`
+  * used when studying

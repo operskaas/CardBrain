@@ -35,21 +35,6 @@ title   	          |string	            |not null, indexed
 subject_id      	  |integer            |not null, foreign key (references subjects), indexed
 description 	      |text	              |
 
-## deck_taggings
-
-column name	        |     data type	    |   details
---------------------|-------------------|----------------------------
-id	                |integer	          |not null, primary key
-deck_id          	  |integer            |not null, foreign key (references decks), indexed
-tag_id      	      |integer	          |not null, foreign key (references tags), indexed
-
-## tags
-
-column name	        |     data type	    |   details
---------------------|-------------------|----------------------------
-id	                |integer	          |not null, primary key
-tag             	  |string             |not null, indexed
-
 ## confidence_ratings
 
 column name	        |     data type	    |   details

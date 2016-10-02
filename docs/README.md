@@ -7,8 +7,8 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 3. Production Readme
 4. Create/Delete Decks
 5. Study Decks
-6. Tags/Categories
-7. Search
+6. Tags/Categories (Subjects)
+7. Search by subject
 
 ## Design Docs
 * [View Wireframes](wireframes)
@@ -55,11 +55,11 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 ###Phase 3: Study Decks
 **Objective:** Decks can be studied
 
-###Phase 4: Tags/Categories
-**Objective:** Decks can be tagged with a category
+###Phase 4: Tags/Categories (Subjects)
+**Objective:** Decks are tagged with a subject
 
 ###Phase 5: Search
-**Objective:** Decks can be searched based on name or category tag
+**Objective:** Decks can be searched based on subject tag
 
 ###Bonus Features (TBD)
 * Animation
