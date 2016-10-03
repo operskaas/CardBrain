@@ -122,6 +122,22 @@ Path                                  |	Component                 | onEnter (red
 
 
 ## SearchResultsContainer
+### Props
+* searchResults (from state.searchResults)
+### Children
+* SearchResultItem
+
+
+## SearchResultItem
+### Props
+* searchResult (passed down)
+
+
+## Search
+### State
+* controlled input (searchField)
+### Children
+* SearchResultsContainer
 
 
 ## StudyContainer

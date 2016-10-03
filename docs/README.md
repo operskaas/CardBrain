@@ -31,10 +31,11 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 * APIUtil to interact with the API
 * Redux cycle for frontend authentication
 * User signup/signin components
+  * NavBarContainer
+  * AuthFormContainer
 * Blank landing component after signup/signin
 * Style signup/signin components
 * Seed users
-* Review phase 1
 
 ###Phase 2: Decks & Cards (3 days)
 **Objective:** Decks and the associated Cards can be CRUD'd through API
@@ -44,22 +45,50 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 * CRUD API for cards (CardsController)
 * JBuilder views for decks, cards
 * Deck components and respective Redux loops
-** DecksIndex
-** DeckIndexItem
-** DeckForm
-* Card components and respective Redux loops
-**
+  * DeckInfo
+  * DeckMenuContainer
+  * DeckFormContainer
+  * DeckList
+  * DeckListItem
 * Style decks components
-* Seed decks
+* Seed decks and cards
 
-###Phase 3: Study Decks
+###Phase 3: Study Decks (3 days)
 **Objective:** Decks can be studied
+* CRUD API for ratingcards
+*
+* Study components and respective Redux loops
+  * StudyContainer
+  * Stats
+  * MasteryDisplayContainer
+  * CardCounterContainer
+  * ConfidenceBarsContainer
+  * CardContainer
+  * StudyButtonsContainer
+  * NavLinks
+  * RelatedDecksListContainer
+* Style study components
 
-###Phase 4: Tags/Categories (Subjects)
-**Objective:** Decks are tagged with a subject
+###Phase 4: Tags/Categories (Subjects) (2 days)
+**Objective:** Decks have a subject
+* Subject Model
+* CRUD API for subjects (SubjectsController)
+* Subject components and respective Redux loops
+  * SubjectMenuContainer
+  * SubjectListContainer
+  * SubjectListItem
+  * SubjectFormContainer
+  * SubjectContainer
+* Style subject components
 
-###Phase 5: Search
-**Objective:** Decks can be searched based on subject tag
+
+###Phase 5: Search (3 days)
+**Objective:** Subjects can be searched by name
+* Search components and respective Redux loops
+  * Search
+  * SearchResultsContainer
+* Style search components
+* Fetching subjects based on searchQuery with associated data
 
 ###Bonus Features (TBD)
 * Animation
