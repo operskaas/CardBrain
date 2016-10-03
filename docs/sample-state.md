@@ -21,7 +21,7 @@
   decks: {
     1: {
       title: "Sample State",
-      body: "is useful to plan",
+      objective: "is useful to plan",
       subjectId: 1,
       numCards: 14
     }
@@ -33,6 +33,10 @@
       currentUserConfidence: 3,
       deck_id: 1
     }
+  },
+  subjectFollows: {
+    1: null,
+    5: null
   },
   subjectSearchQuery: "Red"
 }

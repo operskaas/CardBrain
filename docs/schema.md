@@ -33,7 +33,7 @@ column name	        |     data type	    |   details
 id	                |integer	          |not null, primary key
 title   	          |string	            |not null, indexed
 subject_id      	  |integer            |not null, foreign key (references subjects), indexed
-description 	      |text	              |
+objective   	      |text	              |
 
 ## confidence_ratings
 

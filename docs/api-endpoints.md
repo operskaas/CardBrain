@@ -10,22 +10,47 @@
 
 ### Users
 
-* `POST /api/users` - needs `username` and `password`, returns `current_user`
+* `POST /api/users`
+  * needs `username` and `password`
+  * returns `current_user`
 
 ### Session
 
-* `POST /api/session` - needs `username` and `password`, returns `current_user`
-* `DELETE /api/session` - returns `current_user`
-* `GET /api/session` - needs something...., returns `current_user`
+* `POST /api/session`
+  * needs `username` and `password`
+  * returns `current_user`
+* `DELETE /api/session`
+  * needs `current_user` ??????
+  * returns empty `current_user`
+* `GET /api/session`
+  * needs something....,
+  * returns `current_user`
 
 ### Subjects
 
 * `GET /api/subjects`
   * can take `tag_name` and/or `search_string`
   * returns matched `subjects` or all `subjects`
-* `GET /api/subjects/:id`
-PATCH /api/subjects/:id
-DELETE /api/subjects/:id
+* `GET /api/subjects/`
+  * takes `user_id`
+  * returns list of followed `subjects`
+* `GET /api/subjects/:id/decks`
+  * returns `decks` associated with subject `:id`
+* `PATCH /api/subjects/:id`
+  * updates `subject` associated with `:id`
+  * returns `subject`
+* `DELETE /api/subjects/:id`
+  * deletes `subject` associated with `:id`
+  * returns empty `subject`
+
+### SubjectFollows
+
+* `GET /api/subject_follows`
+  * takes `user_id`
+  * returns `subjectFollows` associated with `user_id`
+* `POST /api/subject_follows`
+  * takes `user_id` and `subject_id`
+  * returns `subjectFollow`
 
 ### Decks
 
