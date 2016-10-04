@@ -51,9 +51,10 @@ nav {
 }
 
 nav .logo {
-  width: 36px;
-  margin: 12px;
+  width: 33px;
+  margin: 15px;
   margin-left: 25px;
+  margin-right: 10px;
   float: left;
 }
 
@@ -82,7 +83,7 @@ nav > ul > li {
   padding-top: 20px;
 }
 
-nav > ul > li > a:hover {
+nav a:hover {
   color: #29a5dc;
 }
 
@@ -95,9 +96,18 @@ nav > ul > li > a:hover {
   float: left;
 }
 
+.logged-out-nav .blue-button {
+  margin: 16px 20px;
+}
+
+.logged-out-nav .login-link {
+  margin: 20px;
+}
+
 .logged-in-nav child {
   float: left;
 }
+
 
 .modal {
   position: fixed;
@@ -155,4 +165,11 @@ nav > ul > li > a:hover {
   background: #29a5dc;
   border: none;
   text-align: center;
+}
+
+.blue-button:hover {
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.2);
+  text-decoration: none;
+  background: #55b7e3;
+  color: white;
 }

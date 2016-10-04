@@ -6,8 +6,8 @@ const NavBar = ({ currentUser, logout }) => {
   if (currentUser.id === null) {
     authNav = (
       <div className='logged-out-nav'>
+        <a className='login-link' href='#/modal/login'>Log In</a>
         <a className='blue-button' href='#/modal/signup'>Sign Up</a>
-        <a href='#/modal/login'>Log In</a>
       </div>
     );
   } else {
