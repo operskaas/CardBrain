@@ -91,6 +91,14 @@ nav > ul > li > a:hover {
   display: block;
 }
 
+.logged-out-nav a {
+  float: left;
+}
+
+.logged-in-nav child {
+  float: left;
+}
+
 .modal {
   position: fixed;
   z-index: 1010;
