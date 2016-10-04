@@ -55,7 +55,7 @@ class SessionForm extends React.Component {
           <label>Password
             <input type='password' value={this.state.password} onChange={this.handleChange('password')}/>
           </label>
-          <button>{header}</button>
+          <button className='blue-button'>{header}</button>
         </form>
         <Link to={linkUrl}>{linkText}</Link>
       </div>
