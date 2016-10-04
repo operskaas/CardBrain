@@ -12,17 +12,20 @@
 
 * `POST /api/users`
   * needs `username` and `password` (nested under `user`)
-  * returns `currentUser` (contains `username` and `userId`)
+  * returns `currentUser` (contains `username` and `userId`) and `errors` array
     * 422 status if unable to save
+    * `errors` will contain errors related to saving user
 
 ### Session
 
 * `POST /api/session`
   * needs `username` and `password`
-  * returns `current_user`
+  * returns `current_user` (contains `username` and `userId`) (similar to POST api/users)
+    * if invalid credentials, returns {errors: ['invalid credentials']} with status 404
 * `DELETE /api/session`
   <!-- might not need to return anything-->
-  * returns empty `current_user`
+  * returns ['logged out successfully']
+  * returns status 404 if no current user
 * `GET /api/session`
 <!-- endpoint might not be needed-->
   * returns `current_user`

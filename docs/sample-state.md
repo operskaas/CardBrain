@@ -1,9 +1,12 @@
 ```
  {
-  currentUser: {
-    id: 1,
-    username: "app-academy"
-  },
+  session: {
+    currentUser: {
+      id: 1,
+      username: "app-academy"
+    },
+    errors: []
+  }
   forms: {
     signUp: {errors: []},
     logIn: {errors: []},
