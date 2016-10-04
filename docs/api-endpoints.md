@@ -11,8 +11,9 @@
 ### Users
 
 * `POST /api/users`
-  * needs `username` and `password`
-  * returns `current_user`
+  * needs `username` and `password` (nested under `user`)
+  * returns `currentUser` (contains `username` and `userId`)
+    * 422 status if unable to save
 
 ### Session
 
