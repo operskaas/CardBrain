@@ -20,7 +20,7 @@ const NavBar = ({ currentUser, logout }) => {
   }
   return (
     <nav className="group">
-      <img className='logo' src='/assets/logo-4b6e4c2ba696367bd588d1221f55f70b7b31e50df4b97e3c1a734c54e63f52c4.png' />
+      <img className='logo' src={window.cardBrainAssets.logoImage} />
       <h2>CARD<span>BRAIN</span></h2>
       <ul>
         <li>
