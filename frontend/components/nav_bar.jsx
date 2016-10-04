@@ -6,8 +6,8 @@ const NavBar = ({ currentUser, logout }) => {
   if (currentUser.id === null) {
     result = (
       <div>
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/login'>Log In</Link>
+        <Link to='/modal/signup'>Sign Up</Link>
+        <Link to='/modal/login'>Log In</Link>
       </div>
     );
   } else {

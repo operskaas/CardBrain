@@ -8,9 +8,9 @@ const mapStateToProps = state => ({
 });
 
 const formType = url => {
-  if (url === '/login') {
+  if (url === '/modal/login') {
     return 'login';
-  } else if (url === '/signup') {
+  } else if (url === '/modal/signup') {
     return 'signup';
   }
 };

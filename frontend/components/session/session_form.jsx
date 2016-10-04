@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
 
     const errors = this.props.errors.map(error => <li>{error}</li>);
     return (
-      <div>
+      <div className='session-form'>
         <h4>{header}</h4>
         <ul>
           {errors}
@@ -53,7 +53,7 @@ class SessionForm extends React.Component {
             <input value={this.state.username} onChange={this.handleChange('username')}/>
           </label>
           <label>Password
-            <input value={this.state.password} onChange={this.handleChange('password')}/>
+            <input type='password' value={this.state.password} onChange={this.handleChange('password')}/>
           </label>
           <button>{header}</button>
         </form>
