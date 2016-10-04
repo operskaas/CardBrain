@@ -20,10 +20,10 @@
   * needs `username` and `password`
   * returns `current_user`
 * `DELETE /api/session`
-  * needs `current_user` ??????
+  <!-- might not need to return anything-->
   * returns empty `current_user`
 * `GET /api/session`
-  * needs something....,
+<!-- endpoint might not be needed-->
   * returns `current_user`
 
 ### Subjects
@@ -55,14 +55,14 @@
 ### Decks
 
 * `GET /api/decks`
-  * can take `user_id`, otherwise returns all decks
+  * can take `user_id` in query string, otherwise returns all decks
   * used when getting list of user's decks
 * `POST /api/decks`
   * needs `title`, `user_id`, `subject`, can take `description`
   * creates `new Subject` if did not exist
   * returns `deck` with same params, might have `errors`
 * `GET /api/decks/:id`
-  * needs `id`, can take `user_id`
+  * needs `id`, can take `user_id` in query string
   * returns `deck` with `num_cards`, `title`, `description`
     * if `user_id` supplied, returns `mastery_percentage` and `cards_studied`
   * used for browsing decks, and if logged-in, for seeing stats in library

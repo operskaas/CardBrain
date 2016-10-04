@@ -5,9 +5,9 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 1. Hosting on Heroku
 2. New account creation, login, and guest/demo login
 3. Production Readme
-4. Create/Delete Decks
-5. Study Decks
-6. Tags/Categories (Subjects)
+4. Tags/Categories (Subjects)
+5. Create/Delete Decks
+6. Study Decks
 7. Search by subject
 
 ## Design Docs
@@ -37,7 +37,20 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 * Style signup/signin components
 * Seed users
 
-###Phase 2: Decks & Cards (3 days)
+###Phase 2: Tags/Categories (Subjects) (2 days)
+**Objective:** Decks have a subject, users follow subjects
+* Subject Model
+* SubjectFollow Model
+* CRUD API for subjects (SubjectsController)
+* Subject components and respective Redux loops
+* SubjectMenuContainer
+* SubjectListContainer
+* SubjectListItem
+* SubjectFormContainer
+* SubjectContainer
+* Style subject components
+
+###Phase 3: Decks & Cards (3 days)
 **Objective:** Decks and the associated Cards can be CRUD'd through API
 * Deck & Card model
 * Seed database with some test data
@@ -53,7 +66,7 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
 * Style decks components
 * Seed decks and cards
 
-###Phase 3: Study Decks (3 days)
+###Phase 4: Study Decks (2 days)
 **Objective:** Decks can be studied
 * CRUD API for ratingcards
 *
@@ -69,20 +82,9 @@ CardBrain is a web application inspired by BrainScape built using Ruby on Rails 
   * RelatedDecksListContainer
 * Style study components
 
-###Phase 4: Tags/Categories (Subjects) (2 days)
-**Objective:** Decks have a subject
-* Subject Model
-* CRUD API for subjects (SubjectsController)
-* Subject components and respective Redux loops
-  * SubjectMenuContainer
-  * SubjectListContainer
-  * SubjectListItem
-  * SubjectFormContainer
-  * SubjectContainer
-* Style subject components
 
 
-###Phase 5: Search (3 days)
+###Phase 5: Search (2 days)
 **Objective:** Subjects can be searched by name
 * Search components and respective Redux loops
   * Search
