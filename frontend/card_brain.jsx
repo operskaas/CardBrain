@@ -20,5 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
       store = configureStore();
     }
     window.store = store;
-    ReactDOM.render(<h1>Welcome to CardBrain</h1>, root);
+    ReactDOM.render(<Root store={store}/>, root);
 });

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const NavBar = ({ currentUser, logout }) => {
   let result;
-  if (currentUser === null) {
+  if (currentUser.id === null) {
     result = (
       <div>
         <Link to='/signup'>Sign Up</Link>
