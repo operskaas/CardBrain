@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   handleSubmit(e) {
@@ -29,6 +30,11 @@ class SessionForm extends React.Component {
     if (this.props.loggedIn) {
       hashHistory.push("/");
     }
+  }
+
+  guestLogin() {
+    this.setState({username: 'porkchop', password: 'porkchop'})
+    setTimeout(() => this.props.processForm(this.state), 1000);
   }
 
   render () {
@@ -57,6 +63,7 @@ class SessionForm extends React.Component {
           </label>
           <button className='blue-button'>{header}</button>
         </form>
+        <button onClick={this.guestLogin} className='guest-login'>Login as Guest</button>
         <Link to={linkUrl}>{linkText}</Link>
       </div>
     );
