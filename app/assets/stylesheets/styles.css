@@ -14,6 +14,10 @@ small, strong, form, p, img, section {
   background: transparent;
 }
 
+p:hover, h4:hover, strong:hover {
+  cursor:default;
+}
+
 body {
   color: white;
   font-size: 14px;
