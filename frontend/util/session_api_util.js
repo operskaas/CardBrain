@@ -1,20 +1,21 @@
-export const signup = (username, password, success, error) => {
+export const signup = (user, success, error) => {
+  console.log(`sending up ${user}`);
   $.ajax({
     method: 'post',
     url: 'api/users',
     dataType: 'json',
-    data: {user: {username, password}},
+    data: {user},
     success,
     error
   });
 };
 
-export const login = (username, password, success, error) => {
+export const login = (user, success, error) => {
   $.ajax({
     method: 'post',
     url: 'api/session',
     dataType: 'json',
-    data: {user: {username, password}},
+    data: {user},
     success,
     error
   });

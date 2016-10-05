@@ -1,21 +1,29 @@
-import * as Actions from '../actions/session_actions';
+import {
+  LOGIN,
+  SIGNUP,
+  LOGOUT,
+  receiveCurrentUser,
+  receiveErrors
+} from '../actions/session_actions';
 import * as SessionApi from '../util/session_api_util';
 
 const SessionMiddleware = ({ dispatch }) => next => action => {
   let success = (data) => {
-    dispatch(Actions.receiveCurrentUser(data));
+    dispatch(receiveCurrentUser(data));
+    console.log(data);
   };
   let error = (data) => {
-    dispatch(Actions.receiveErrors(data.responseJSON.errors));
+    console.log(data);
+    dispatch(receiveErrors(data.responseJSON.errors));
   }
   switch (action.type) {
-    case Actions.LOGIN:
-      SessionApi.login(action.user.username, action.user.password, success, error);
+    case LOGIN:
+      SessionApi.login(action.user, success, error);
       return next(action);
-    case Actions.SIGN_UP:
-      SessionApi.signup(action.user.username, action.user.password, success, error);
+    case SIGNUP:
+      SessionApi.signup(action.user, success, error);
       return next(action);
-    case Actions.LOGOUT:
+    case LOGOUT:
       let cb = () => next(action);
       SessionApi.logout(cb);
       break;

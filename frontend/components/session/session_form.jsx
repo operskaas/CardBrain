@@ -26,6 +26,7 @@ class SessionForm extends React.Component {
   }
 
   componentDidUpdate() {
+    debugger
     if (this.props.loggedIn) {
       this.props.router.push("/");
     }
@@ -41,11 +42,11 @@ class SessionForm extends React.Component {
       linkUrl = '/signup';
     }
 
-    const errors = this.props.errors.map(error => <li>{error}</li>);
+    const errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
     return (
       <div className='session-form'>
         <h4>{header}</h4>
-        <ul>
+        <ul className="errors-list">
           {errors}
         </ul>
         <form onSubmit={this.handleSubmit}>

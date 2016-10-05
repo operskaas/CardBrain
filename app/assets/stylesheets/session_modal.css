@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  z-index: 1010;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid black;
+  border-radius: 3px;
+}
+
+.modal-overlay {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*maybe do bottom, right 0 instead of width, height 100 */
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: block;
+}
+
+.session-form {
+  font-family: 'Proxima Nova Light', sans-serif;
+  background: white;
+  color: #555555;
+}
+
+.session-form > h4 {
+  font-size: 24px;
+  color: #ff8a47;
+  text-align: center;
+}
+
+.session-form input {
+  font-size: 18px;
+  background: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  box-shadow: none;
+  height: 45px;
+  width: 100%;
+  transition: all 1s;
+}

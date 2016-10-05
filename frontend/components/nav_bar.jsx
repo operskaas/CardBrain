@@ -6,7 +6,7 @@ const NavBar = ({ currentUser, logout }) => {
   if (currentUser.id === null) {
     authNav = (
       <div className='logged-out-nav'>
-        <a className='login-link' href='#/modal/login'>Log In</a>
+        <a className='header-link' href='#/modal/login'>Log In</a>
         <a className='blue-button' href='#/modal/signup'>Sign Up</a>
       </div>
     );
@@ -19,15 +19,15 @@ const NavBar = ({ currentUser, logout }) => {
     );
   }
   return (
-    <nav className="group">
+    <nav className="nav group">
       <img className='logo' src={window.cardBrainAssets.logoImage} />
       <h2>CARD<span>BRAIN</span></h2>
       <ul>
         <li>
-          <a href='#/library'>Library</a>
+          <a className='header-link' href='#/library'>Library</a>
         </li>
         <li>
-          <a href='#/search'>Search</a>
+          <a className='header-link' href='#/search'>Search</a>
         </li>
       </ul>
       <div className='auth-nav'>
