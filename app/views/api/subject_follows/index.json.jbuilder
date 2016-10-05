@@ -1,1 +1,5 @@
-json.array! @current_user_subject_follows
+json.array! @subjects do |subject|
+  json.id subject.id
+  json.title subject.title
+  # json.mastery subject.mastery
+end

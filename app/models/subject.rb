@@ -20,8 +20,6 @@ class Subject < ActiveRecord::Base
     foreign_key: :owner_id
 
   def ensure_owner_is_following
-    unless SubjectFollow.find_by(subject_id: self.id, follower_id: self.owner.id)
-      SubjectFollow.create!(subject_id: self.id, follower_id: self.owner.id)
-    end
+    SubjectFollow.find_or_create_by!(subject_id: self.id, follower_id: self.owner.id)
   end
 end

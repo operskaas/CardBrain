@@ -8,6 +8,7 @@
   width: 100%;
   border-bottom: 4px solid #ff8a47;
   color: rgb(127,127,127);
+  display: block;
 }
 
 .nav .logo {

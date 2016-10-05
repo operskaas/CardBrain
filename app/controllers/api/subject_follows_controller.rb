@@ -1,10 +1,10 @@
 class Api::SubjectFollowsController < ApplicationController
   def index
     if current_user
-      @current_user_followed_subjects = current_user.followed_subjects
-      render json: @current_user_followed_subjects
+      @subjects = current_user.followed_subjects.to_a
+      render :index
     else
-      render json: []
+      render json: [], status: 401
     end
   end
 end
