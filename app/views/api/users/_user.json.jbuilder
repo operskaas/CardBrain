@@ -1,3 +1,3 @@
 
 json.username user.username
-json.userId user.id
+json.id user.id
