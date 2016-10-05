@@ -17,11 +17,5 @@
 
   <%= yield %>
 
-  <% if current_user %>
-    BACKEND RECOGNIZES YOU AS: <%= current_user.username %> AS OF LAST HTML REQUEST
-  <% else %>
-    NOT LOGGED IN TO BACKEND AS OF LAST HTML REQUEST
-  <% end %>
-
 </body>
 </html>

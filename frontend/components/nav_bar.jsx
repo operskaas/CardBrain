@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+const brandClick = () => console.log('brand clicked');
+
 const NavBar = ({ currentUser, logout }) => {
   let authNav;
   if (currentUser.id === null) {
@@ -20,8 +22,10 @@ const NavBar = ({ currentUser, logout }) => {
   }
   return (
     <nav className="nav group">
-      <img className='logo' src={window.cardBrainAssets.logoImage} />
-      <h2>CARD<span>BRAIN</span></h2>
+      <div onClick={brandClick} className='brand'>
+        <img className='logo' src={window.cardBrainAssets.logoImage} />
+        <h2>CARD<span>BRAIN</span></h2>
+      </div>
       <ul>
         <li>
           <a className='header-link' href='#/library'>Library</a>
