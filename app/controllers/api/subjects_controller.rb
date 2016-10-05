@@ -5,6 +5,7 @@ class Api::SubjectsController < ApplicationController
       render :show
     else
       render :show, status: 422
+    end
   end
 
   def destroy
