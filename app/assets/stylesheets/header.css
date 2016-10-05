@@ -64,6 +64,10 @@
   margin: 20px;
 }
 
-.logged-in-nav child {
+.logged-in-nav > * {
   float: left;
+}
+
+.logged-in-nav > p {
+  margin: 20px;
 }

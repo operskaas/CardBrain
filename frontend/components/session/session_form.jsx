@@ -39,12 +39,8 @@ class SessionForm extends React.Component {
 
   render () {
     let header = 'Sign up';
-    let linkText = 'Log In';
-    let linkUrl = '/login';
     if (this.props.formType === 'login') {
-      header = 'Log In';
-      linkText = 'Sign Up';
-      linkUrl = '/signup';
+      header = 'Login';
     }
 
     const errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
@@ -55,16 +51,20 @@ class SessionForm extends React.Component {
           {errors}
         </ul>
         <form onSubmit={this.handleSubmit}>
-          <label>Username
-            <input value={this.state.username} onChange={this.handleChange('username')}/>
-          </label>
-          <label>Password
-            <input type='password' value={this.state.password} onChange={this.handleChange('password')}/>
-          </label>
+            <input
+              placeholder='username'
+              value={this.state.username}
+              onChange={this.handleChange('username')}
+            />
+            <input
+              placeholder='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.handleChange('password')}
+            />
           <button className='blue-button'>{header}</button>
         </form>
         <button onClick={this.guestLogin} className='guest-login'>Login as Guest</button>
-        <Link to={linkUrl}>{linkText}</Link>
       </div>
     );
   }

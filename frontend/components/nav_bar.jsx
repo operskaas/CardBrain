@@ -11,7 +11,6 @@ const NavBar = ({ currentUser, logout }) => {
       </div>
     );
   } else {
-    debugger
     authNav = (
       <div className='logged-in-nav'>
         <p>Welcome {currentUser.username}</p>
