@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :subject_follows,
+    foreign_key: :follower_id
+
+  has_many :followed_subjects,
+    class_name: 'Subject',
+    through: :subject_follows,
+    source: :subject
+
   def self.find_by_credentials(un, pw)
     user = User.find_by_username(un);
     return nil if user.nil?

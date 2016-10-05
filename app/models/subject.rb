@@ -1,4 +1,14 @@
-# require_relative './subject_follow.rb'
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  owner_id   :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 
 class Subject < ActiveRecord::Base
   validates :title, :owner, presence: true

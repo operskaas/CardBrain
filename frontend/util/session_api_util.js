@@ -1,5 +1,4 @@
 export const signup = (user, success, error) => {
-  console.log(`sending up ${user}`);
   $.ajax({
     method: 'post',
     url: 'api/users',

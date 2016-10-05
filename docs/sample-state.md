@@ -14,13 +14,6 @@
     editSubject: {errors: []},
     editSubject: {errors: []},
   },
-  subjects: {
-    1: {
-      title: "Redux",
-      ownerId: 1,
-      description: "is cool"
-    }
-  },
   decks: {
     1: {
       title: "Sample State",
@@ -38,10 +31,7 @@
       deck_id: 1
     }
   },
-  subjectFollows: {
-    1: null,
-    5: null
-  },
+  subjectFollows: [1,5],
   subjectSearchQuery: "Dog",
   searchResults: {
     1: {

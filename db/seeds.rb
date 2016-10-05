@@ -22,4 +22,3 @@ norwegian = Subject.create!(title: 'Norwegian', owner_id: porkchop.id)
 
 
 SubjectFollow.create!(follower_id: opp.id, subject_id: norwegian.id)
-SubjectFollow.create!(follower_id: porkchop.id, subject_id: norwegian.id)
