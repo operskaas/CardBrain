@@ -11,3 +11,9 @@ User.destroy_all
 porkchop = User.create!(username: 'porkchop', password: 'porkchop')
 opp = User.create!(username: 'opp', password: 'porkchop')
 porkchop2 = User.create!(username: 'porkchop2', password: 'porkchop')
+
+
+Subject.destroy_all
+
+mcat_biology = Subject.create!(title: 'MCAT Biology', owner_id: porkchop.id)
+norwegian = Subject.create!(title: 'Norwegian', owner_id: porkchop.id)

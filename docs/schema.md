@@ -14,7 +14,7 @@ session_token	      |string	            |not null, indexed, unique
 column name	        |     data type	    |   details
 --------------------|-------------------|----------------------------
 id	                |integer	          |not null, primary key
-title   	          |string	            |not null, indexed, unique
+title   	          |string	            |not null, indexed
 owner_id      	    |integer	          |not null, foreign key (references users), indexed
 description 	      |text	              |
 
