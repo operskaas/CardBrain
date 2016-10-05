@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
 
@@ -26,9 +26,8 @@ class SessionForm extends React.Component {
   }
 
   componentDidUpdate() {
-    debugger
     if (this.props.loggedIn) {
-      this.props.router.push("/");
+      hashHistory.push("/");
     }
   }
 
@@ -64,4 +63,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default SessionForm;
