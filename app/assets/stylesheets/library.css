@@ -1,0 +1,50 @@
+.subject-follows-aside {
+  width: 350px;
+  background: grey;
+}
+
+.subject-follows-list {
+  overflow-y: scroll;
+  width: 300px;
+  height: 100%;
+  background-color: black;
+}
+
+.subject-follows-header {
+  width: 317px;
+  height: 62px;
+  background-color: #f5f5f5;
+  border-right: 4px solid #e8e8e8;
+}
+
+.subject-follows-header h4 {
+  color: black;
+  font-size: 18px;
+  margin: 20px 15px;
+  float: left;
+  font-weight: 400;
+  color: #333333;
+}
+
+.create-subject-follows-btn {
+  float: right;
+  font-size: 12px;
+  font-weight: 300;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 20px;
+  background-color: #5cb85c;
+  border: 1px solid #4cae4c;
+  cursor: pointer;
+}
+
+.create-subject-follows-btn:hover {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.create-subject-follows-btn strong {
+  font-size: 14px;
+  padding-right: 5px;
+  line-height: 1;
+}

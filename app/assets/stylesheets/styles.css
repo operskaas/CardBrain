@@ -1,6 +1,6 @@
 html, header, body, div, main, nav, h1, h2, h3, h4, h5, h6, p,
 li, ul, input, button, a, textarea, button, article, footer,
-small, form, p, img, section {
+small, strong, form, p, img, section {
   border: 0;
   margin: 0;
   padding: 0;
@@ -58,24 +58,6 @@ img {
 }
 
 .content {
+  padding-top: 62px;
   display: block;
-}
-
-.subject-follows-aside {
-  width: 350px;
-  background: grey;
-}
-
-.subject-follows-list {
-  overflow-y: scroll;
-  width: 300px;
-  height: 100%;
-  background-color: black;
-}
-
-.subject-follows-header {
-  margin-top: 100px;
-  width: 317px;
-  height: 62px;
-  background-color: #f5f5f5;
 }

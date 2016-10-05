@@ -1,10 +1,8 @@
 class Api::SubjectFollowsController < ApplicationController
+
+  before_action :ensure_user_logged_in, :index
+
   def index
-    if current_user
-      @subjects = current_user.followed_subjects.to_a
-      render :index
-    else
-      render json: [], status: 401
-    end
+    @subjects = current_user.followed_subjects.to_a
   end
 end

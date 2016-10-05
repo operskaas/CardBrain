@@ -1,4 +1,5 @@
 import React from 'react';
+import SubjectList from './subject_list';
 
 const Library = () => {
   return (
@@ -7,14 +8,12 @@ const Library = () => {
         <h4>Subjects</h4>
         <button className='create-subject-follows-btn'>
           <strong>
-            +
+            <i className="fa fa-plus" aria-hidden="true"></i>
           </strong>
           Create
         </button>
       </header>
-      <ul className='subject-follows-list'>
-        <p>I'm a library</p>
-      </ul>
+      <SubjectList className='subject-follows-list'/>
     </aside>
   );
 }
