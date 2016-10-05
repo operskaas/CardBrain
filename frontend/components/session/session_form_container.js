@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { signup, login } from '../../actions/session_actions';
+import { clearSessionErrors } from '../../actions/error_actions';
 import SessionForm from './session_form';
 import { withRouter } from 'react-router'
 
@@ -26,7 +27,8 @@ const processForm = (formType, dispatch) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   formType: formType(ownProps.location.pathname),
-  processForm: processForm(formType(ownProps.location.pathname), dispatch)
+  processForm: processForm(formType(ownProps.location.pathname), dispatch),
+  clearSessionErrors: () => dispatch(clearSessionErrors())
 });
 
 export default connect(

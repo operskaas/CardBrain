@@ -1,4 +1,6 @@
 import * as Actions from '../actions/session_actions';
+import { CLEAR_SESSION_ERRORS } from '../actions/error_actions';
+import merge from 'lodash/merge';
 
 const _defaultSessionSlice = {
   currentUser: {
@@ -17,11 +19,15 @@ const SessionReducer = (prevState = _defaultSessionSlice, action) => {
         currentUser: {
           id: null,
           username: null
-        }, 
+        },
         errors: action.errors
       };
     case Actions.LOGOUT:
       return _defaultSessionSlice;
+    case CLEAR_SESSION_ERRORS:
+      let nextState = merge({}, prevState);
+      nextState.errors= [];
+      return nextState;
     default:
       return prevState;
   }

@@ -32,6 +32,10 @@ class SessionForm extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   guestLogin() {
     this.setState({username: 'porkchop', password: 'porkchop'})
     setTimeout(() => this.props.processForm(this.state), 1000);
@@ -39,8 +43,10 @@ class SessionForm extends React.Component {
 
   render () {
     let header = 'Sign up';
+    let guestLogin = <noscript />
     if (this.props.formType === 'login') {
       header = 'Login';
+      guestLogin = <button onClick={this.guestLogin} className='guest-login'>Login as Guest</button>;
     }
 
     const errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
@@ -64,7 +70,7 @@ class SessionForm extends React.Component {
             />
           <button className='blue-button'>{header}</button>
         </form>
-        <button onClick={this.guestLogin} className='guest-login'>Login as Guest</button>
+        {guestLogin}
       </div>
     );
   }
