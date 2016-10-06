@@ -48,14 +48,15 @@ class SessionForm extends React.Component {
       header = 'Login';
       guestLogin = <button onClick={this.guestLogin} className='guest-login'>Login as Guest</button>;
     }
-
-    const errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
+    let errors = <noscript />
+    if (this.props.errors.length > 0) {
+      errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
+      errors = <ul className='errors-list'>{errors}</ul>
+    }
     return (
       <div className='session-form'>
         <h4>{header}</h4>
-        <ul className="errors-list">
-          {errors}
-        </ul>
+        {errors}
         <form onSubmit={this.handleSubmit}>
             <input
               placeholder='username'

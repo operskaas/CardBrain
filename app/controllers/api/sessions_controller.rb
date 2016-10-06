@@ -2,7 +2,7 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
     if @user.nil?
-      render json: {errors: ['invalid credentials']}, status: 404
+      render json: {errors: ['Invalid username or password']}, status: 404
     else
       log_in(@user)
       render :create

@@ -35,6 +35,7 @@
   text-align: center;
   font-weight: bold;
   box-shadow: 0px 4px 2px rgba(0,0,0,0.25);
+  cursor: pointer;
 }
 
 .modal-close-btn:hover {
@@ -55,22 +56,37 @@
 
 .session-form > h4 {
   display: block;
-  padding: 30px;
+  padding: 30px 130px;
   font-size: 24px;
   color: #ff8a47;
   text-align: center;
 }
 
+.session-form .errors-list {
+  text-align: center;
+  margin: 0 35px;
+  color: #3a87ad;
+}
+
+.session-form .errors-list li {
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  padding: 10px 10px;
+  margin-top: 10px;
+}
+
 .session-form .blue-button {
   margin: 25px auto;
   padding: 10px 25px;
+
 }
 
 .session-form input {
   padding-left: 10px;
   display: block;
-  margin: 15px 25px;
-  width: 246px;
+  margin: 15px auto;
+  width: 80%;
   height: 42px;
   font-size: 18px;
   background: #f2f2f2;

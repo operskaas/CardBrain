@@ -5,6 +5,7 @@ import App from './app';
 import SessionFormContainer from './session/session_form_container';
 import Modal from './modal';
 import LibraryContainer from './library/library_container';
+import Home from './home';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -22,6 +23,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path='/' component={App} >
+          <IndexRoute component={Home} />
           <Route path='modal' component={Modal} >
             <Route path='login' component={SessionFormContainer}
               onEnter={_redirectIfLoggedIn}/>
