@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 import SubjectList from './subject_list';
 import NewSubjectForm from './new_subject_form';
+import { connect } from 'react-redux';
+import { CREATE_SUBJECT, createSubject } from '../../actions/subject_follow_actions';
 
 const modalStyles = {
   content: {
@@ -37,21 +39,21 @@ class SubjectFollowsAside extends React.Component{
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleNewSubjectSubmit = this.handleNewSubjectSubmit.bind(this);
   }
 
   openModal() {
-    this.setState({
-      modalOpen: true
-    });
+    this.setState({ modalOpen: true });
   }
 
   closeModal() {
-    this.setState({
-      modalOpen: false
-    });
+    this.setState({ modalOpen: false });
   }
 
-
+  handleNewSubjectSubmit (formState) {
+    this.props.createSubject(formState);
+    this.setState({modalOpen: false});
+  }
 
   render() {
     return (
@@ -72,11 +74,20 @@ class SubjectFollowsAside extends React.Component{
           style={modalStyles}
         >
           <button onClick={this.closeModal} className='modal-close-btn'>X</button>
-          <NewSubjectForm />
+          <NewSubjectForm handleSubmit={this.handleNewSubjectSubmit}/>
         </Modal>
       </aside>
     )
   }
 }
 
-export default SubjectFollowsAside;
+const mapDispatchToProps = dispatch => ({
+  createSubject: (subject) => dispatch(createSubject(subject))
+});
+
+const mapStateToProps = state => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SubjectFollowsAside);

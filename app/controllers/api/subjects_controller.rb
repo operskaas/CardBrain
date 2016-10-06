@@ -1,6 +1,7 @@
 class Api::SubjectsController < ApplicationController
   def create
-    @subject = Subject.create(subject_params)
+    @subject = Subject.new(subject_params)
+    @subject.owner_id = current_user.id
     if @subject.save
       render :show
     else
@@ -17,6 +18,6 @@ class Api::SubjectsController < ApplicationController
   private
 
   def subject_params
-    params.requier(:subject).permit(:title, :owner_id)
+    params.require(:subject).permit(:title)
   end
 end

@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 
 class NewSubjectForm extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      subjectName: ''
+      title: ''
     };
     this.handleSubjectNameChange = this.handleSubjectNameChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -15,12 +14,12 @@ class NewSubjectForm extends React.Component {
 
   handleSubjectNameChange(e) {
     this.setState({
-      subjectName: e.currentTarget.value
+      title: e.currentTarget.value
     });
   }
 
   handleFormSubmit() {
-    this.props.createSubject(this.state)
+    this.props.handleSubmit(this.state)
   }
 
   render () {
@@ -30,7 +29,7 @@ class NewSubjectForm extends React.Component {
         <input
           className='form-input'
           placeholder='subject name'
-          value={this.state.subjectName}
+          value={this.state.title}
           type='text'
           onChange={this.handleSubjectNameChange}
           autoFocus
@@ -41,15 +40,4 @@ class NewSubjectForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createSubject: (subject) => dispatch(createSubject(subject))
-});
-
-const mapStateToProps = state => ({
-
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewSubjectForm);
+export default NewSubjectForm;
