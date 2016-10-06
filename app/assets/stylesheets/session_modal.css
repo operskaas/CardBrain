@@ -54,12 +54,15 @@
   font-weight: lighter;
 }
 
-.session-form > h4 {
+.form-header {
   display: block;
-  padding: 30px 130px;
   font-size: 24px;
   color: #ff8a47;
   text-align: center;
+}
+
+.session-form > h4 {
+  padding: 30px 130px;
 }
 
 .session-form .errors-list {
@@ -82,7 +85,7 @@
 
 }
 
-.session-form input {
+.form-input {
   padding-left: 10px;
   display: block;
   margin: 15px auto;
@@ -93,7 +96,12 @@
   border: 1px solid #f2f2f2;
   border-radius: 2px;
   box-shadow: none;
-  transition: all 1s;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  border-color: #66afe9;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 }
 
 .guest-login {
