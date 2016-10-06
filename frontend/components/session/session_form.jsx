@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link, withRouter, hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
@@ -14,16 +15,8 @@ class SessionForm extends React.Component {
     this.guestLogin = this.guestLogin.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const user = this.state;
-    this.props.processForm(user);
-  }
-
-  handleChange(property) {
-    return (e) => {
-      this.setState({[property]: e.currentTarget.value});
-    };
+  componentDidMount () {
+    setTimeout(() => ReactDOM.findDOMNode(this.refs.un).focus(), 0);
   }
 
   componentDidUpdate() {
@@ -34,6 +27,18 @@ class SessionForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearSessionErrors();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = this.state;
+    this.props.processForm(user);
+  }
+
+  handleChange(property) {
+    return (e) => {
+      this.setState({[property]: e.currentTarget.value});
+    };
   }
 
   guestLogin() {
@@ -60,6 +65,7 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <input
               className='form-input'
+              ref='un'
               placeholder='username'
               value={this.state.username}
               onChange={this.handleChange('username')}

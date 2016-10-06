@@ -17,14 +17,6 @@ const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
       fetchCurrentUserSubjectFollows(success, error);
       return next(action);
     case CREATE_SUBJECT:
-      success = (data) => {
-        console.log(data);
-        // const fetchSuccess = () => {
-        //   dispatch(setActiveSubjectFollow(data.id));
-        // }
-        // dispatch();
-      }
-    // success = () => fetchCurrentuserSubjectFollows(success, error);
       postSubject(success, error, action.subject);
       return next(action);
     default:

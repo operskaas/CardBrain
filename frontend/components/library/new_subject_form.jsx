@@ -16,9 +16,7 @@ class NewSubjectForm extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(function() {
-      ReactDOM.findDOMNode(this.refs.input).focus();
-    }.bind(this), 0);
+    setTimeout(() => ReactDOM.findDOMNode(this.refs.input).focus(), 0);
   }
 
   handleSubjectNameChange(e) {

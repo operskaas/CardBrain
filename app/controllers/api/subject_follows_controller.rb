@@ -4,5 +4,6 @@ class Api::SubjectFollowsController < ApplicationController
 
   def index
     @subjects = current_user.followed_subjects.to_a
+    @activeId = @subjects.first.id
   end
 end

@@ -1,4 +1,4 @@
-json.active @subjects.first.id
+json.active @activeId
 
 json.current do
   @subjects.each do |subject|

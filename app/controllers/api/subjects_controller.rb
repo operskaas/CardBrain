@@ -8,7 +8,8 @@ class Api::SubjectsController < ApplicationController
     @subjects = []
     if @subject.save
       @subjects = current_user.followed_subjects.to_a
-      render :show
+      @activeId = @subject.id
+      render 'api/subject_follows/index'
     else
       render :show, status: 422
     end
