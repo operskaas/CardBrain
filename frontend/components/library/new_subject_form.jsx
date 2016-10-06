@@ -15,6 +15,12 @@ class NewSubjectForm extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
+  componentDidMount() {
+    setTimeout(function() {
+      ReactDOM.findDOMNode(this.refs.input).focus();
+    }.bind(this), 0);
+  }
+
   handleSubjectNameChange(e) {
     const currentSubjectFollows = this.props.currentSubjectFollows;
     const currentTitles = Object.keys(currentSubjectFollows).map(
@@ -63,6 +69,7 @@ class NewSubjectForm extends React.Component {
           placeholder='subject name'
           value={this.state.title}
           type='text'
+          ref='input'
           onChange={this.handleSubjectNameChange}
           autoFocus
         />
