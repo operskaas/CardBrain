@@ -12,6 +12,7 @@
 
 class Subject < ActiveRecord::Base
   validates :title, :owner, presence: true
+  validates_uniqueness_of :title, scope: [:owner]
 
   after_save :ensure_owner_is_following
 

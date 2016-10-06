@@ -70,8 +70,20 @@
   margin: 0 35px;
   color: #3a87ad;
 }
+.errors-list {
+  text-align: center;
+  margin: 0 35px;
+  color: #3a87ad;
+}
 
 .session-form .errors-list li {
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  padding: 10px 10px;
+  margin-top: 10px;
+}
+.errors-list li {
   background-color: #d9edf7;
   border: 1px solid #bce8f1;
   border-radius: 4px;

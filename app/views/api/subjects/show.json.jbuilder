@@ -1,5 +1,7 @@
-json.id @subject.id
+json.newSubjectId @subject.id
 
-json.errors do
-  json.array! @subject.errors
+json.current do
+  @subjects.each do |subject|
+    json.partial! 'api/subject_follows/subject_follow', subject: subject
+  end
 end

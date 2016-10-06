@@ -1,6 +1,7 @@
 import {
   GET_CURRENT_USER_SUBJECT_FOLLOWS,
   receiveSubjectFollows,
+  setActiveSubjectFollow,
   CREATE_SUBJECT
 } from '../actions/subject_follow_actions';
 import {
@@ -16,7 +17,13 @@ const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
       fetchCurrentUserSubjectFollows(success, error);
       return next(action);
     case CREATE_SUBJECT:
-      success = (data) => console.log(data);
+      success = (data) => {
+        console.log(data);
+        // const fetchSuccess = () => {
+        //   dispatch(setActiveSubjectFollow(data.id));
+        // }
+        // dispatch();
+      }
     // success = () => fetchCurrentuserSubjectFollows(success, error);
       postSubject(success, error, action.subject);
       return next(action);

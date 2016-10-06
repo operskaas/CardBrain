@@ -6,7 +6,8 @@ class NewSubjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: ''
+      subject: {title: ''},
+      empty: false
     };
     this.handleSubjectNameChange = this.handleSubjectNameChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -14,18 +15,32 @@ class NewSubjectForm extends React.Component {
 
   handleSubjectNameChange(e) {
     this.setState({
-      title: e.currentTarget.value
-    });
+      subject: {title: e.currentTarget.value},
+      empty: (e.currentTarget.value === '')
+    })
   }
 
   handleFormSubmit() {
-    this.props.handleSubmit(this.state)
+    if (this.state.subject.title === '') {
+      this.setState({empty: true});
+    } else {
+      this.props.handleSubmit(this.state.subject)
+    }
   }
 
   render () {
+    let errors = <noscript />;
+    if (this.state.empty) {
+      errors = (
+        <ul className='errors-list'>
+          <li>subject can't be empty</li>
+        </ul>
+      )
+    }
     return (
       <form onSubmit={this.handleFormSubmit} className='new-subject-form'>
         <h4 className='form-header'>New Subject</h4>
+        {errors}
         <input
           className='form-input'
           placeholder='subject name'
