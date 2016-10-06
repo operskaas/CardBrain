@@ -23,14 +23,16 @@ class SubjectListItem extends React.Component{
     if (active) {
       className += ' active'
     }
-
+    let progressStyle = {
+      width: `${subject.mastery}%`
+    };
     return (
       <li className={className} onClick={this.handleSubjectClick}>
         <strong className='subject-item-title'>
           {subject.title}
         </strong>
         <div className='progress-holder'>
-          <div className='progress'></div>
+          <div style={progressStyle}className='progress'></div>
         </div>
       </li>
     );
