@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 class NewSubjectForm extends React.Component {
 
@@ -7,13 +8,24 @@ class NewSubjectForm extends React.Component {
     super(props);
     this.state = {
       subject: {title: ''},
-      empty: false
+      empty: false,
+      exists: false
     };
     this.handleSubjectNameChange = this.handleSubjectNameChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleSubjectNameChange(e) {
+    const currentSubjectFollows = this.props.currentSubjectFollows;
+    const currentTitles = Object.keys(currentSubjectFollows).map(
+      (key) => currentSubjectFollows[key].title
+    )
+    if (currentTitles.includes(e.currentTarget.value)){
+      this.setState({exists: true});
+    } else {
+      this.setState({exists: false});
+    }
+
     this.setState({
       subject: {title: e.currentTarget.value},
       empty: (e.currentTarget.value === '')
@@ -23,19 +35,24 @@ class NewSubjectForm extends React.Component {
   handleFormSubmit() {
     if (this.state.subject.title === '') {
       this.setState({empty: true});
-    } else {
+    } else if (!this.state.exists){
       this.props.handleSubmit(this.state.subject)
     }
   }
 
   render () {
-    let errors = <noscript />;
+    let errors = [];
     if (this.state.empty) {
-      errors = (
-        <ul className='errors-list'>
-          <li>subject can't be empty</li>
-        </ul>
-      )
+      errors.push("subject can't be empty");
+    }
+    if (this.state.exists) {
+      errors.push("can't duplicate subject")
+    }
+    if (errors.length > 0) {
+      errors = errors.map((error, idx) => <li key={idx}>{error}</li>);
+      errors = <ul className='errors-list'>{errors}</ul>
+    } else {
+      errors = <noscript />
     }
     return (
       <form onSubmit={this.handleFormSubmit} className='new-subject-form'>
@@ -55,4 +72,13 @@ class NewSubjectForm extends React.Component {
   }
 }
 
-export default NewSubjectForm;
+const mapStateToProps = state => ({
+  currentSubjectFollows: state.subjectFollows.current
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewSubjectForm);
