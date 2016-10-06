@@ -5,9 +5,11 @@
 
 .subject-follows-list {
   overflow-y: scroll;
+  position: absolute;
+  top: 124px;
   width: 300px;
   height: 100%;
-  background-color: black;
+  background-color: white;
 }
 
 .subject-list-item {
@@ -66,4 +68,16 @@
   font-size: 14px;
   padding-right: 5px;
   line-height: 1;
+}
+
+.subject-list-item .progress-holder {
+  background-color: #acacac;
+  height: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.subject-list-item .progress {
+  background-color: #888;
 }

@@ -11,7 +11,9 @@ class SubjectListItem extends React.Component{
 
   handleSubjectClick(e) {
     e.preventDefault();
-    this.props.setActiveSubjectFollow(parseInt(this.props.subjectId));
+    if (!this.props.active){
+      this.props.setActiveSubjectFollow(parseInt(this.props.subjectId));
+    }
   }
   render () {
     const active = this.props.active;
@@ -27,6 +29,9 @@ class SubjectListItem extends React.Component{
         <strong className='subject-item-title'>
           {subject.title}
         </strong>
+        <div className='progress-holder'>
+          <div className='progress'></div>
+        </div>
       </li>
     );
   }

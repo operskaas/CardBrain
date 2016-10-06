@@ -34,7 +34,7 @@ class SubjectList extends React.Component {
       }
     );
     return (
-      <ul>
+      <ul className='subject-follows-list'>
         {subjectFollowItems}
       </ul>
     )
