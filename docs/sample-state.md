@@ -31,7 +31,17 @@
       deck_id: 1
     }
   },
-  subjectFollows: [1,5],
+  subjectFollows: {
+    active: 19,
+    current: {
+      19: {
+        title: 'MCAT Biology'
+      },
+      20: {
+        title: 'Pepper Dog'
+      }
+    }
+  },
   subjectSearchQuery: "Dog",
   searchResults: {
     1: {

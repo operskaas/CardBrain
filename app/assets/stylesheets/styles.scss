@@ -15,7 +15,7 @@ small, strong, form, p, img, section {
 }
 
 p:hover, h4:hover, strong:hover {
-  cursor:default;
+  cursor:inherit;
 }
 
 body {
@@ -24,6 +24,10 @@ body {
   text-decoration: none;
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   box-sizing: content-box;
+}
+
+body:hover {
+  cursor: default;
 }
 
 ul {

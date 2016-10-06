@@ -18,7 +18,10 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
       SessionApi.signup(action.user, success, error);
       return next(action);
     case LOGOUT:
-      let cb = () => next(action);
+      let cb = () => {
+        next(action);
+        action.cb();
+      }
       SessionApi.logout(cb);
       break;
     default:

@@ -9,8 +9,9 @@ export const login = (user) => ({
   user
 });
 
-export const logout = () => ({
-  type: LOGOUT
+export const logout = (cb) => ({
+  type: LOGOUT,
+  cb
 });
 
 export const signup = (user) => ({

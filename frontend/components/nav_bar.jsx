@@ -13,8 +13,7 @@ class NavBar extends React.Component {
   }
 
   logoutAndRedirect  () {
-    this.props.logout();
-    hashHistory.push('/');
+    this.props.logout(() => hashHistory.push('/'));
   }
 
   render () {

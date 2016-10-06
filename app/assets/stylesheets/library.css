@@ -1,6 +1,6 @@
 .subject-follows-aside {
   width: 350px;
-  background: grey;
+  /*background: grey;*/
 }
 
 .subject-follows-list {
@@ -10,8 +10,27 @@
   background-color: black;
 }
 
+.subject-list-item {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  border-right: 4px solid #e8e8e8;
+  color: #29a5dc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subject-list-item:hover {
+  background-color: #eeeeee;
+}
+
+.subject-list-item.active {
+  background-color: white;
+  border-bottom: 4px solid #ededed;
+}
+
 .subject-follows-header {
-  width: 317px;
+  width: 346px;
   height: 62px;
   background-color: #f5f5f5;
   border-right: 4px solid #e8e8e8;

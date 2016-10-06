@@ -19,6 +19,13 @@ porkchop2 = User.create!(username: 'porkchop2', password: 'porkchop')
 
 mcat_biology = Subject.create!(title: 'MCAT Biology', owner_id: porkchop.id)
 norwegian = Subject.create!(title: 'Norwegian', owner_id: porkchop.id)
+react = Subject.create!(title: 'React', owner_id: opp.id)
+redux = Subject.create!(title: 'Redux', owner_id: opp.id)
+jbuilder = Subject.create!(title: 'jBuilder', owner_id: opp.id)
+css = Subject.create!(title: 'CSS', owner_id: opp.id)
+active_recored = Subject.create!(title: 'ActiveRecord', owner_id: opp.id)
+
 
 
 SubjectFollow.create!(follower_id: opp.id, subject_id: norwegian.id)
+SubjectFollow.create!(follower_id: porkchop.id, subject_id: react.id)

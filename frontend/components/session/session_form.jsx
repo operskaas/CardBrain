@@ -38,7 +38,7 @@ class SessionForm extends React.Component {
 
   guestLogin() {
     this.setState({username: 'porkchop', password: 'porkchop'})
-    setTimeout(() => this.props.processForm(this.state), 1000);
+    setTimeout(() => this.props.processForm(this.state), 400);
   }
 
   render () {

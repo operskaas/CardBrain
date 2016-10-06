@@ -10,7 +10,7 @@ import Home from './home';
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser.id) {
-      replace('/');
+      replace('/library');
     }
   };
   const _redirectUnlessLoggedIn = (nextState, replace) => {
@@ -23,7 +23,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path='/' component={App} >
-          <IndexRoute component={Home} />
+          <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
           <Route path='modal' component={Modal} >
             <Route path='login' component={SessionFormContainer}
               onEnter={_redirectIfLoggedIn}/>
