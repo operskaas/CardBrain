@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import EditSubjectForm from './edit_subject_form';
 import modalStyles from '../../constants/modalStyles';
+import { deleteSubject } from '../../actions/subject_follow_actions';
 
 class SubjectDetail extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class SubjectDetail extends React.Component {
     };
     this.toggleSubjectMenuOpen = this.toggleSubjectMenuOpen.bind(this);
     this.handleEditSubjectClick = this.handleEditSubjectClick.bind(this);
+    this.handleDeleteSubjectClick = this.handleDeleteSubjectClick.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -37,6 +39,11 @@ class SubjectDetail extends React.Component {
       subjectMenuOpen: false,
       subjectEditModalOpen: true
     });
+  }
+
+  handleDeleteSubjectClick () {
+    this.setState({ subjectMenuOpen: false });
+    this.props.deleteSubject(this.props.subjectId);
   }
 
   render () {
@@ -86,7 +93,7 @@ class SubjectDetail extends React.Component {
             </button>
             <article style={subjectMenuStyle} className='subject-menu'>
               {editSubjectButton}
-              <button>
+              <button onClick={this.handleDeleteSubjectClick}>
                 <span className='menu-icon'>
                   <i className="fa fa-trash-o" ></i>
                 </span>
@@ -113,7 +120,9 @@ const mapStateToProps = state => ({
   subjectId: state.subjectFollows.active
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  deleteSubject: (subjectId) => dispatch(deleteSubject(subjectId))
+});
 
 export default connect(
   mapStateToProps,

@@ -7,7 +7,7 @@ class Api::SubjectsController < ApplicationController
     @subject.owner_id = current_user.id
     @subjects = []
     if @subject.save
-      @subjects = current_user.followed_subjects.to_a
+      @subjects = current_user_follows
       @activeId = @subject.id
       render 'api/subject_follows/index'
     else
@@ -19,7 +19,7 @@ class Api::SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
     if @subject && (@subject.owner == current_user)
       if @subject.update(subject_params)
-        @subjects = current_user.followed_subjects.to_a
+        @subjects = current_user_follows
         @activeId = @subject.id
         render 'api/subject_follows/index'
       else
@@ -31,9 +31,24 @@ class Api::SubjectsController < ApplicationController
   end
 
   def destroy
+    @subject = Subject.find(params[:id])
+    if @subject.owner == current_user
+      @subject.destroy
+    else
+      @follow = SubjectFollow.find_by(follower: current_user, subject: @subject)
+      @follow.destroy if @follow
+    end
+
+    @subjects = current_user_follows
+    @activeId = @subjects.first.id unless @subjects.empty?
+    render 'api/subject_follows/index'
   end
 
   private
+
+  def current_user_follows
+    current_user.followed_subjects.to_a
+  end
 
   def subject_params
     params.require(:subject).permit(:title)

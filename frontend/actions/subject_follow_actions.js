@@ -3,6 +3,7 @@ export const  RECEIVE_SUBJECT_FOLLOWS = 'RECEIVE_SUBJECT_FOLLOWS';
 export const SET_ACTIVE_SUBJECT_FOLLOW = 'SET_ACTIVE_SUBJECT_FOLLOW';
 export const CREATE_SUBJECT = 'CREATE_SUBJECT';
 export const UPDATE_SUBJECT = 'UPDATE_SUBJECT';
+export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
 export const getCurrentUserSubjectFollows = () => ({
   type: GET_CURRENT_USER_SUBJECT_FOLLOWS
@@ -26,5 +27,10 @@ export const createSubject = (subject) => ({
 export const updateSubject = (subject, subjectId) => ({
   type: UPDATE_SUBJECT,
   subject,
+  subjectId
+})
+
+export const deleteSubject = subjectId => ({
+  type: DELETE_SUBJECT,
   subjectId
 })

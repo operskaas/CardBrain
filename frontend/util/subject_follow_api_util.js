@@ -29,3 +29,13 @@ export const patchSubject = (success, error, subject, subjectId) => {
     error
   });
 };
+
+export const destroySubject = (success, error, subjectId) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/subjects/${subjectId}`,
+    dataType: 'json',
+    success,
+    error
+  });
+};
