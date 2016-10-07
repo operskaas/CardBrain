@@ -1,6 +1,6 @@
 html, header, body, div, main, nav, h1, h2, h3, h4, h5, h6, p,
 li, ul, input, button, a, textarea, button, article, footer,
-small, strong, form, p, img, section {
+small, strong, form, p, img, section, hr {
   border: 0;
   margin: 0;
   padding: 0;
@@ -56,6 +56,7 @@ img {
   background: #29a5dc;
   border: none;
   text-align: center;
+  transition: .3s;
 }
 
 .blue-button:hover {
@@ -81,10 +82,35 @@ img {
 .home-text {
   color: black;
   padding-top: 100px;
-  padding-left: 500px;
+  padding-left: 29%;
   text-align: center;
 }
 
 .home-text h2 {
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.25);
+  font-size: 64px;
+  font-weight: 200;
+}
+
+.home-text h4 {
+  margin: 35px;
+  font-size: 23px;
+  font-weight: 300;
+}
+
+.home-text hr {
+  width: 250px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid black;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.home-text .blue-button {
+  margin: 0 auto;
+  padding: 15px 63px;
   font-size: 36px;
+  border-radius: 3px;
+  font-weight: 100;
+  letter-spacing: 1.5px;
 }
