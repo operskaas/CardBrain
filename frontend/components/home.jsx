@@ -10,7 +10,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       modalOpen: false
-    }
+    };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -18,13 +18,13 @@ class Home extends React.Component {
   openModal() {
     this.setState({
       modalOpen: true
-    })
+    });
   }
 
   closeModal() {
     this.setState({
       modalOpen: false
-    })
+    });
   }
 
   render () {

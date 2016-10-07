@@ -4,14 +4,6 @@ import { clearSessionErrors } from '../../actions/error_actions';
 import SessionForm from './session_form';
 import { withRouter, hashHistory } from 'react-router'
 
-// const formType = url => {
-//   if (url === '/modal/login') {
-//     return 'login';
-//   } else if (url === '/modal/signup') {
-//     return 'signup';
-//   }
-// };
-
 const processForm = (ownProps, dispatch) => {
   const cb = () => {
     ownProps.closeModal();

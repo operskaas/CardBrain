@@ -58,8 +58,9 @@
   display: block;
 }
 
-.logged-out-nav a {
+.logged-out-nav > * {
   float: left;
+  cursor: pointer;
 }
 
 .nav .blue-button {
