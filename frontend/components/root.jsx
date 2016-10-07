@@ -10,14 +10,12 @@ import Home from './home';
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser.id) {
-      debugger
-      hashHistory.push('/library');
+      replace('/library');
     }
   };
   const _redirectUnlessLoggedIn = (nextState, replace) => {
     if (!(store.getState().session.currentUser.id)) {
-      debugger
-      hashHistory.push('/');
+      replace('/');
     }
   };
 
