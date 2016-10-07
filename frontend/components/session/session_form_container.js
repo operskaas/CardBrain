@@ -26,8 +26,7 @@ const processForm = (formType, dispatch) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  formType: formType(ownProps.location.pathname),
-  processForm: processForm(formType(ownProps.location.pathname), dispatch),
+  processForm: processForm(ownProps.formType, dispatch),
   clearSessionErrors: () => dispatch(clearSessionErrors())
 });
 
