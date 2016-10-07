@@ -126,9 +126,51 @@
 
 .subject-detail-main-col {
   padding: 25px;
+  width: 80%;
 }
 
 .subject-detail-header h2 {
   font-size: 36px;
   color: #ff8a47;
+}
+
+.menu-button {
+  display: block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+  color: white;
+  background: #5bc0de;
+  border: none;
+  text-align: center;
+  transition: .15s;
+}
+
+.menu-button:hover {
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+  text-decoration: none;
+  background: #31b0d5;
+  color: white;
+}
+
+.subject-detail-title {
+  width: 60%;
+}
+
+.subject-detail-header > * {
+  float: left;
+}
+
+.subject-detail-header > .menu-button {
+}
+
+.deck-icon {
+  color: #666666;
+}
+
+.large-icon-holder {
+  font-size: 105px;
+  margin: 20px;
+  margin-top: -24px;
 }
