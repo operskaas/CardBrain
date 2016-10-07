@@ -8,13 +8,17 @@ import {
 import * as SessionApi from '../util/session_api_util';
 
 const SessionMiddleware = ({ dispatch }) => next => action => {
-  let success = (data) => dispatch(receiveCurrentUser(data));
+  let success = (data) => {
+    dispatch(receiveCurrentUser(data));
+    action.cb();
+  };
   let error = (data) => dispatch(receiveErrors(data.responseJSON.errors));
   switch (action.type) {
     case LOGIN:
       SessionApi.login(action.user, success, error);
       return next(action);
     case SIGNUP:
+      debugger
       SessionApi.signup(action.user, success, error);
       return next(action);
     case LOGOUT:

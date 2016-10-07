@@ -8,7 +8,8 @@ const modalStyles = {
     transform: 'translate(-50%, -50%)',
     overflow: 'visible',
     boxShadow: '0px 4px 4px rgba(0,0,0,0.25)',
-    color: '#555555'
+    color: '#555555',
+    padding: 0
   },
   overlay: {
     position: 'fixed',

@@ -13,6 +13,7 @@ const _defaultSessionSlice = {
 const SessionReducer = (prevState = _defaultSessionSlice, action) => {
   switch (action.type) {
     case Actions.RECEIVE_CURRENT_USER:
+      debugger
       return {currentUser: action.currentUser, errors: []};
     case Actions.RECEIVE_ERRORS:
       return {

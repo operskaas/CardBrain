@@ -27,10 +27,6 @@ class Home extends React.Component {
     })
   }
 
-  handleSignUpFormSubmit() {
-
-  }
-
   render () {
     return (
       <div className='home'>
@@ -46,11 +42,22 @@ class Home extends React.Component {
           style={modalStyles}
         >
           <button onClick={this.closeModal} className='modal-close-btn'>X</button>
-          <SessionFormContainer handleSubmit={this.handleSignUpFormSubmit} formType='signup'/>
+          <SessionFormContainer closeModal={this.closeModal} formType='signup'/>
         </Modal>
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  processForm: (user) => dispatch(signup(user))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
