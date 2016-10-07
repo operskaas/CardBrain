@@ -183,6 +183,9 @@
   box-shadow: 0 6px 12px rgba(0,0,0,0.175);
   color: rgb(51,51,51);
   overflow: hidden;
+  position: absolute;
+  top: 53px;
+  right: 10%;
 }
 
 .subject-menu button{
