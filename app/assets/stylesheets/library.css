@@ -168,7 +168,11 @@
   float: left;
 }
 
-.subject-detail-header > .menu-button {
+.subject-detail-main-col > hr {
+  height: 0px;
+  width: 90%;
+  padding-top: 10px;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .deck-icon {
@@ -191,7 +195,7 @@
   overflow: hidden;
   position: absolute;
   top: 53px;
-  right: 10%;
+  right: 24%;
 }
 
 .subject-menu button{

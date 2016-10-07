@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import EditSubjectForm from './edit_subject_form';
+import Decks from './decks/decks';
 import modalStyles from '../../constants/modalStyles';
 import { deleteSubject } from '../../actions/subject_follow_actions';
 
@@ -109,6 +110,8 @@ class SubjectDetail extends React.Component {
               <EditSubjectForm title={this.subject.title} subjectId={this.props.subjectId} closeModal={this.closeModal}/>
             </Modal>
           </header>
+          <hr/>
+          <Decks />
         </div>
       </div>
     );

@@ -1,0 +1,9 @@
+.decks > header {
+  margin: 10px 15px;
+  border-bottom: 2px solid #dddddd;
+}
+
+.decks > header h4 {
+  color: #333333;
+  font-size: 14px;
+}
