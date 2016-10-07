@@ -36,7 +36,8 @@ class NewSubjectForm extends React.Component {
     })
   }
 
-  handleFormSubmit() {
+  handleFormSubmit(e) {
+    e.preventDefault();
     if (this.state.subject.title === '') {
       this.setState({empty: true});
     } else if (!this.state.exists){

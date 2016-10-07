@@ -12,7 +12,6 @@ import {
 const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
   let error = (data) => console.log(data);
   let success = (data) => {
-    debugger
     dispatch(receiveSubjectFollows(data));
   };
   switch (action.type) {
@@ -20,7 +19,6 @@ const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
       fetchCurrentUserSubjectFollows(success, error);
       return next(action);
     case CREATE_SUBJECT:
-      debugger
       postSubject(success, error, action.subject);
       return next(action);
     default:
