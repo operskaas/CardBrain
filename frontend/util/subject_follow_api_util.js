@@ -18,3 +18,14 @@ export const postSubject = (success, error, subject) => {
     error
   });
 };
+
+export const patchSubject = (success, error, subject, subjectId) => {
+  $.ajax({
+    method: 'PATCH',
+    url: `api/subjects/${subjectId}`,
+    dataType: 'json',
+    data: {subject},
+    success,
+    error
+  });
+};

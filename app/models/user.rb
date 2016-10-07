@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   has_many :subject_follows,
     foreign_key: :follower_id
 
+  has_many :owned_subjects,
+    foreign_key: :owner_id,
+    class_name: 'Subject'
+
   has_many :followed_subjects,
     class_name: 'Subject',
     through: :subject_follows,

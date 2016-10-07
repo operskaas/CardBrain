@@ -1,6 +1,6 @@
 class Api::SubjectFollowsController < ApplicationController
 
-  before_action :ensure_user_logged_in, :index
+  before_action :ensure_user_logged_in
 
   def index
     @subjects = current_user.followed_subjects.to_a

@@ -1,15 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
+import EditSubjectForm from './edit_subject_form';
+import modalStyles from '../../constants/modalStyles';
 
 class SubjectDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { subjectMenuOpen: false };
+    this.state = {
+      subjectMenuOpen: false,
+      subjectEditModalOpen: false
+    };
     this.toggleSubjectMenuOpen = this.toggleSubjectMenuOpen.bind(this);
+    this.handleEditSubjectClick = this.handleEditSubjectClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
-
+    // fetch subject's decks...
   }
 
   toggleSubjectMenuOpen () {
@@ -18,6 +26,17 @@ class SubjectDetail extends React.Component {
     } else {
       this.setState({subjectMenuOpen:true});
     }
+  }
+
+  closeModal () {
+    this.setState({subjectEditModalOpen: false})
+  }
+
+  handleEditSubjectClick () {
+    this.setState({
+      subjectMenuOpen: false,
+      subjectEditModalOpen: true
+    });
   }
 
   render () {
@@ -37,6 +56,18 @@ class SubjectDetail extends React.Component {
       display
     }
 
+    let editSubjectButton = <noscript />
+
+    if (this.subject.owner) {
+      editSubjectButton = (
+        <button onClick={this.handleEditSubjectClick}>
+          <span className='menu-icon'>
+            <i className="fa fa-pencil" ></i>
+          </span>
+          Edit Subject
+        </button>
+      );
+    }
     return (
       <div className='subject-detail'>
         <div className='subject-detail-main-col'>
@@ -54,12 +85,7 @@ class SubjectDetail extends React.Component {
               <i className="fa fa-cog" ></i>
             </button>
             <article style={subjectMenuStyle} className='subject-menu'>
-              <button>
-                <span className='menu-icon'>
-                  <i className="fa fa-pencil" ></i>
-                </span>
-                Edit Subject
-              </button>
+              {editSubjectButton}
               <button>
                 <span className='menu-icon'>
                   <i className="fa fa-trash-o" ></i>
@@ -67,6 +93,14 @@ class SubjectDetail extends React.Component {
                 Delete Subject
               </button>
             </article>
+            <Modal
+              isOpen={this.state.subjectEditModalOpen}
+              onRequestClose={this.closeModal}
+              style={modalStyles}
+            >
+              <button onClick={this.closeModal} className='modal-close-btn'>X</button>
+              <EditSubjectForm title={this.subject.title} subjectId={this.props.subjectId} closeModal={this.closeModal}/>
+            </Modal>
           </header>
         </div>
       </div>

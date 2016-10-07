@@ -1,6 +1,6 @@
 class Api::SubjectsController < ApplicationController
 
-  before_action :ensure_user_logged_in, :create, :destroy, :show
+  before_action :ensure_user_logged_in
 
   def create
     @subject = Subject.new(subject_params)
@@ -15,10 +15,22 @@ class Api::SubjectsController < ApplicationController
     end
   end
 
-  def destroy
+  def update
+    @subject = Subject.find(params[:id])
+    if @subject && (@subject.owner == current_user)
+      if @subject.update(subject_params)
+        @subjects = current_user.followed_subjects.to_a
+        @activeId = @subject.id
+        render 'api/subject_follows/index'
+      else
+        render json: ['invalid parameters'], status: 422
+      end
+    else
+      render json: ["subject doesn't exist, or you are not the owner"], status: 403
+    end
   end
 
-  def show
+  def destroy
   end
 
   private
