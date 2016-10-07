@@ -6,7 +6,7 @@
 .subject-follows-list {
   overflow-y: scroll;
   position: absolute;
-  top: 124px;
+  top: 126px;
   bottom: 0px;
   width: 350px;
   background-color: white;
@@ -17,6 +17,7 @@
   height: 62px;
   background-color: #f5f5f5;
   border-right: 4px solid #e8e8e8;
+  border-bottom: 3px solid #c3c3c3;
 }
 
 .subject-follows-header h4 {
