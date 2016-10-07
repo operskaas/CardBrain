@@ -7,11 +7,12 @@
   overflow-y: scroll;
   position: absolute;
   top: 124px;
+  bottom: 0px;
   width: 350px;
-  height: 100%;
   background-color: white;
 }
 .subject-follows-header {
+  position: fixed;
   width: 346px;
   height: 62px;
   background-color: #f5f5f5;
