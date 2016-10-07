@@ -18,7 +18,7 @@ class NavBar extends React.Component {
   }
 
   handleBrandClick () {
-    console.log('brand clicked');
+    hashHistory.push('/');
   }
 
   logoutAndRedirect  () {
