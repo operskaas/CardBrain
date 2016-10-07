@@ -81,6 +81,12 @@
   border-bottom: 4px solid #ededed;
 }
 
+.subject-list-item .md-icon-holder {
+  float: left;
+  font-size: 36px;
+  margin-right: 10px;
+}
+
 .subject-list-item.active .progress-holder {
   background-color: #f5f5f5;
 }

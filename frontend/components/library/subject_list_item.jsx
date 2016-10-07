@@ -28,6 +28,9 @@ class SubjectListItem extends React.Component{
     };
     return (
       <li className={className} onClick={this.handleSubjectClick}>
+        <span className='md-icon-holder'>
+          <i className="fa fa-book deck-icon" ></i>
+        </span>
         <strong className='subject-item-title'>
           {subject.title}
         </strong>
