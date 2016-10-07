@@ -11,13 +11,13 @@ const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser.id) {
       debugger
-      replace('/library');
+      hashHistory.push('/library');
     }
   };
   const _redirectUnlessLoggedIn = (nextState, replace) => {
     if (!(store.getState().session.currentUser.id)) {
       debugger
-      replace('/');
+      hashHistory.push('/');
     }
   };
 
