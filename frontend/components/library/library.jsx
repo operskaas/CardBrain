@@ -3,10 +3,10 @@ import SubjectFollowsAside from './subject_follows_aside';
 import SubjectDetail from './subject_detail';
 
 const Library = () => (
-  <main>
+  <article>
     <SubjectFollowsAside />
     <SubjectDetail />
-  </main>
+  </article>
 )
 
 export default Library;
