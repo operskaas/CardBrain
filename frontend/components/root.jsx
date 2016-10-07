@@ -26,12 +26,6 @@ const Root = ({ store }) => {
       <Router history={hashHistory}>
         <Route path='/' component={App} >
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
-          <Route path='modal' component={Modal} >
-            <Route path='login' component={SessionFormContainer}
-              onEnter={_redirectIfLoggedIn}/>
-            <Route path='signup' component={SessionFormContainer}
-              onEnter={_redirectIfLoggedIn}/>
-          </Route>
           <Route path='library' component={LibraryContainer}
             onEnter={_redirectUnlessLoggedIn}/>
         </Route>
