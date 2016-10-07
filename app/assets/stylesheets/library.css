@@ -52,14 +52,12 @@
 
 .new-subject-form {
   width: 236px;
+  padding: 20px;
 }
 
 .new-subject-form > .blue-button{
   margin-left: auto;
   margin-right: auto;
-}
-.new-subject-form > input {
-
 }
 
 .subject-list-item {

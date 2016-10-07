@@ -18,7 +18,6 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
       SessionApi.login(action.user, success, error);
       return next(action);
     case SIGNUP:
-      debugger
       SessionApi.signup(action.user, success, error);
       return next(action);
     case LOGOUT:
