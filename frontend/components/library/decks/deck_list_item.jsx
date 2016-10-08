@@ -1,20 +1,45 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { deleteDeck } from '../../../actions/deck_actions';
 
 class DeckListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { deckMenuOpen: false};
+    this.state = { // all state properties are for menu styling
+      display: 'none',
+      top: 0,
+      left: 0
+    };
     this.toggleDeckMenuOpen = this.toggleDeckMenuOpen.bind(this);
     this.handleDeleteDeckClick = this.handleDeleteDeckClick.bind(this);
+    this.deckMenuStyle = { display: 'none'};
+  }
+  componentDidMount () {
+    // const rect = ReactDOM.findDOMNode(this.refs.menu).getBoundingClientRect();
+    // this.setState({
+    //   top: `${rect.bottom}px`,
+    //   left: `${rect.right}px`
+    // });
+  }
+
+  componentWillUpdate () {
+    // this.deckMenuStyle = {
+    //   display: 'none',
+    //   top: rect.bottom,
+    //   left: rect.right
+    // }
+    // if (this.state.deckMenuOpen) {
+    //   this.deckMenuStyle.display= 'block';
+    // }
+    // debugger
   }
 
   toggleDeckMenuOpen () {
-    if (this.state.deckMenuOpen) {
-      this.setState({deckMenuOpen: false});
+    if (this.state.display === 'none') {
+      this.setState({ display: 'block' });
     } else {
-      this.setState({deckMenuOpen:true});
+      this.setState({ display: 'none' });
     }
   }
 
@@ -24,25 +49,31 @@ class DeckListItem extends React.Component {
   }
 
   render () {
-    let display = 'none';
-    if (this.state.deckMenuOpen) {
-      display = 'block';
-    }
-    const deckMenuStyle = {
-      display
-    };
-
     let menuBtn = <noscript />;
     let studyBtnStyle = {borderRadius: '4px', marginRight: '15px'};
     if (this.props.owner) {
       studyBtnStyle = {};
       menuBtn = (
-        <button className='deck-menu-btn' onClick={this.toggleDeckMenuOpen}>
-          <i className="fa fa-cog"/>
-        </button>
+        <div>
+          <button ref='menu' className='deck-menu-btn' onClick={this.toggleDeckMenuOpen}>
+            <i className="fa fa-cog"/>
+          </button>
+          <article style={this.state} className='subject-menu'>
+            <button>
+              Edit Cards
+            </button>
+            <button onClick={this.handleDeleteDeckClick}>
+              <span className='menu-icon'>
+                <i className="fa fa-trash-o" ></i>
+              </span>
+              Delete Deck
+            </button>
+          </article>
+        </div>
       );
     }
     const deck = this.props.deck;
+    debugger
     return (
       <li className='deck-item group'>
         <div className='percentage'>
@@ -56,17 +87,6 @@ class DeckListItem extends React.Component {
         <button className='study-btn' style={studyBtnStyle}>
           <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
         </button>
-        <article style={deckMenuStyle} className='subject-menu'>
-          <button>
-            Edit Cards
-          </button>
-          <button onClick={this.handleDeleteDeckClick}>
-            <span className='menu-icon'>
-              <i className="fa fa-trash-o" ></i>
-            </span>
-            Delete Deck
-          </button>
-        </article>
       </li>
     );
   }

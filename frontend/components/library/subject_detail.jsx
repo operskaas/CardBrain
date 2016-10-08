@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import EditSubjectForm from './edit_subject_form';
@@ -17,10 +18,6 @@ class SubjectDetail extends React.Component {
     this.handleEditSubjectClick = this.handleEditSubjectClick.bind(this);
     this.handleDeleteSubjectClick = this.handleDeleteSubjectClick.bind(this);
     this.closeModal = this.closeModal.bind(this);
-  }
-
-  componentDidMount() {
-    // fetch subject's decks...
   }
 
   toggleSubjectMenuOpen () {
