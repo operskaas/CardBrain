@@ -115,3 +115,7 @@
   background: #31b0d5;
   border-color: #269abc;
 }
+
+.modal-form.new-deck-form {
+  width: 325px;
+}

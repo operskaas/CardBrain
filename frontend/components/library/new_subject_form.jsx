@@ -60,7 +60,7 @@ class NewSubjectForm extends React.Component {
       errors = <noscript />
     }
     return (
-      <form onSubmit={this.handleFormSubmit} className='new-subject-form'>
+      <form onSubmit={this.handleFormSubmit} className='modal-form'>
         <h4 className='form-header'>New Subject</h4>
         {errors}
         <input

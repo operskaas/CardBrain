@@ -62,7 +62,7 @@ class NewDeckForm extends React.Component {
       errors = <noscript />
     }
     return (
-      <form onSubmit={this.handleFormSubmit} className='new-deck-form'>
+      <form onSubmit={this.handleFormSubmit} className='modal-form new-deck-form'>
         <h4 className='form-header'>New Deck</h4>
         {errors}
         <input

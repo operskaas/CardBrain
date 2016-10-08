@@ -52,12 +52,12 @@
   line-height: 1;
 }
 
-.new-subject-form {
+.modal-form {
   width: 236px;
   padding: 20px;
 }
 
-.new-subject-form > .blue-button{
+.modal-form > .blue-button{
   margin-left: auto;
   margin-right: auto;
 }
