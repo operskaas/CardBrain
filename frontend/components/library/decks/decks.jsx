@@ -1,4 +1,5 @@
 import React from 'react';
+import DeckList from './deck_list';
 
 class Decks extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Decks extends React.Component {
 
   render() {
     let deckCreateButton = <noscript />;
-    if (this.props.owner) {
+    if (this.props.subject.owner) {
       deckCreateButton = (
         <button className='create-deck-btn'>
           <strong>
@@ -24,7 +25,7 @@ class Decks extends React.Component {
           {deckCreateButton}
         </header>
         <ul>
-          {deckList}
+          <DeckList subjectId={this.props.subject.id}/>
         </ul>
       </div>
     )

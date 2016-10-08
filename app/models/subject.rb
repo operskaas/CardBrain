@@ -20,6 +20,8 @@ class Subject < ActiveRecord::Base
     class_name: 'User',
     foreign_key: :owner_id
 
+  has_many :decks
+
   def ensure_owner_is_following
     SubjectFollow.find_or_create_by!(subject_id: self.id, follower_id: self.owner.id)
   end

@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     through: :subject_follows,
     source: :subject
 
+  has_many :owned_decks,
+    through: :owned_subjects,
+    source: :decks
+
   def self.find_by_credentials(un, pw)
     user = User.find_by_username(un);
     return nil if user.nil?

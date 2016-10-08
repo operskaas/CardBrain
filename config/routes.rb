@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :subjects, only: [:create, :update, :destroy, :show]
     resources :subject_follows, only: [:index]
+    resources :decks, only: [:index]
   end
 end

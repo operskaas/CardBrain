@@ -10,6 +10,7 @@
 User.destroy_all
 Subject.destroy_all
 SubjectFollow.destroy_all
+Deck.destroy_all
 
 
 porkchop = User.create!(username: 'porkchop', password: 'porkchop')
@@ -29,3 +30,10 @@ active_recored = Subject.create!(title: 'ActiveRecord', owner_id: opp.id)
 
 SubjectFollow.create!(follower_id: opp.id, subject_id: norwegian.id)
 SubjectFollow.create!(follower_id: porkchop.id, subject_id: react.id)
+
+modal = Deck.create!(subject: react, title: 'React Modal')
+router = Deck.create!(subject: react, title: 'React Router')
+lifecycle = Deck.create!(subject: react, title: 'Lifecycle Methods')
+greetings = Deck.create!(subject: norwegian, title: 'Greetings')
+foods = Deck.create!(subject: norwegian, title: 'Foods')
+sports = Deck.create!(subject: norwegian, title: 'Sports')

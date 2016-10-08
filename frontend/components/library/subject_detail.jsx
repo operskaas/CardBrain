@@ -111,7 +111,7 @@ class SubjectDetail extends React.Component {
             </Modal>
           </header>
           <hr/>
-          <Decks owner={this.subject.owner}/>
+          <Decks subject={this.subject}/>
         </div>
       </div>
     );
