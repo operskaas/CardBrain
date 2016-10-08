@@ -1,6 +1,7 @@
 export const GET_DECKS = 'GET_DECKS';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const CREATE_DECK = 'CREATE_DECK';
+export const DELETE_DECK = 'DELETE_DECK';
 
 export const getDecks = (subjectId) => ({
   type: GET_DECKS,
@@ -15,4 +16,9 @@ export const receiveDecks = (data) => ({
 export const createDeck = deck => ({
   type: CREATE_DECK,
   deck
+});
+
+export const deleteDeck = deckId => ({
+  type: DELETE_DECK,
+  deckId
 });

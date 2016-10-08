@@ -15,6 +15,15 @@ class Api::DecksController < ApplicationController
     end
   end
 
+  def destroy
+    @deck = Deck.find(params[:id])
+    render json: ['not your deck'], status: 422 unless @deck.owner == current_user
+    subject = @deck.subject
+    @deck.destroy
+    @decks = Deck.where(subject: subject)
+    render :index
+  end
+
   private
 
   def deck_params

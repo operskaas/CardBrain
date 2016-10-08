@@ -38,7 +38,7 @@ class Decks extends React.Component {
           <h4>Decks</h4>
           {deckCreateButton}
         </header>
-        <DeckList subjectId={this.props.subject.id}/>
+        <DeckList subjectId={this.props.subject.id} owner={this.props.subject.owner}/>
         <Modal
           isOpen={this.state.createDeckModalOpen}
           onRequestClose={this.closeModal}

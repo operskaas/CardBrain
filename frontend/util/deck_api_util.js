@@ -18,3 +18,13 @@ export const postDeck = (deck, success, error) => {
     error
   });
 };
+
+export const destroyDeck = (deckId, success, error) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/decks/${deckId}`,
+    dataType: 'json',
+    success,
+    error
+  });
+};
