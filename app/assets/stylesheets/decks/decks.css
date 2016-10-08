@@ -1,5 +1,5 @@
 .decks > header {
-  margin: 10px 0px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #dddddd;
   width: 90%;
 }
@@ -7,5 +7,28 @@
 .decks > header h4 {
   color: #333333;
   font-size: 14px;
-  padding-left: 15px;
+  font-weight: bold;
+  margin: 20px 25px;
+  vertical-align: middle;
+  float: left;
+  display: block;
+}
+
+.create-deck-btn {
+  float: right;
+  color: #29a5dc;
+  cursor: pointer;
+  padding: 22px 29px;
+  font-size: 14px;
+  display: block;
+}
+
+.create-deck-btn:hover {
+  color: #1a769f;
+  text-decoration: underline;
+}
+
+.create-deck-btn strong {
+  font-size: 16px;
+  padding-right: 5px;
 }

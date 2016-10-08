@@ -9,7 +9,7 @@ class Decks extends React.Component {
     let deckCreateButton = <noscript />;
     if (this.props.owner) {
       deckCreateButton = (
-        <button>
+        <button className='create-deck-btn'>
           <strong>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </strong>
@@ -23,7 +23,9 @@ class Decks extends React.Component {
           <h4>Decks</h4>
           {deckCreateButton}
         </header>
-        <p>Deckslist</p>
+        <ul>
+          {deckList}
+        </ul>
       </div>
     )
   }
