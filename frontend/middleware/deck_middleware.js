@@ -1,5 +1,5 @@
 import { GET_DECKS, receiveDecks } from '../actions/deck_actions';
-import { fetchDecks } from '../util/deck_api_util';
+import { fetchDecks, postDeck } from '../util/deck_api_util';
 
 const DeckMiddleware = ({ dispatch }) => next => action => {
   let error = (data) => console.log(data);
@@ -10,6 +10,8 @@ const DeckMiddleware = ({ dispatch }) => next => action => {
     case GET_DECKS:
       fetchDecks(action.subjectId, success, error);
       return next(action);
+    case CREATE_DECK:
+      postDeck(action.deck, success, error);
     default:
       return next(action);
   }

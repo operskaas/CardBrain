@@ -44,7 +44,6 @@ class EditSubjectForm extends React.Component {
     } else if (!this.state.exists){
       this.props.updateSubject(this.state.subject, this.props.subjectId);
       this.props.closeModal();
-      // this.props.handleSubmit(this.state.subject)
     }
   }
 

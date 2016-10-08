@@ -1,16 +1,30 @@
 import React from 'react';
 import DeckList from './deck_list';
+import Modal from 'react-modal';
+import modalStyles from '../../../constants/modalStyles';
+import NewDeckForm from './new_deck_form';
 
 class Decks extends React.Component {
   constructor(props) {
     super(props);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.state = {createDeckModalOpen: false};
+  }
+
+  openModal() {
+    this.setState({createDeckModalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({createDeckModalOpen: false});
   }
 
   render() {
     let deckCreateButton = <noscript />;
     if (this.props.subject.owner) {
       deckCreateButton = (
-        <button className='create-deck-btn'>
+        <button className='create-deck-btn' onClick={this.openModal}>
           <strong>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </strong>
@@ -25,6 +39,14 @@ class Decks extends React.Component {
           {deckCreateButton}
         </header>
         <DeckList subjectId={this.props.subject.id}/>
+        <Modal
+          isOpen={this.state.createDeckModalOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+        >
+          <button onClick={this.closeModal} className='modal-close-btn'>X</button>
+          <NewDeckForm closeModal={this.closeModal}/>
+        </Modal>
       </div>
     )
   }

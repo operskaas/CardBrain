@@ -7,3 +7,14 @@ export const fetchDecks = (subjectId, success, error) => {
     error
   });
 };
+
+export const postDeck = (deck, success, error) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/decks',
+    dataType: 'json',
+    data: {deck}
+    success,
+    error
+  });
+};
