@@ -24,9 +24,7 @@ class Decks extends React.Component {
           <h4>Decks</h4>
           {deckCreateButton}
         </header>
-        <ul>
-          <DeckList subjectId={this.props.subject.id}/>
-        </ul>
+        <DeckList subjectId={this.props.subject.id}/>
       </div>
     )
   }

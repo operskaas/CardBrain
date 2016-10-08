@@ -1,5 +1,4 @@
 .decks > header {
-  margin-bottom: 10px;
   border-bottom: 2px solid #dddddd;
   width: 90%;
 }
@@ -31,4 +30,85 @@
 .create-deck-btn strong {
   font-size: 16px;
   padding-right: 5px;
+}
+
+.deck-item {
+  width: 90%;
+  border-bottom: 1px solid #dddddd;
+}
+
+.deck-item:nth-of-type(odd){
+  background: #f9f9f9;
+}
+
+.deck-item .percentage {
+  color: #00a8d7;
+  float: left;
+  font-size: 32px;
+  font-weight: 200;
+  padding: 10px;
+  width: 20%;
+}
+
+.deck-item button {
+  float: right;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.deck-title {
+  padding: 10px;
+  float: left;
+}
+
+.deck-title h5{
+  color: #29a5dc;
+  display: block;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.deck-title h5:hover {
+  color: #1a769f;
+  text-decoration: underline;
+}
+
+.deck-title span {
+  color: #999999;
+  font-weight: 200;
+}
+
+.study-btn {
+  line-height: 1.2;
+  background: #29a5dc;
+  border-color: #2196ca;
+  border-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border: 1px solid transparent;
+}
+
+.study-btn:hover {
+  background: #1e86b4;
+  border-color: #186f96
+}
+
+.study-btn span {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.deck-menu-btn {
+  background: #5bc0de;
+  font-size: 16px;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 1px solid transparent;
+}
+
+.deck-menu-btn:hover {
+  background: #31b0d5;
+  border-color: #269abc;
 }
