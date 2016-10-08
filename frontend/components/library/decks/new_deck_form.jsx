@@ -8,13 +8,13 @@ class NewDeckForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      deck: {
-        title: '',
-        objective: ''
-      },
+      title: '',
+      objective: '',
+      subject_id: props.subjectId,
       empty: false
     };
     this.handleDeckNameChange = this.handleDeckNameChange.bind(this);
+    this.handleDeckObjectiveChange = this.handleDeckObjectiveChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
@@ -24,23 +24,25 @@ class NewDeckForm extends React.Component {
 
   handleDeckNameChange(e) {
     this.setState({
-      deck: {title: e.currentTarget.value},
+      title: e.currentTarget.value,
       empty: (e.currentTarget.value === '')
-    })
+    });
   }
 
   handleDeckObjectiveChange(e) {
     this.setState({
-      deck: {objective: e.currentTarget.value}
+      objective: e.currentTarget.value
     });
   }
 
   handleFormSubmit(e) {
     e.preventDefault();
-    if (this.state.deck.title === '') {
+    if (this.state.title === '') {
       this.setState({empty: true});
     } else {
-      this.props.createDeck(this.state.deck)
+      let title, objective, subject_id;
+      ({ title, objective, subject_id } = this.state)
+      this.props.createDeck({ title, objective, subject_id });
       this.props.closeModal();
     }
   }
@@ -48,11 +50,11 @@ class NewDeckForm extends React.Component {
   render () {
     let errors = [];
     if (this.state.empty) {
-      errors.push("deck can't be empty");
+      errors.push("deck name can't be empty");
     }
-    if (this.state.exists) {
-      errors.push("can't duplicate deck")
-    }
+    // if (this.state.exists) {
+    //   errors.push("can't duplicate deck")
+    // }
     if (errors.length > 0) {
       errors = errors.map((error, idx) => <li key={idx}>{error}</li>);
       errors = <ul className='errors-list'>{errors}</ul>

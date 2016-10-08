@@ -45,7 +45,7 @@ class Decks extends React.Component {
           style={modalStyles}
         >
           <button onClick={this.closeModal} className='modal-close-btn'>X</button>
-          <NewDeckForm closeModal={this.closeModal}/>
+          <NewDeckForm closeModal={this.closeModal} subjectId={this.props.subject.id}/>
         </Modal>
       </div>
     )

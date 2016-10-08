@@ -1,4 +1,4 @@
-import { GET_DECKS, receiveDecks } from '../actions/deck_actions';
+import { GET_DECKS, receiveDecks, CREATE_DECK } from '../actions/deck_actions';
 import { fetchDecks, postDeck } from '../util/deck_api_util';
 
 const DeckMiddleware = ({ dispatch }) => next => action => {

@@ -13,7 +13,7 @@ export const postDeck = (deck, success, error) => {
     method: 'POST',
     url: 'api/decks',
     dataType: 'json',
-    data: {deck}
+    data: {deck},
     success,
     error
   });
