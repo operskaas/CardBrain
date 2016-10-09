@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCards } from '../../../actions/card_actions';
+import { getCards, createCards } from '../../../actions/card_actions';
 
 class CardsEditForm extends React.Component {
   constructor(props) {
@@ -11,6 +11,8 @@ class CardsEditForm extends React.Component {
     this.addCardInput = this.addCardInput.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.handleQuestionTextChange = this.handleQuestionTextChange.bind(this);
+    this.handleAnswerTextChange = this.handleAnswerTextChange.bind(this);
   }
 
   addCardInput (e) {
@@ -62,16 +64,34 @@ class CardsEditForm extends React.Component {
     this.props.createCards(cards, this.props.params.deckId);
   }
 
+  handleQuestionTextChange (idx) {
+    return function (e) {
+      e.preventDefault();
+      const newInput = this.state.inputs.slice();
+      newInput[idx].questionText = e.currentTarget.value;
+      this.setState({ input: newInput});
+    }.bind(this);
+  }
+
+  handleAnswerTextChange (idx) {
+    return function (e) {
+      e.preventDefault();
+      const newInput = this.state.inputs.slice();
+      newInput[idx].answerText = e.currentTarget.value;
+      this.setState({ input: newInput});
+    }.bind(this);
+  }
+
   render() {
     const inputList = this.state.inputs.map((input, idx) => {
       return (
       <tr key={idx}>
         <td>{idx}</td>
         <td>
-          <textarea value={input.questionText}/>
+          <textarea value={input.questionText} onChange={this.handleQuestionTextChange(idx)}/>
         </td>
         <td>
-          <textarea value={input.answerText}/>
+          <textarea value={input.answerText} onChange={this.handleAnswerTextChange(idx)}/>
         </td>
         <td>
           <a className='card-delete' href='#' onClick={this.handleDeleteClick(idx)}>
@@ -133,7 +153,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCards: (deckId) => dispatch(getCards(deckId))
+  getCards: (deckId) => dispatch(getCards(deckId)),
+  createCards: (cards, deckId) => dispatch(createCards(cards, deckId))
 });
 
 export default connect(

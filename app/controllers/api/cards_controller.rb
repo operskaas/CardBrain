@@ -5,5 +5,11 @@ class Api::CardsController < ApplicationController
     @cards = Card.where(deck_id: params[:deckId])
   end
 
+  def create
+    debugger
+    @cards = Card.where(deck_id: params[:deckId])
+    render :index
+  end
+
 
 end
