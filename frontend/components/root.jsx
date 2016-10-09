@@ -6,6 +6,7 @@ import SessionFormContainer from './session/session_form_container';
 import Modal from './modal';
 import LibraryContainer from './library/library_container';
 import Home from './home';
+import CardsEditForm from './library/decks/cards_edit_form';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -26,6 +27,7 @@ const Root = ({ store }) => {
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
           <Route path='library' component={LibraryContainer}
             onEnter={_redirectUnlessLoggedIn}/>
+          <Router path='edit/:deckId' component={CardsEditForm} />
         </Route>
       </Router>
     </Provider>

@@ -1,0 +1,9 @@
+.cards-edit h3{
+  font-size: 18px;
+  color: black;
+}
+
+.cards-edit .study-btn {
+  padding: 5px 15px;
+  border-radius: 4px;
+}

@@ -117,15 +117,22 @@
   border-color: #269abc;
 }
 
+.subject-menu.deck-menu button {
+  width: 130px;
+  margin: 0;
+}
+
+.menu-list-icon {
+  margin-right: 6px;
+}
+
 .modal-form.new-deck-form {
   width: 325px;
 }
 
-.deck-menu {
+.subject-menu.deck-menu {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-
+  top: 10px;
+  left: 97%;
+  right: auto;
 }

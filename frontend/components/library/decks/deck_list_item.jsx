@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { hashHistory } from 'react-router';
+
 import { deleteDeck } from '../../../actions/deck_actions';
 
 class DeckListItem extends React.Component {
@@ -11,26 +13,8 @@ class DeckListItem extends React.Component {
     };
     this.toggleDeckMenuOpen = this.toggleDeckMenuOpen.bind(this);
     this.handleDeleteDeckClick = this.handleDeleteDeckClick.bind(this);
+    this.handleEditCardsClick = this.handleEditCardsClick.bind(this);
     this.deckMenuStyle = { display: 'none'};
-  }
-  componentDidMount () {
-    // const rect = ReactDOM.findDOMNode(this.refs.menu).getBoundingClientRect();
-    // this.setState({
-    //   top: `${rect.bottom}px`,
-    //   left: `${rect.right}px`
-    // });
-  }
-
-  componentWillUpdate () {
-    // this.deckMenuStyle = {
-    //   display: 'none',
-    //   top: rect.bottom,
-    //   left: rect.right
-    // }
-    // if (this.state.deckMenuOpen) {
-    //   this.deckMenuStyle.display= 'block';
-    // }
-    // debugger
   }
 
   toggleDeckMenuOpen () {
@@ -41,9 +25,13 @@ class DeckListItem extends React.Component {
     }
   }
 
-  handleDeleteDeckClick () {
+  handleDeleteDeckClick() {
     this.setState({ deckMenuOpen: false });
     this.props.deleteDeck(this.props.deck.id);
+  }
+
+  handleEditCardsClick () {
+    hashHistory.push(`/edit/${this.props.deck.id}`);
   }
 
   render () {
@@ -72,7 +60,10 @@ class DeckListItem extends React.Component {
           <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
         </button>
         <article style={this.state} className='subject-menu deck-menu'>
-          <button>
+          <button onClick={this.handleEditCardsClick}>
+            <span className='menu-list-icon'>
+              <i className="fa fa-list" ></i>
+            </span>
             Edit Cards
           </button>
           <button onClick={this.handleDeleteDeckClick}>

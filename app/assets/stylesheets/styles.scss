@@ -40,6 +40,10 @@ img {
   height: auto;
 }
 
+button {
+  cursor: pointer;
+}
+
 .group:after {
   content: "";
   display: block;
