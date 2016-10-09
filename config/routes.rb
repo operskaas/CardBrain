@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :subjects, only: [:create, :update, :destroy, :show]
     resources :subject_follows, only: [:index]
     resources :decks, only: [:index, :create, :destroy]
+    resources :cards, only: [:index]
   end
 end

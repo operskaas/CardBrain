@@ -43,5 +43,6 @@ hei = Card.create!(deck: greetings, question_text: 'hei', answer_text: 'hello / 
 hadde = Card.create!(deck: greetings, question_text: 'hadde', answer_text: 'goodbye / see you')
 aasen = Card.create!(deck: greetings, question_text: 'åsen gar det?', answer_text: "how's it going?")
 
-cdm = Card.create!(deck: lifecycle, question_text: 'In what method should you fetch data via API?', answer_text: "ComponentDidMount")
-cwu = Card.create!(deck: lifecycle, question_text: 'What method is called right before unmounting?', answer_text: "ComponentWillUnmount")
+cdm = Card.create!(deck: lifecycle, question_text: 'In what method should you fetch data via API?', answer_text: "componentDidMount")
+cwu = Card.create!(deck: lifecycle, question_text: 'What method is called right before unmounting?', answer_text: "componentWillUnmount")
+cwrp = Card.create!(deck: lifecycle, question_text: 'In what method should you handle reacting to receiving props before render() is called? Keep in mind that this is a longer question than usual, and may break the site! That is correct, just having lots of text can sometimes make a website and/or database uneasy', answer_text: "componentWillReceiveProps")
