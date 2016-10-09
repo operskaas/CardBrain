@@ -49,12 +49,18 @@ class CardsEditForm extends React.Component {
 
   handleSaveClick() {
     let anyEmptyQsHaveNonEmptyAs = false;
-    const cards = this.state.inputs.map(input => {
+    const cards = []
+    for (var i = 0; i < this.state.inputs.length; i++) {
+      const input = this.state.inputs[i];
+
       if (input.questionText === '' && input.answerText !== '') {
         anyEmptyQsHaveNonEmptyAs = true;
+        break;
       }
-      return input;
-    });
+      if (input.questionText !== '') {
+        cards.concat(input);
+      }
+    }
 
     if (anyEmptyQsHaveNonEmptyAs) {
       this.setState({ errors: ["Can't have answer with no question"]})
