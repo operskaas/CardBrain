@@ -6,10 +6,8 @@ import { deleteDeck } from '../../../actions/deck_actions';
 class DeckListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { // all state properties are for menu styling
-      display: 'none',
-      top: 0,
-      left: 0
+    this.state = {
+      display: 'none'
     };
     this.toggleDeckMenuOpen = this.toggleDeckMenuOpen.bind(this);
     this.handleDeleteDeckClick = this.handleDeleteDeckClick.bind(this);
@@ -54,26 +52,12 @@ class DeckListItem extends React.Component {
     if (this.props.owner) {
       studyBtnStyle = {};
       menuBtn = (
-        <div>
-          <button ref='menu' className='deck-menu-btn' onClick={this.toggleDeckMenuOpen}>
-            <i className="fa fa-cog"/>
-          </button>
-          <article style={this.state} className='subject-menu'>
-            <button>
-              Edit Cards
-            </button>
-            <button onClick={this.handleDeleteDeckClick}>
-              <span className='menu-icon'>
-                <i className="fa fa-trash-o" ></i>
-              </span>
-              Delete Deck
-            </button>
-          </article>
-        </div>
+        <button ref='menu' className='deck-menu-btn' onClick={this.toggleDeckMenuOpen}>
+          <i className="fa fa-cog"/>
+        </button>
       );
     }
     const deck = this.props.deck;
-    debugger
     return (
       <li className='deck-item group'>
         <div className='percentage'>
@@ -87,15 +71,28 @@ class DeckListItem extends React.Component {
         <button className='study-btn' style={studyBtnStyle}>
           <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
         </button>
+        <article style={this.state} className='subject-menu deck-menu'>
+          <button>
+            Edit Cards
+          </button>
+          <button onClick={this.handleDeleteDeckClick}>
+            <span className='menu-icon'>
+              <i className="fa fa-trash-o" ></i>
+            </span>
+            Delete Deck
+          </button>
+        </article>
       </li>
     );
   }
 }
 
 const mapStateToProps = state => ({});
+
 const mapDispatchToProps = dispatch => ({
   deleteDeck: (deckId) => dispatch(deleteDeck(deckId))
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
