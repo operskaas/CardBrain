@@ -9,6 +9,8 @@ class CardsEditForm extends React.Component {
       inputs: []
     };
     this.addCardInput = this.addCardInput.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
   }
 
   addCardInput (e) {
@@ -31,11 +33,40 @@ class CardsEditForm extends React.Component {
     })
   }
 
+  handleDeleteClick(idx) {
+    return function(e) {
+      e.preventDefault();
+      debugger
+      const newInputs = this.state.inputs.slice();
+      newInputs.splice(idx, 1);
+      this.setState({
+        inputs: newInputs
+      })
+    }.bind(this);
+  }
+
+  handleSaveClick() {
+    let anyEmptyQsHaveNonEmptyAs = false;
+    const cards = this.state.inputs.map(input => {
+      if (input.questionText === '' && input.answerText !== '') {
+        anyEmptyQsHaveNonEmptyAs = true;
+      }
+      return input;
+    });
+
+    if (anyEmptyQsHaveNonEmptyAs) {
+      this.setState({ errors: ["Can't have answer with no question"]})
+      return;
+    }
+
+    this.props.createCards(cards, this.props.params.deckId);
+  }
+
   render() {
     const inputList = this.state.inputs.map((input, idx) => {
       return (
       <tr key={idx}>
-        <td></td>
+        <td>{idx}</td>
         <td>
           <textarea value={input.questionText}/>
         </td>
@@ -43,7 +74,9 @@ class CardsEditForm extends React.Component {
           <textarea value={input.answerText}/>
         </td>
         <td>
-          Delete
+          <a className='card-delete' href='#' onClick={this.handleDeleteClick(idx)}>
+            <i className="fa fa-times"></i>
+          </a>
         </td>
       </tr>);
     });
@@ -77,7 +110,7 @@ class CardsEditForm extends React.Component {
                 </button>
               </td>
               <td colSpan='2'>
-                <button className='study-btn'>
+                <button className='study-btn' onClick={this.handleSaveClick}>
                   Save this Deck
                 </button>
               </td>

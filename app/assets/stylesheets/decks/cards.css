@@ -23,3 +23,16 @@
 .cards-edit tr {
   border-bottom: 1px solid #cccccc;
 }
+
+.card-delete {
+  color: white;
+  background: #d9534f;
+  border-color: #d43f3a;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.card-delete:hover {
+  background: #c9302c;
+  border-color: #ac2925;
+}
