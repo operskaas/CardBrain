@@ -11,6 +11,7 @@ User.destroy_all
 Subject.destroy_all
 SubjectFollow.destroy_all
 Deck.destroy_all
+Card.destroy_all
 
 
 porkchop = User.create!(username: 'porkchop', password: 'porkchop')
@@ -37,3 +38,10 @@ lifecycle = Deck.create!(subject: react, title: 'Lifecycle Methods')
 greetings = Deck.create!(subject: norwegian, title: 'Greetings')
 foods = Deck.create!(subject: norwegian, title: 'Foods')
 sports = Deck.create!(subject: norwegian, title: 'Sports')
+
+hei = Card.create!(deck: greetings, question_text: 'hei', answer_text: 'hello / hey')
+hadde = Card.create!(deck: greetings, question_text: 'hadde', answer_text: 'goodbye / see you')
+aasen = Card.create!(deck: greetings, question_text: 'åsen gar det?', answer_text: "how's it going?")
+
+cdm = Card.create!(deck: lifecycle, question_text: 'In what method should you fetch data via API?', answer_text: "ComponentDidMount")
+cwu = Card.create!(deck: lifecycle, question_text: 'What method is called right before unmounting?', answer_text: "ComponentWillUnmount")

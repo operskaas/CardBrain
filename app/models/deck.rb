@@ -6,6 +6,8 @@
 #  title      :string           not null
 #  subject_id :integer          not null
 #  objective  :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Deck < ActiveRecord::Base
@@ -13,8 +15,10 @@ class Deck < ActiveRecord::Base
 
   belongs_to :subject
 
+  has_many :cards
+
   has_one :owner,
     through: :subject,
     source: :owner
-    
+
 end

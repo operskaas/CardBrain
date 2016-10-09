@@ -49,5 +49,5 @@ column name	        |     data type	    |   details
 --------------------|-------------------|----------------------------
 id	                |integer	          |not null, primary key
 deck_id      	      |integer            |not null, foreign key (references decks), indexed
-question_text       |string             |not null
-answer_text  	      |string             |
+question_text       |text             |not null
+answer_text  	      |text             |

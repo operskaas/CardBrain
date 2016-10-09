@@ -4,6 +4,8 @@ class CreateDecks < ActiveRecord::Migration
       t.string :title, null: false
       t.integer :subject_id, null: false
       t.text :objective
+
+      t.timestamps null: false
     end
 
     add_index :decks, :subject_id
