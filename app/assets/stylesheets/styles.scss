@@ -1,6 +1,6 @@
 html, header, body, div, main, nav, h1, h2, h3, h4, h5, h6, p,
 li, ul, input, button, a, textarea, button, article, footer,
-small, strong, form, p, img, section, hr {
+small, strong, form, p, img, section, hr, table, th, tr, td, thead, tfoot, tbody {
   border: 0;
   margin: 0;
   padding: 0;
@@ -42,6 +42,10 @@ img {
 
 button {
   cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 textarea {

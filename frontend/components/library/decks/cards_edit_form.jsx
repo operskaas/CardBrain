@@ -6,7 +6,8 @@ class CardsEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputs: []
+      inputs: [],
+      errors: []
     };
     this.addCardInput = this.addCardInput.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
@@ -38,7 +39,6 @@ class CardsEditForm extends React.Component {
   handleDeleteClick(idx) {
     return function(e) {
       e.preventDefault();
-      debugger
       const newInputs = this.state.inputs.slice();
       newInputs.splice(idx, 1);
       this.setState({
@@ -61,10 +61,13 @@ class CardsEditForm extends React.Component {
         cards.concat(input);
       }
     }
+    debugger
 
     if (anyEmptyQsHaveNonEmptyAs) {
-      this.setState({ errors: ["Can't have answer with no question"]})
+      this.setState({ errors: ["Can't have answer with no question"]});
       return;
+    } else {
+      this.setState({ errors: []});
     }
 
     this.props.createCards(cards, this.props.params.deckId);
@@ -106,7 +109,13 @@ class CardsEditForm extends React.Component {
         </td>
       </tr>);
     });
-    const deckTitle = this.props.decks[this.props.params.deckId].title;
+    const deckTitle = this.props.deck.title;
+
+    // const errors = this.state.errors.map(error => {
+    //   return (
+    //     <tr></tr>
+    //   );
+    // });
     return (
       <div className='cards-edit'>
         <header>
@@ -149,11 +158,11 @@ class CardsEditForm extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const cards = Object.keys(state.cards).map(cardId => {
-    return state.cards[cardId];
+  const cards = Object.keys(state.cards.cards).map(cardId => {
+    return state.cards.cards[cardId];
   });
   return ({
-    decks: state.decks,
+    deck: state.cards.deck,
     cards
   });
 };

@@ -2,7 +2,8 @@ class Api::CardsController < ApplicationController
   before_action :ensure_user_logged_in
 
   def index
-    @cards = Card.where(deck_id: params[:deckId])
+    @deck = Deck.find(params[:deckId])
+    @cards = Card.where(deck: @deck)
   end
 
   def create
@@ -10,7 +11,7 @@ class Api::CardsController < ApplicationController
     unless current_user == deck.owner
       render json: ['not your deck, bro'], status: 422
     end
-
+    debugger
     cards = params[:cards].map do |card|
       card[1]
     end

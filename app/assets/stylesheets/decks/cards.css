@@ -14,14 +14,16 @@
 
 .cards-edit textarea {
   padding: 10px 16px;
+  width: calc(100%-40px);
 }
 
 .cards-edit td {
   padding: 8px;
+  border-top: 1px solid #cccccc;
 }
 
-.cards-edit tr {
-  border-bottom: 1px solid #cccccc;
+.cards-edit table {
+  width: 80%;
 }
 
 .card-delete {

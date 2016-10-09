@@ -2,7 +2,7 @@ import {
   GET_DECKS,
   receiveDecks,
   CREATE_DECK,
-  DELETE_DECK
+  DELETE_DECK,
 } from '../actions/deck_actions';
 import { fetchDecks, postDeck, destroyDeck } from '../util/deck_api_util';
 

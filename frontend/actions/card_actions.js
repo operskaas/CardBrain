@@ -7,9 +7,9 @@ export const getCards = deckId => ({
   deckId
 });
 
-export const receiveCards = cards => ({
+export const receiveCards = data => ({
   type: RECEIVE_CARDS,
-  cards
+  data
 });
 
 export const createCards = (cards, deckId) => ({
