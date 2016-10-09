@@ -44,6 +44,12 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  color: #555555;
+  border-radius: 6px;
+  border: 1px solid #cccccc;
+}
+
 .group:after {
   content: "";
   display: block;

@@ -1,9 +1,25 @@
+.cards-edit {
+  margin: 100px;
+}
+
 .cards-edit h3{
-  font-size: 18px;
-  color: black;
+  font-size: 30px;
+  color: #ff8a47;
 }
 
 .cards-edit .study-btn {
   padding: 5px 15px;
   border-radius: 4px;
+}
+
+.cards-edit textarea {
+  padding: 10px 16px;
+}
+
+.cards-edit td {
+  padding: 8px;
+}
+
+.cards-edit tr {
+  border-bottom: 1px solid #cccccc;
 }
