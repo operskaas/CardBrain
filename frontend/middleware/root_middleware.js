@@ -6,7 +6,8 @@ import DeckMiddleware from './deck_middleware';
 const RootMiddleware = applyMiddleware(
   SessionMiddleware,
   SubjectFollowMiddleware,
-  DeckMiddleware
+  DeckMiddleware,
+  CardMiddleware
 );
 
 export default RootMiddleware;

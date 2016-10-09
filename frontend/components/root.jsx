@@ -27,7 +27,8 @@ const Root = ({ store }) => {
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
           <Route path='library' component={LibraryContainer}
             onEnter={_redirectUnlessLoggedIn}/>
-          <Router path='edit/:deckId' component={CardsEditForm} />
+          <Router path='edit/:deckId' component={CardsEditForm}
+            onEnter={_redirectUnlessLoggedIn}/>
         </Route>
       </Router>
     </Provider>

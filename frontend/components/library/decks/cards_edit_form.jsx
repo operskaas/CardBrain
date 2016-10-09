@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getCards } from '../../../actions/card_actions';
 
 class CardsEditForm extends React.Component {
   componentDidMount () {
-
+    this.props.getCards(this.deck.id);
   }
   render() {
     return (
@@ -21,4 +23,13 @@ class CardsEditForm extends React.Component {
   }
 }
 
-export default CardsEditForm;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  getCards: (deckId) => dispatch(getCards(deckId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardsEditForm);
