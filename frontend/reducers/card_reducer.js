@@ -1,6 +1,6 @@
 import { RECEIVE_CARDS } from '../actions/card_actions';
 
-_defaultCardSlice = {}
+const _defaultCardSlice = {}
 
 const CardReducer = (prevState = _defaultCardSlice, action) => {
   switch (action.type) {

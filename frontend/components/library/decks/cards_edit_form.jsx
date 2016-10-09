@@ -4,7 +4,7 @@ import { getCards } from '../../../actions/card_actions';
 
 class CardsEditForm extends React.Component {
   componentDidMount () {
-    this.props.getCards(this.deck.id);
+    this.props.getCards(this.props.params.deckId);
   }
   render() {
     return (
@@ -23,7 +23,9 @@ class CardsEditForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  cards: state.cards
+});
 
 const mapDispatchToProps = dispatch => ({
   getCards: (deckId) => dispatch(getCards(deckId))

@@ -17,6 +17,7 @@ const DeckMiddleware = ({ dispatch }) => next => action => {
       return next(action);
     case CREATE_DECK:
       postDeck(action.deck, success, error);
+      return next(action);
     case DELETE_DECK:
       destroyDeck(action.deckId, success, error);
       return next(action);
