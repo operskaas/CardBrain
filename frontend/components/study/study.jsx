@@ -2,6 +2,7 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Stats from './stats';
+import CardStudy from './card_study';
 import { getCards } from '../../actions/card_actions';
 
 class Study extends React.Component {
@@ -32,8 +33,7 @@ class Study extends React.Component {
           </span>
         </aside>
         <Stats />
-        <article>
-        </article>
+        <CardStudy />
       </main>
     );
   }

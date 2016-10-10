@@ -13,6 +13,8 @@ class Stats extends React.Component {
 
   render () {
     const percentage = 65;
+
+    const barOneStyle = { width: `40%`};
     return (
       <aside className='stats'>
         <header>
@@ -38,8 +40,35 @@ class Stats extends React.Component {
         </div>
         <figure className='confidence-counts'>
           <ul>
-            <li>
-
+            <li className='group'>
+              <small className='confidence-progress-caption'>2</small>
+              <div className='confidence-progress-holder'>
+                <div style={barOneStyle}className='confidence-progress one'></div>
+              </div>
+            </li>
+            <li className='group'>
+              <small className='confidence-progress-caption'>2</small>
+              <div className='confidence-progress-holder'>
+                <div style={barOneStyle}className='confidence-progress two'></div>
+              </div>
+            </li>
+            <li className='group'>
+              <small className='confidence-progress-caption'>2</small>
+              <div className='confidence-progress-holder'>
+                <div style={barOneStyle}className='confidence-progress three'></div>
+              </div>
+            </li>
+            <li className='group'>
+              <small className='confidence-progress-caption'>2</small>
+              <div className='confidence-progress-holder'>
+                <div style={barOneStyle}className='confidence-progress four'></div>
+              </div>
+            </li>
+            <li className='group'>
+              <small className='confidence-progress-caption'>2</small>
+              <div className='confidence-progress-holder'>
+                <div style={barOneStyle}className='confidence-progress five'></div>
+              </div>
             </li>
           </ul>
         </figure>
