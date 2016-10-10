@@ -66,6 +66,34 @@
   font-size: 18px;
 }
 
+.stats .percent {
+  position: absolute;
+  font-size: 74px;
+  font-weight: 100;
+  top: 170px;
+  left: 151px;
+  width: 100px;
+  text-align: center;
+}
+
+.stats .percent-sign {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 100;
+  color: #d8d8d8;
+  top: 190px;
+  left: 244px;
+}
+
+.stats .mastery-subtitle {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 100;
+  color: #d8d8d8;
+  top: 252px;
+  left: 174px;
+}
+
 .stats header span {
   color: white;
 }
@@ -79,4 +107,25 @@
 
 .stats .blue-button i {
   margin-right: 10px;
+}
+
+.stats .deck-percent {
+  width: 48%;
+  margin: 32px auto;
+}
+
+.mastered-card-count {
+  font-size: 46px;
+  font-weight: 100;
+  background: #444444;
+  border-radius: 2px;
+  padding: 16px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mastered-card-count strong {
+  color: #949494;
+  font-size: 65px;
 }

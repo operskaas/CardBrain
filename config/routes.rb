@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :subject_follows, only: [:index]
     resources :decks, only: [:index, :create, :destroy]
     resources :cards, only: [:index, :create]
+    resources :confidence_ratings, only: [:index, :create, :update]
   end
-  
+
 end
