@@ -14,4 +14,6 @@ class Card < ActiveRecord::Base
   validates :deck, :question_text, presence: true;
 
   belongs_to :deck
+
+  has_many :confidence_ratings
 end

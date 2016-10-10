@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :confidence_ratings
+
   has_many :subject_follows,
     foreign_key: :follower_id
 
