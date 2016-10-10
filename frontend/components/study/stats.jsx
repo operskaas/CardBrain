@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { hashHistory } from 'react-router';
 
 class Stats extends React.Component {
+
+  handleDoneClick () {
+    hashHistory.push('/library');
+  }
 
   render () {
 
@@ -10,6 +15,10 @@ class Stats extends React.Component {
         <header>
           Studying: <span>{this.props.cardsAndDeck.deck.title}</span>
         </header>
+        <button className='blue-button' onClick={this.handleDoneClick}>
+          <i className="fa fa-angle-left" />
+          Done
+        </button>
       </aside>
     );
   }

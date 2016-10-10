@@ -58,3 +58,25 @@
   border-color: #d6e9c6;
   color: #468847;
 }
+
+.stats header {
+  background-color: #4a4a4a;
+  color: #b0b0b0;
+  padding: 16px;
+  font-size: 18px;
+}
+
+.stats header span {
+  color: white;
+}
+
+.stats .blue-button {
+  font-size: 18px;
+  padding: 10px 40px;
+  font-weight: 300;
+  margin: 20px auto;
+}
+
+.stats .blue-button i {
+  margin-right: 10px;
+}

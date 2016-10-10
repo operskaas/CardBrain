@@ -74,7 +74,7 @@ class DeckListItem extends React.Component {
           {deck.mastery}%
         </div>
         <div className='deck-title'>
-          <h5>{deck.title}</h5>
+          <h5 onClick={this.handleStudyBtnClick}>{deck.title}</h5>
           <span>Cards: {deck.numCards}</span>
         </div>
         {menuBtn}
