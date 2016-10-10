@@ -19,17 +19,24 @@ class SubjectDetail extends React.Component {
     this.handleDeleteSubjectClick = this.handleDeleteSubjectClick.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.closeSubjectMenu = this.closeSubjectMenu.bind(this);
+    this.handleClickWhileMenuOpen = this.handleClickWhileMenuOpen.bind(this);
   }
 
   toggleSubjectMenuOpen () {
     if (this.state.subjectMenuOpen) {
-      this.setState({subjectMenuOpen: false});
+      this.closeSubjectMenu();
     } else {
       this.setState({subjectMenuOpen:true});
+      document.addEventListener('click', this.handleClickWhileMenuOpen);
     }
   }
 
+  handleClickWhileMenuOpen (e) {
+    this.closeSubjectMenu();
+  }
+
   closeSubjectMenu () {
+    document.removeEventListener('click', this.handleClickWhileMenuOpen);
     this.setState({subjectMenuOpen: false});
   }
 
@@ -38,14 +45,14 @@ class SubjectDetail extends React.Component {
   }
 
   handleEditSubjectClick () {
+    this.closeSubjectMenu();
     this.setState({
-      subjectMenuOpen: false,
       subjectEditModalOpen: true
     });
   }
 
   handleDeleteSubjectClick () {
-    this.setState({ subjectMenuOpen: false });
+    this.closeSubjectMenu();
     this.props.deleteSubject(this.props.subjectId);
   }
 
