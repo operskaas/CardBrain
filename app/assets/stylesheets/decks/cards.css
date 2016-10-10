@@ -10,20 +10,34 @@
 .cards-edit .study-btn {
   padding: 5px 15px;
   border-radius: 4px;
+  color: white;
+  float: left;
+  margin: 20px;
+}
+
+.cards-edit .create-deck-btn {
+  float: left;
 }
 
 .cards-edit textarea {
   padding: 10px 16px;
-  width: calc(100%-40px);
+  width: calc(100% - 40px);
 }
 
 .cards-edit td {
   padding: 8px;
   border-top: 1px solid #cccccc;
+  vertical-align: middle;
 }
 
 .cards-edit table {
+  color: #333333;
   width: 80%;
+}
+
+.cards-edit th {
+  font-weight: bold;
+  padding: 10px;
 }
 
 .card-delete {

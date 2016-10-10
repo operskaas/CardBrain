@@ -49,7 +49,7 @@ class CardsEditForm extends React.Component {
 
   handleSaveClick() {
     let anyEmptyQsHaveNonEmptyAs = false;
-    const cards = []
+    let cards = []
     for (var i = 0; i < this.state.inputs.length; i++) {
       const input = this.state.inputs[i];
 
@@ -58,10 +58,9 @@ class CardsEditForm extends React.Component {
         break;
       }
       if (input.questionText !== '') {
-        cards.concat(input);
+        cards = cards.concat([input]);
       }
     }
-    debugger
 
     if (anyEmptyQsHaveNonEmptyAs) {
       this.setState({ errors: ["Can't have answer with no question"]});
@@ -95,7 +94,7 @@ class CardsEditForm extends React.Component {
     const inputList = this.state.inputs.map((input, idx) => {
       return (
       <tr key={idx}>
-        <td>{idx}</td>
+        <td>{idx + 1}</td>
         <td>
           <textarea value={input.questionText} onChange={this.handleQuestionTextChange(idx)}/>
         </td>
@@ -141,6 +140,9 @@ class CardsEditForm extends React.Component {
               <td></td>
               <td>
                 <button className='create-deck-btn' onClick={this.addCardInput}>
+                  <strong>
+                    <i className="fa fa-plus-circle"></i>
+                  </strong>
                   Add Card
                 </button>
               </td>
