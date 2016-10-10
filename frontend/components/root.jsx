@@ -7,6 +7,7 @@ import Modal from './modal';
 import LibraryContainer from './library/library_container';
 import Home from './home';
 import CardsEditForm from './library/decks/cards_edit_form';
+import Study from './study/study';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -23,6 +24,7 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
+        <Route path='/study' component={Study} onEnter={_redirectUnlessLoggedIn}/>
         <Route path='/' component={App} >
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
           <Route path='library' component={LibraryContainer}
