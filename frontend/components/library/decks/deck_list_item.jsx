@@ -9,28 +9,40 @@ class DeckListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: 'none'
+      deckMenuOpen: false
     };
     this.toggleDeckMenuOpen = this.toggleDeckMenuOpen.bind(this);
     this.handleDeleteDeckClick = this.handleDeleteDeckClick.bind(this);
     this.handleEditCardsClick = this.handleEditCardsClick.bind(this);
-    this.deckMenuStyle = { display: 'none'};
+    this.closeDeckMenu = this.closeDeckMenu.bind(this);
+    this.handleClickWhileMenuOpen = this.handleClickWhileMenuOpen.bind(this);
   }
 
   toggleDeckMenuOpen () {
-    if (this.state.display === 'none') {
-      this.setState({ display: 'block' });
+    if (this.state.deckMenuOpen) {
+      this.closeDeckMenu()
     } else {
-      this.setState({ display: 'none' });
+      this.setState({ deckMenuOpen: true });
+      document.addEventListener('click', this.handleClickWhileMenuOpen);
     }
   }
 
-  handleDeleteDeckClick() {
+  handleClickWhileMenuOpen(e) {
+    this.closeDeckMenu();
+  }
+
+  closeDeckMenu() {
+    document.removeEventListener('click', this.handleClickWhileMenuOpen);
     this.setState({ deckMenuOpen: false });
+  }
+
+  handleDeleteDeckClick() {
+    this.closeDeckMenu();
     this.props.deleteDeck(this.props.deck.id);
   }
 
   handleEditCardsClick () {
+    this.closeDeckMenu();
     hashHistory.push(`/edit/${this.props.deck.id}`);
   }
 
@@ -46,6 +58,11 @@ class DeckListItem extends React.Component {
       );
     }
     const deck = this.props.deck;
+
+    let deckMenuStyle = { display: 'none' };
+    if (this.state.deckMenuOpen) {
+      deckMenuStyle = { display: 'block' };
+    }
     return (
       <li className='deck-item group'>
         <div className='percentage'>
@@ -59,7 +76,7 @@ class DeckListItem extends React.Component {
         <button className='study-btn' style={studyBtnStyle}>
           <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
         </button>
-        <article style={this.state} className='subject-menu deck-menu'>
+        <article style={deckMenuStyle} className='subject-menu deck-menu'>
           <button onClick={this.handleEditCardsClick}>
             <span className='menu-list-icon'>
               <i className="fa fa-list" ></i>
