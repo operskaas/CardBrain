@@ -7,18 +7,47 @@ const Circle = RCProgress.Circle;
 
 class Stats extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.masteryPercent = this.masteryPercent.bind(this);
+  }
+
   handleDoneClick () {
     hashHistory.push('/library');
   }
 
-  render () {
-    const percentage = 65;
+  masteryPercent() {
+    let sumRating = 0;
+    this.props.cards.forEach(card => sumRating += card.rating)
+    return Math.floor((sumRating / (this.props.cards.length * 5)) * 100);
+  }
 
-    const barOneStyle = { width: `40%`};
+  ratingPercent(rating) {
+    const numCards = this.props.cards.length;
+    const numCardsWithRating = this.numCardsWithRating(rating);
+    return Math.floor((numCardsWithRating / numCards) * 100);
+  }
+
+  numCardsWithRating(rating) {
+    return this.props.cards.filter(card => card.rating === rating).length;
+  }
+
+  render () {
+    let percentage = this.masteryPercent();
+    if (percentage === NaN) {
+      percentage = 0;
+    }
+
+    const barOneStyle = { width: `${this.ratingPercent(1)}%`};
+    const barTwoStyle = { width: `${this.ratingPercent(2)}%`};
+    const barThreeStyle = { width: `${this.ratingPercent(3)}%`};
+    const barFourStyle = { width: `${this.ratingPercent(4)}%`};
+    const barFiveStyle = { width: `${this.ratingPercent(5)}%`};
+
     return (
       <aside className='stats'>
         <header>
-          Studying: <span>{this.props.cardsAndDeck.deck.title}</span>
+          Studying: <span>{this.props.deck.title}</span>
         </header>
         <button className='blue-button' onClick={this.handleDoneClick}>
           <i className="fa fa-angle-left" />
@@ -36,38 +65,38 @@ class Stats extends React.Component {
           />
         </figure>
         <div className = 'mastered-card-count'>
-          1 <strong>/</strong> 2
+          {this.numCardsWithRating(5)} <small>Cards<br/>Mastered</small><strong>/</strong> {this.props.cards.length} <small>Total<br/>Cards</small>
         </div>
         <figure className='confidence-counts'>
           <ul>
             <li className='group'>
-              <small className='confidence-progress-caption'>2</small>
+              <small className='confidence-progress-caption'>{this.numCardsWithRating(1)}</small>
               <div className='confidence-progress-holder'>
                 <div style={barOneStyle}className='confidence-progress one'></div>
               </div>
             </li>
             <li className='group'>
-              <small className='confidence-progress-caption'>2</small>
+              <small className='confidence-progress-caption'>{this.numCardsWithRating(2)}</small>
               <div className='confidence-progress-holder'>
-                <div style={barOneStyle}className='confidence-progress two'></div>
+                <div style={barTwoStyle}className='confidence-progress two'></div>
               </div>
             </li>
             <li className='group'>
-              <small className='confidence-progress-caption'>2</small>
+              <small className='confidence-progress-caption'>{this.numCardsWithRating(3)}</small>
               <div className='confidence-progress-holder'>
-                <div style={barOneStyle}className='confidence-progress three'></div>
+                <div style={barThreeStyle}className='confidence-progress three'></div>
               </div>
             </li>
             <li className='group'>
-              <small className='confidence-progress-caption'>2</small>
+              <small className='confidence-progress-caption'>{this.numCardsWithRating(4)}</small>
               <div className='confidence-progress-holder'>
-                <div style={barOneStyle}className='confidence-progress four'></div>
+                <div style={barFourStyle}className='confidence-progress four'></div>
               </div>
             </li>
             <li className='group'>
-              <small className='confidence-progress-caption'>2</small>
+              <small className='confidence-progress-caption'>{this.numCardsWithRating(5)}</small>
               <div className='confidence-progress-holder'>
-                <div style={barOneStyle}className='confidence-progress five'></div>
+                <div style={barFiveStyle}className='confidence-progress five'></div>
               </div>
             </li>
           </ul>
@@ -77,9 +106,15 @@ class Stats extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  cardsAndDeck: state.cards
-});
+const mapStateToProps = state => {
+  const cards = Object.keys(state.cards.cards).map(cardId => {
+    return state.cards.cards[cardId];
+  });
+  return ({
+    cards,
+    deck: state.cards.deck
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
 });

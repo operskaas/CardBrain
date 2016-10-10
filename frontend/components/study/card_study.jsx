@@ -10,7 +10,8 @@ class CardStudy extends React.Component {
       currentCard: {
         id: null,
         answerText: '',
-        questionText: ''
+        questionText: '',
+        rating: 0
       }
     };
     this.revealAnswer = this.revealAnswer.bind(this);
@@ -21,14 +22,52 @@ class CardStudy extends React.Component {
     this.setState({revealed: true})
   }
 
+  nextCard(){
+
+    // const rand = Math.random();
+    // const rand1Card = this.randomCardOfRating(1);
+    // if (rand < 0.35 && rand1Card !== -1) {
+    //   return rand1Card;
+    // } else if (rand < 0.6) {
+    //   const rand2Card = this.randomCardOfRating(2);
+    //   if (rand2Card !== -1) {
+    //     return rand2Card;
+    //   }
+    // } else if (rand < 0.8) {
+    //   const rand3Card = this.randomCardOfRating(3);
+    //   if (rand3Card !== -1) {
+    //     return rand3Card;
+    //   }
+    // } else if (rand < 0.98) {
+    //   const rand4Card = this.randomCardOfRating(4);
+    //   if (rand4Card !== -1) {
+    //     return rand4Card;
+    //   }
+    // } else {
+    //   const rand5Card = this.randomCardOfRating(5);
+    //   if (rand5Card !== -1) {
+    //     return rand5Card;
+    //   }
+    // }
+  }
+
+  randomCardOfRating(rating) {
+    const cardsWithRating = [];
+    const cards = this.props.cards;
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].rating === rating) {
+        cardsWithRating.push(cards[i])
+      }
+    }
+    if (cardsWithRating.length === 0) {
+      return -1;
+    }
+    return cardsWithRating[Math.floor(cardsWithRating.length * Math.random())];
+  }
+
   rateOne() {
     this.setState({revealed: false});
     // this.props.createConfidenceRating(this.state.currentCard.id,1);
-  }
-
-  componentDidMount() {
-    debugger
-    // this.props.getCards()
   }
 
   render() {
@@ -71,9 +110,14 @@ class CardStudy extends React.Component {
 
 }
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = state => {
+  const cards = Object.keys(state.cards.cards).map(cardId => {
+    return state.cards.cards[cardId];
+  });
+  return ({
+    cards
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
   createConfidenceRating: (cardId, rating) => dispatch(createConfidenceRating(cardId, rating))

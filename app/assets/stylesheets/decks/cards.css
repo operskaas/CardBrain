@@ -135,6 +135,10 @@
   font-size: 65px;
 }
 
+.mastered-card-count small {
+  font-size: 12px;
+}
+
 .confidence-progress-holder {
   background-color: #444444;
   height: 18px;
