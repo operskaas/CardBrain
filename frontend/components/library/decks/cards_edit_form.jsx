@@ -7,7 +7,8 @@ class CardsEditForm extends React.Component {
     super(props);
     this.state = {
       inputs: [],
-      errors: []
+      errors: [],
+      saveNotifShowing: false
     };
     this.addCardInput = this.addCardInput.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
@@ -28,17 +29,23 @@ class CardsEditForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps === this.props) {
-      return;
-    }
+    // if (nextProps === this.props) {
+    //   return;
+    // }
 
     this.setState({
       inputs: nextProps.cards
     })
 
-    if (nextProps.cardSave == true) {
-      setTimeout(this.props.resetCardSave, 2000);
+    // if (nextProps.cardSave == true) {
+    //   setTimeout(this.props.resetCardSave, 2000);
+    // }
+
+    if (nextProps.cardSave) {
+      this.setState({saveNotifShowing: true});
     }
+
+    setTimeout(() => this.setState({saveNotifShowing: false}), 2500);
   }
 
   handleDeleteClick(idx) {
@@ -124,7 +131,7 @@ class CardsEditForm extends React.Component {
     });
 
     let notifications = <noscript />
-    if (this.props.cardSave) {
+    if (this.state.saveNotifShowing) {
       notifications = <li className='success-notif'>Cards saved!</li>
     }
 
@@ -194,9 +201,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCards: (deckId) => dispatch(getCards(deckId)),
-  createCards: (cards, deckId) => dispatch(createCards(cards, deckId)),
-  resetCardSave: () => dispatch(resetCardSave())
+  createCards: (cards, deckId) => dispatch(createCards(cards, deckId))
 });
+// resetCardSave: () => dispatch(resetCardSave())
 
 export default connect(
   mapStateToProps,
