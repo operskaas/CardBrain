@@ -110,11 +110,16 @@ class CardsEditForm extends React.Component {
     });
     const deckTitle = this.props.deck.title;
 
-    // const errors = this.state.errors.map(error => {
-    //   return (
-    //     <tr></tr>
-    //   );
-    // });
+    const errors = this.state.errors.map(error => {
+      return (
+        <tr>
+          <td></td>
+          <td className='errors-list' colSpan='2'>
+            {error}
+          </td>
+        </tr>
+      );
+    });
     return (
       <div className='cards-edit'>
         <header>
@@ -134,6 +139,7 @@ class CardsEditForm extends React.Component {
               <td></td>
               <td colSpan='3'>To add a card, press the button below</td>
             </tr>
+            {errors}
           </tbody>
           <tfoot>
             <tr>
