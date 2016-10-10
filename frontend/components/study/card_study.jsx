@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createConfidenceRating, getCards } from '../../actions/card_actions';
 
 class CardStudy extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {revealed: false};
+    this.state = {
+      revealed: false,
+      currentCard: {
+        id: null,
+        answerText: '',
+        questionText: ''
+      }
+    };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rateOne = this.rateOne.bind(this);
   }
@@ -15,10 +23,12 @@ class CardStudy extends React.Component {
 
   rateOne() {
     this.setState({revealed: false});
+    // this.props.createConfidenceRating(this.state.currentCard.id,1);
   }
 
   componentDidMount() {
-    this.props.fetchCards
+    debugger
+    // this.props.getCards()
   }
 
   render() {
@@ -66,7 +76,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  createConfidenceRating: (cardId, rating) => dispatch(createConfidenceRating(cardId, rating))
 });
 
 export default connect(

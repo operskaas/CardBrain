@@ -18,3 +18,14 @@ export const postCards = (cards, deckId, success, error) => {
     error
   });
 };
+
+export const postConfidenceRating = (cardId, rating, success, error) => {
+  $.ajax({
+    method: 'POST',
+    url: `api/confidence_ratings/?cardId=${cardId}`,
+    dataType: 'json',
+    data: {rating},
+    success,
+    error
+  });
+};

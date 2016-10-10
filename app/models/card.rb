@@ -16,4 +16,11 @@ class Card < ActiveRecord::Base
   belongs_to :deck
 
   has_many :confidence_ratings
+
+  def current_user_rating
+    rating = ConfidenceRating.find(card: self, user: current_user)
+    return 0 unless rating
+    rating
+  end
+
 end
