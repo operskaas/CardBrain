@@ -35,7 +35,6 @@ class Api::CardsController < ApplicationController
       end
     end
     @cards = Card.where(deck_id: params[:deckId])
-    render :index
   end
 
   private

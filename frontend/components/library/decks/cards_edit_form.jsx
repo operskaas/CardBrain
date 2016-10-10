@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCards, createCards } from '../../../actions/card_actions';
+import { getCards, createCards, resetCardSave } from '../../../actions/card_actions';
 
 class CardsEditForm extends React.Component {
   constructor(props) {
@@ -31,9 +31,14 @@ class CardsEditForm extends React.Component {
     if (nextProps === this.props) {
       return;
     }
+
     this.setState({
       inputs: nextProps.cards
     })
+
+    if (nextProps.cardSave == true) {
+      setTimeout(this.props.resetCardSave, 2000);
+    }
   }
 
   handleDeleteClick(idx) {
@@ -63,7 +68,7 @@ class CardsEditForm extends React.Component {
     }
 
     if (anyEmptyQsHaveNonEmptyAs) {
-      this.setState({ errors: ["Can't have answer with no question"]});
+      this.setState({ errors: ["Did not save -- Can't have answer with no question"]});
       return;
     } else {
       this.setState({ errors: []});
@@ -110,16 +115,19 @@ class CardsEditForm extends React.Component {
     });
     const deckTitle = this.props.deck.title;
 
-    const errors = this.state.errors.map(error => {
+    const errors = this.state.errors.map((error, idx) => {
       return (
-        <tr>
-          <td></td>
-          <td className='errors-list' colSpan='2'>
-            {error}
-          </td>
-        </tr>
+        <li key={idx}>
+          {error}
+        </li>
       );
     });
+
+    let notifications = <noscript />
+    if (this.props.cardSave) {
+      notifications = <li className='success-notif'>Cards saved!</li>
+    }
+
     return (
       <div className='cards-edit'>
         <header>
@@ -139,7 +147,14 @@ class CardsEditForm extends React.Component {
               <td></td>
               <td colSpan='3'>To add a card, press the button below</td>
             </tr>
-            {errors}
+            <tr>
+              <td colSpan='4'>
+                <ul className='errors-list'>
+                  {errors}
+                  {notifications}
+                </ul>
+              </td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
@@ -169,15 +184,18 @@ const mapStateToProps = state => {
   const cards = Object.keys(state.cards.cards).map(cardId => {
     return state.cards.cards[cardId];
   });
+
   return ({
     deck: state.cards.deck,
-    cards
+    cards,
+    cardSave: state.cards.cardSave
   });
 };
 
 const mapDispatchToProps = dispatch => ({
   getCards: (deckId) => dispatch(getCards(deckId)),
-  createCards: (cards, deckId) => dispatch(createCards(cards, deckId))
+  createCards: (cards, deckId) => dispatch(createCards(cards, deckId)),
+  resetCardSave: () => dispatch(resetCardSave())
 });
 
 export default connect(

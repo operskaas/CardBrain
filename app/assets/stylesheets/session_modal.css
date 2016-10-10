@@ -69,6 +69,14 @@
   margin-top: 10px;
 }
 
+.errors-list tr {
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  padding: 10px 10px;
+  margin-top: 10px;
+}
+
 .session-form .blue-button {
   margin: 25px auto;
   padding: 10px 25px;

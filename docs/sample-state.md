@@ -24,12 +24,19 @@
     }
   },
   cards: {
-    1: {
-      question: "What is Redux?",
-      answer: "",
-      currentUserConfidence: 3,
-      deck_id: 1
-    }
+    cards: {
+      1: {
+        id: 1
+        questionText: "What is Redux?",
+        answerText: "",
+        currentUserConfidence: 3
+      }
+    },
+    deck: {
+      id: 25,
+      title: 'ffff'
+    },
+    cardSave: false
   },
   subjectFollows: {
     active: 19,

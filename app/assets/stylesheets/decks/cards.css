@@ -52,3 +52,9 @@
   background: #c9302c;
   border-color: #ac2925;
 }
+
+.errors-list .success-notif {
+  background: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
