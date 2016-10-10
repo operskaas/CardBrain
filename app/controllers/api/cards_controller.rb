@@ -4,6 +4,7 @@ class Api::CardsController < ApplicationController
   def index
     @deck = Deck.find(params[:deckId])
     @cards = Card.where(deck: @deck)
+    @current_user = current_user
   end
 
   def create
@@ -35,6 +36,7 @@ class Api::CardsController < ApplicationController
       end
     end
     @cards = Card.where(deck_id: params[:deckId])
+    @current_user = current_user
   end
 
   private

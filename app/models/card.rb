@@ -17,10 +17,10 @@ class Card < ActiveRecord::Base
 
   has_many :confidence_ratings
 
-  def current_user_rating
-    rating = ConfidenceRating.find(card: self, user: current_user)
+  def user_rating(user_id)
+    rating = ConfidenceRating.where(card: self, user_id: user_id).first
     return 0 unless rating
-    rating
+    rating.rating
   end
 
 end

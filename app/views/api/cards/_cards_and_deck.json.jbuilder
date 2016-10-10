@@ -3,7 +3,7 @@ if cards.empty?
 else
   json.cards do
     cards.each do |card|
-      json.partial! 'api/cards/card', card:card
+      json.partial! 'api/cards/card', card:card, current_user: current_user
     end
   end
 end
