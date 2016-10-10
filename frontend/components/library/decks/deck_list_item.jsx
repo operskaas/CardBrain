@@ -16,6 +16,7 @@ class DeckListItem extends React.Component {
     this.handleEditCardsClick = this.handleEditCardsClick.bind(this);
     this.closeDeckMenu = this.closeDeckMenu.bind(this);
     this.handleClickWhileMenuOpen = this.handleClickWhileMenuOpen.bind(this);
+    this.handleStudyBtnClick = this.handleStudyBtnClick.bind(this);
   }
 
   toggleDeckMenuOpen () {
@@ -46,6 +47,10 @@ class DeckListItem extends React.Component {
     hashHistory.push(`/edit/${this.props.deck.id}`);
   }
 
+  handleStudyBtnClick() {
+    hashHistory.push(`/study/${this.props.deck.id}`)
+  }
+
   render () {
     let menuBtn = <noscript />;
     let studyBtnStyle = {borderRadius: '4px', marginRight: '15px'};
@@ -73,7 +78,7 @@ class DeckListItem extends React.Component {
           <span>Cards: {deck.numCards}</span>
         </div>
         {menuBtn}
-        <button className='study-btn' style={studyBtnStyle}>
+        <button className='study-btn' style={studyBtnStyle} onClick={this.handleStudyBtnClick}>
           <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
         </button>
         <article style={deckMenuStyle} className='subject-menu deck-menu'>

@@ -24,7 +24,7 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path='/study' component={Study} onEnter={_redirectUnlessLoggedIn}/>
+        <Route path='/study/:deckId' component={Study} onEnter={_redirectUnlessLoggedIn}/>
         <Route path='/' component={App} >
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
           <Route path='library' component={LibraryContainer}

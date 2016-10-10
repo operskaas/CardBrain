@@ -1,9 +1,16 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
+import { connect } from 'react-redux';
+import Stats from './stats';
+import { getCards } from '../../actions/card_actions';
 
 class Study extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.getCards(this.props.params.deckId);
   }
 
   handleLibraryClick() {
@@ -24,16 +31,21 @@ class Study extends React.Component {
             <i className="fa fa-search" ></i>
           </span>
         </aside>
-        <aside className='stats'>
-
-
-        </aside>
+        <Stats />
         <article>
-
         </article>
       </main>
     );
   }
 }
 
-export default Study;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  getCards: (deckId) => dispatch(getCards(deckId))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Study);
