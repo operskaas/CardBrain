@@ -7,12 +7,7 @@ class CardStudy extends React.Component {
     super(props);
     this.state = {
       revealed: false,
-      currentCard: {
-        id: null,
-        answerText: '',
-        questionText: '',
-        rating: 0
-      }
+      currentCard: { questionText: '', answerText: '' }
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rateOne = this.rateOne.bind(this);
@@ -20,6 +15,17 @@ class CardStudy extends React.Component {
 
   revealAnswer() {
     this.setState({revealed: true})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.cards.length !== this.props.cards.length) {
+      this.makeFirstCardCurrent(nextProps);
+    }
+  }
+
+  makeFirstCardCurrent(nextProps) {
+    this.setState({currentCard: nextProps.cards[0]});
+    debugger;
   }
 
   nextCard(){
@@ -71,6 +77,7 @@ class CardStudy extends React.Component {
   }
 
   render() {
+    const currentCard = this.state.currentCard;
     let buttons;
     let howWellText = ' ';
     let sideText = 'Q.'
@@ -97,8 +104,10 @@ class CardStudy extends React.Component {
     return (
       <main className='card-study'>
         <h6>4 of 4</h6>
-        <div className='card-front'>
-
+        <div className='card-front group'>
+          <div className='side-text'>{sideText}</div>
+          <div className='card-text'>{currentCard.questionText}</div>
+          <div className='edit-side'>Edit</div>
         </div>
         <div className='study-toolbar'>
           <p>{howWellText}</p>

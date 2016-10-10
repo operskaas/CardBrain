@@ -64,8 +64,8 @@ class Stats extends React.Component {
             trailColor='#444444'
           />
         </figure>
-        <div className = 'mastered-card-count'>
-          {this.numCardsWithRating(5)} <small>Cards<br/>Mastered</small><strong>/</strong> {this.props.cards.length} <small>Total<br/>Cards</small>
+        <div className = 'mastered-card-count group'>
+          <p>{this.numCardsWithRating(5)}</p> <small>Cards<br/>Mastered</small><strong>/</strong> <p>{this.props.cards.length}</p> <small>Total<br/>Cards</small>
         </div>
         <figure className='confidence-counts'>
           <ul>
