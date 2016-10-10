@@ -18,6 +18,7 @@ class SubjectDetail extends React.Component {
     this.handleEditSubjectClick = this.handleEditSubjectClick.bind(this);
     this.handleDeleteSubjectClick = this.handleDeleteSubjectClick.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.closeSubjectMenu = this.closeSubjectMenu.bind(this);
   }
 
   toggleSubjectMenuOpen () {
@@ -26,6 +27,10 @@ class SubjectDetail extends React.Component {
     } else {
       this.setState({subjectMenuOpen:true});
     }
+  }
+
+  closeSubjectMenu () {
+    this.setState({subjectMenuOpen: false});
   }
 
   closeModal () {
