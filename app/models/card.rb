@@ -15,7 +15,7 @@ class Card < ActiveRecord::Base
 
   belongs_to :deck
 
-  has_many :confidence_ratings
+  has_many :confidence_ratings, dependent: :destroy
 
   def user_rating(user_id)
     rating = ConfidenceRating.where(card: self, user_id: user_id).first
