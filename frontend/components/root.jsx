@@ -8,6 +8,7 @@ import LibraryContainer from './library/library_container';
 import Home from './home';
 import CardsEditForm from './library/decks/cards_edit_form';
 import Study from './study/study';
+import Search from './search/search';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -27,6 +28,7 @@ const Root = ({ store }) => {
         <Route path='/study/:deckId' component={Study} onEnter={_redirectUnlessLoggedIn}/>
         <Route path='/' component={App} >
           <IndexRoute component={Home} onEnter={_redirectIfLoggedIn}/>
+          <Route path='search' component={Search} />
           <Route path='library' component={LibraryContainer}
             onEnter={_redirectUnlessLoggedIn}/>
           <Router path='edit/:deckId' component={CardsEditForm}
