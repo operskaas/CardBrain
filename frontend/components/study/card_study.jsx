@@ -28,35 +28,32 @@ class CardStudy extends React.Component {
   }
 
   nextCard(){
-
-    // const rand = Math.random();
-    // const rand1Card = this.randomCardOfRating(1);
-    // if (rand < 0.35 && rand1Card !== -1) {
-    //   return rand1Card;
-    // } else if (rand < 0.6) {
-    //   const rand2Card = this.randomCardOfRating(2);
-    //   if (rand2Card !== -1) {
-    //     return rand2Card;
-    //   }
-    // } else if (rand < 0.8) {
-    //   const rand3Card = this.randomCardOfRating(3);
-    //   if (rand3Card !== -1) {
-    //     return rand3Card;
-    //   }
-    // } else if (rand < 0.98) {
-    //   const rand4Card = this.randomCardOfRating(4);
-    //   if (rand4Card !== -1) {
-    //     return rand4Card;
-    //   }
-    // } else {
-    //   const rand5Card = this.randomCardOfRating(5);
-    //   if (rand5Card !== -1) {
-    //     return rand5Card;
-    //   }
-    // }
+    const rand = Math.random();
+    if (rand < 0.85) {
+      return this._randomCardWithRatingAtLeast(0);
+    } else if (rand < 0.90) {
+      return this._randomCardWithRatingAtLeast(1);
+    } else if (rand < 0.93) {
+      return this._randomCardWithRatingAtLeast(2);
+    } else if (rand < 0.96) {
+      return this._randomCardWithRatingAtLeast(3);
+    } else if (rand < 0.98) {
+      return this._randomCardWithRatingAtLeast(4);
+    } else {
+      return this._randomCardWithRatingAtLeast(5);
+    }
   }
 
-  randomCardOfRating(rating) {
+  _randomCardWithRatingAtleast(rating) {
+    for (var i = rating; i <= 5; i++) {
+      const card = this._randomCardOfRating(i)
+      if (card !== -1) {
+        return card;
+      }
+    }
+  }
+
+  _randomCardOfRating(rating) {
     const cardsWithRating = [];
     const cards = this.props.cards;
     for (var i = 0; i < cards.length; i++) {
@@ -79,7 +76,7 @@ class CardStudy extends React.Component {
     const currentCard = this.state.currentCard;
     let buttons;
     let howWellText = ' ';
-    let sideText = 'Q.'
+    let flipContClass = 'flip-container';
     if (this.state.revealed) {
       buttons = (
         <div className='card-btns'>
@@ -91,7 +88,7 @@ class CardStudy extends React.Component {
         </div>
       );
       howWellText = 'How well did you know this?';
-      sideText = 'A.'
+      flipContClass += ' flipped';
     } else {
       let className = `reveal-btn`
       buttons = (
@@ -101,14 +98,11 @@ class CardStudy extends React.Component {
       );
     }
 
-    let flipperClass = 'flipper'
-    // if (this.state.revealed) {
-    //   flipperClass += ''
-    // }
+
     return (
       <main className='card-study'>
         <h6>4 of 4</h6>
-        <div className="flip-container">
+        <div className={flipContClass}>
         	<div className="flipper">
         		<div className="front">
               <div className='card-front group'>
