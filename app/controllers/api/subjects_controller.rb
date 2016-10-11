@@ -9,6 +9,7 @@ class Api::SubjectsController < ApplicationController
     if @subject.save
       @subjects = current_user_follows
       @activeId = @subject.id
+      @current_user = current_user
       render 'api/subject_follows/index'
     else
       render :show, status: 422
@@ -21,6 +22,7 @@ class Api::SubjectsController < ApplicationController
       if @subject.update(subject_params)
         @subjects = current_user_follows
         @activeId = @subject.id
+        @current_user = current_user
         render 'api/subject_follows/index'
       else
         render json: ['invalid parameters'], status: 422
@@ -31,11 +33,12 @@ class Api::SubjectsController < ApplicationController
   end
 
   def destroy
+    @current_user = current_user
     @subject = Subject.find(params[:id])
-    if @subject.owner == current_user
+    if @subject.owner == @current_user
       @subject.destroy
     else
-      @follow = SubjectFollow.find_by(follower: current_user, subject: @subject)
+      @follow = SubjectFollow.find_by(follower: @current_user, subject: @subject)
       @follow.destroy if @follow
     end
 
