@@ -1,10 +1,15 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Search extends React.Component {
 
   handleSearchSubmit(e) {
     e.preventDefault();
     debugger
+  }
+
+  componentDidMount () {
+    setTimeout(() => ReactDOM.findDOMNode(this.refs.searchField).focus(), 0);
   }
 
   render () {
@@ -18,7 +23,8 @@ class Search extends React.Component {
             </strong>
             <form onSubmit={this.handleSearchSubmit} className='search-form group'>
               <input type='text'
-                placeholder='(e.g. MCAT, Norwegian, React)'>
+                placeholder='(e.g. MCAT, Norwegian, React)'
+                ref='searchField'>
 
               </input>
               <button className='search-btn'>Search</button>
