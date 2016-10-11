@@ -37,14 +37,17 @@ class CardStudy extends React.Component {
   }
 
   nextCard(){
+
+    const rand0Card = _randomCardOfRating(0);
+    if (rand0Card !== -1) {
+      return rand0Card;
+    }
     const rand = Math.random();
-    if (rand < 0.85) {
-      return this._preferRandomCardWithRatingAtLeast(0);
-    } else if (rand < 0.90) {
+    if (rand < 0.4) {
       return this._preferRandomCardWithRatingAtLeast(1);
-    } else if (rand < 0.93) {
+    } else if (rand < 0.6) {
       return this._preferRandomCardWithRatingAtLeast(2);
-    } else if (rand < 0.96) {
+    } else if (rand < 0.92) {
       return this._preferRandomCardWithRatingAtLeast(3);
     } else if (rand < 0.98) {
       return this._preferRandomCardWithRatingAtLeast(4);
