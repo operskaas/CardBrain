@@ -1,0 +1,72 @@
+.search-cont {
+  height: calc(100vh - 62px);
+  overflow-y: hidden;
+  background: purple;
+  text-align: center;
+}
+
+.search {
+  padding-top: 21vh;
+  color: #bfbfbf;
+}
+
+.search h1 {
+  font-size: 48px;
+  margin-bottom: 32px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.search h3 {
+  font-size: 24px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-top: 32px;
+}
+
+.search-bar {
+  width: 940px;
+  height: 70px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-bar strong {
+  position: absolute;
+  left: 25px;
+  top: 15px;
+  font-size: 34px;
+}
+
+.search-form {
+  font-size: 32px;
+  width: 100%;
+  height: 100%;
+}
+
+.search-form input {
+  float: left;
+  padding-left: 75px;
+  height: 100%;
+  box-sizing: border-box;
+  width: calc(100% - 140px);
+  background: rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.search-btn {
+  color: #29a5dc;
+  font-size: 24px;
+  height: 100%;
+  width: 140px;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.75);
+  float: right;
+  transition: all 0.2s;
+}
+
+.search-btn:hover {
+  background: black;
+}
