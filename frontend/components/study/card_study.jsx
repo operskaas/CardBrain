@@ -14,6 +14,7 @@ class CardStudy extends React.Component {
     super(props);
     this.state = {
       revealed: false,
+      setFirstCard: false,
       currentCard: _defaultCardState
     };
     this.revealAnswer = this.revealAnswer.bind(this);
@@ -25,13 +26,14 @@ class CardStudy extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cards.length !== this.props.cards.length || (nextProps.cards.length !== 0)) {
+    if (!this.state.setFirstCard) {
+      debugger
       this.makeFirstCardCurrent(nextProps);
     }
   }
 
   makeFirstCardCurrent(nextProps) {
-    this.setState({currentCard: nextProps.cards[0]});
+    this.setState({currentCard: nextProps.cards[0], setFirstCard: true });
   }
 
   nextCard(){
@@ -91,7 +93,6 @@ class CardStudy extends React.Component {
           });
         }
       );
-      // const nextCard = this.nextCard();
     });
   }
 
