@@ -35,6 +35,8 @@ class Subject < ActiveRecord::Base
       total_mastery += (deck.user_mastery(user_id).to_f / 100) * numCards
     end
 
+    return 0 if total_num_cards == 0
+
     ((total_mastery / total_num_cards.to_f) * 100).to_i
   end
 
