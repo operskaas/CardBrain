@@ -21,4 +21,20 @@ class Deck < ActiveRecord::Base
     through: :subject,
     source: :owner
 
+  def user_mastery(user_id)
+
+    ratings_sum = 0
+    num_cards = 0
+
+    self.cards.each do |card|
+      c_rating = ConfidenceRating.where(card: card, user_id: user_id).first
+      num_cards += 1
+      if c_rating
+        ratings_sum += c_rating.rating
+      end
+    end
+
+    return 0 if num_cards == 0
+    ((ratings_sum.to_f / (num_cards * 5).to_f) * 100).to_i
+  end
 end

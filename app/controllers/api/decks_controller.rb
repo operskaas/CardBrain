@@ -3,12 +3,15 @@ class Api::DecksController < ApplicationController
 
   def index
     @decks = Deck.where(subject_id: params[:subjectId]).to_a
+    @current_user = current_user
   end
 
   def create
     @deck = Deck.new(deck_params)
     if @deck.save
       @decks = Deck.where(subject_id: params[:deck][:subject_id])
+      @current_user = current_user
+
       render :index
     else
       render json: ['invalid deck params'], status: 422;
@@ -21,6 +24,8 @@ class Api::DecksController < ApplicationController
     subject = @deck.subject
     @deck.destroy
     @decks = Deck.where(subject: subject)
+    @current_user = current_user
+
     render :index
   end
 

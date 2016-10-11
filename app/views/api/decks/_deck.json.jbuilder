@@ -3,5 +3,5 @@ json.set! deck.id do
   json.title deck.title
   json.objective deck.objective
   json.numCards deck.cards.length
-  json.mastery 30
+  json.mastery deck.user_mastery(current_user.id)
 end
