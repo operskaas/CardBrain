@@ -70,6 +70,10 @@ class CardStudy extends React.Component {
     return cardsWithRating[Math.floor(cardsWithRating.length * Math.random())];
   }
 
+  currentCardIndex() {
+    return this.props.cards.indexOf(this.state.currentCard);
+  }
+
   rate(rating) {
     return ((e) => {
       this.props.createConfidenceRating(
@@ -135,7 +139,7 @@ class CardStudy extends React.Component {
 
     return (
       <main className='card-study'>
-        <h6>4 of 4</h6>
+        <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
         <div className={flipContClass}>
         	<div className="flipper">
         		<div className="front">
