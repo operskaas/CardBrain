@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createConfidenceRating, getCards } from '../../actions/card_actions';
 
-const _defaultCardState = { questionText: '', answerText: ''}
+const _defaultCardState = {
+  questionText: '',
+  answerText: '',
+  id: 0,
+  rating: 0
+};
 
 class CardStudy extends React.Component {
   constructor(props) {
@@ -92,10 +97,21 @@ class CardStudy extends React.Component {
 
   render() {
     let currentCard = this.state.currentCard;
-    // if (!currentCard) {
-    //   debugger
-    //   currentCard = _defaultCardState;
-    // }
+
+    let currentRatingClass = '';
+    if (currentCard.rating === 0) {
+      currentRatingClass += ' zero';
+    } else if (currentCard.rating === 1) {
+      currentRatingClass += ' one';
+    } else if (currentCard.rating === 2) {
+      currentRatingClass += ' two';
+    } else if (currentCard.rating === 3) {
+      currentRatingClass += ' three';
+    } else if (currentCard.rating === 4) {
+      currentRatingClass += ' four';
+    } else if (currentCard.rating === 5) {
+      currentRatingClass += ' five';
+    }
 
     let buttons;
     let howWellText = ' ';
@@ -125,7 +141,8 @@ class CardStudy extends React.Component {
       howWellText = 'How well did you know this?';
       flipContClass += ' flipped';
     } else {
-      let className = `reveal-btn`
+      let className = `reveal-btn`;
+      className += currentRatingClass;
       buttons = (
         <div className='card-btns'>
           <button className={className}
@@ -137,22 +154,32 @@ class CardStudy extends React.Component {
       );
     }
 
+    let cardClassName = 'card group' + currentRatingClass;
+
     return (
       <main className='card-study'>
         <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
         <div className={flipContClass}>
         	<div className="flipper">
         		<div className="front">
-              <div className='card-front group'>
+              <div className={cardClassName}>
                 <div className='side-text'>Q.</div>
-                <div className='card-text'>{currentCard.questionText}</div>
+                <div className='card-text'>
+                  <p>
+                    {currentCard.questionText}
+                  </p>
+                </div>
                 <div className='edit-side'>Edit</div>
               </div>
         		</div>
         		<div className="back">
-              <div className='card-front group'>
+              <div className={cardClassName}>
                 <div className='side-text'>A.</div>
-                <div className='card-text'>{currentCard.answerText}</div>
+                <div className='card-text'>
+                  <p>
+                    {currentCard.answerText}
+                  </p>
+                </div>
                 <div className='edit-side'>Edit</div>
               </div>
         		</div>

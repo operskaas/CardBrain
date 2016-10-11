@@ -181,6 +181,10 @@
   float: left;
 }
 
+.zero {
+  background: #29a5dc;
+}
+
 .one {
   background: #aa0080;
 }
@@ -209,11 +213,32 @@
   text-align: right;
 }
 
-.card-front {
+.card {
   width: 100%;
   height: 100%;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
   background-color: white;
+  box-sizing: border-box;
+}
+
+.card.one {
+  border-bottom: 4px solid #aa0080;
+}
+
+.card.two {
+  border-bottom: 4px solid #ff8a47;
+}
+
+.card.three {
+  border-bottom: 4px solid #ffdd00;
+}
+
+.card.four {
+  border-bottom: 4px solid #7fae2e;
+}
+
+.card.five {
+  border-bottom: 4px solid #00a8d7;
 }
 
 .study-toolbar {
@@ -244,7 +269,6 @@
 }
 
 .reveal-btn {
-  background-color: purple;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -281,7 +305,12 @@
   -webkit-align-items: center;
 }
 
-.card-front > * {
+.card-text p {
+  width: 100%;
+  text-align: center;
+}
+
+.card > * {
   float: left;
 }
 .edit-side {
