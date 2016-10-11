@@ -25,7 +25,7 @@ class CardStudy extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cards.length !== this.props.cards.length) {
+    if (nextProps.cards.length !== this.props.cards.length || (nextProps.cards.length !== 0)) {
       this.makeFirstCardCurrent(nextProps);
     }
   }
