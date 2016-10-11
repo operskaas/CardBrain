@@ -25,7 +25,6 @@ class CardStudy extends React.Component {
 
   makeFirstCardCurrent(nextProps) {
     this.setState({currentCard: nextProps.cards[0]});
-    debugger;
   }
 
   nextCard(){
@@ -101,13 +100,31 @@ class CardStudy extends React.Component {
         </div>
       );
     }
+
+    let flipperClass = 'flipper'
+    // if (this.state.revealed) {
+    //   flipperClass += ''
+    // }
     return (
       <main className='card-study'>
         <h6>4 of 4</h6>
-        <div className='card-front group'>
-          <div className='side-text'>{sideText}</div>
-          <div className='card-text'>{currentCard.questionText}</div>
-          <div className='edit-side'>Edit</div>
+        <div className="flip-container">
+        	<div className="flipper">
+        		<div className="front">
+              <div className='card-front group'>
+                <div className='side-text'>Q.</div>
+                <div className='card-text'>{currentCard.questionText}</div>
+                <div className='edit-side'>Edit</div>
+              </div>
+        		</div>
+        		<div className="back">
+              <div className='card-front group'>
+                <div className='side-text'>A.</div>
+                <div className='card-text'>{currentCard.answerText}</div>
+                <div className='edit-side'>Edit</div>
+              </div>
+        		</div>
+        	</div>
         </div>
         <div className='study-toolbar'>
           <p>{howWellText}</p>
