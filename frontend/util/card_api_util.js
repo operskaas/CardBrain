@@ -22,9 +22,9 @@ export const postCards = (cards, deckId, success, error) => {
 export const postConfidenceRating = (cardId, rating, success, error) => {
   $.ajax({
     method: 'POST',
-    url: `api/confidence_ratings/?cardId=${cardId}`,
+    url: 'api/confidence_ratings',
     dataType: 'json',
-    data: {rating},
+    data: {confidence_rating: {rating, card_id: cardId} },
     success,
     error
   });

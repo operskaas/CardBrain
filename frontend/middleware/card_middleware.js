@@ -24,7 +24,8 @@ const CardMiddleware = ({ dispatch }) => next => action => {
       postCards(action.cards, action.deckId, success, error);
       return next(action);
     case CREATE_CONFIDENCE_RATING:
-      postConfidenceRating(action.deckId, action.rating, success, error);
+      success = (data) => dispatch(receiveCard(data))
+      postConfidenceRating(action.cardId, action.rating, success, error);
       return next(action);
     default:
       return next(action);

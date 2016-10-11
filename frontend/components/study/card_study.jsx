@@ -71,14 +71,14 @@ class CardStudy extends React.Component {
   }
 
   rate(rating) {
-    return (rating) => {
-      // this.props.createConfidenceRating(this.state.currentCard.id, rating);
-      const nextCard = this.nextCard()
+    return ((e) => {
+      this.props.createConfidenceRating(this.state.currentCard.id, rating);
+      const nextCard = this.nextCard();
       this.setState({
         revealed: false,
         currentCard: nextCard
       });
-    }
+    });
   }
 
   render() {
