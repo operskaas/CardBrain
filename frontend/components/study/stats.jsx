@@ -34,8 +34,19 @@ class Stats extends React.Component {
 
   render () {
     let percentage = this.masteryPercent();
-    if (percentage !== percentage) {
+    if (percentage !== percentage) { // checks for NaN
       percentage = 0;
+    }
+
+    let percentDisplay = <p className='percent'>{percentage}</p>;
+    if (percentage === 100) {
+      const percentStyle = {left: '134px'};
+      const hundredStyle = {letterSpacing: '-12px'};
+      percentDisplay = (
+        <p className='percent' style={percentStyle}>
+          <span style={hundredStyle}>1</span>00
+        </p>
+      );
     }
 
     const barOneStyle = { width: `${this.ratingPercent(1)}%`};
@@ -54,9 +65,9 @@ class Stats extends React.Component {
           Done
         </button>
         <figure className='deck-percent'>
-          <h3 className='percent'>{percentage}</h3>
-          <h5 className='percent-sign'>%</h5>
-          <h5 className='mastery-subtitle'>Mastery</h5>
+          {percentDisplay}
+          <p className='percent-sign'>%</p>
+          <p className='mastery-subtitle'>Mastery</p>
           <Circle percent={percentage}
             strokeWidth='6'
             strokeColor='#29A5DC'
