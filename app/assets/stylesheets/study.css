@@ -1,5 +1,6 @@
 .study {
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .study > .stats {
