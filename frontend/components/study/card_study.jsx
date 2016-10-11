@@ -10,7 +10,7 @@ class CardStudy extends React.Component {
       currentCard: { questionText: '', answerText: '' }
     };
     this.revealAnswer = this.revealAnswer.bind(this);
-    this.rateOne = this.rateOne.bind(this);
+    this.rate = this.rate.bind(this);
   }
 
   revealAnswer() {
@@ -44,7 +44,7 @@ class CardStudy extends React.Component {
     }
   }
 
-  _randomCardWithRatingAtleast(rating) {
+  _randomCardWithRatingAtLeast(rating) {
     for (var i = rating; i <= 5; i++) {
       const card = this._randomCardOfRating(i)
       if (card !== -1) {
@@ -67,9 +67,14 @@ class CardStudy extends React.Component {
     return cardsWithRating[Math.floor(cardsWithRating.length * Math.random())];
   }
 
-  rateOne() {
-    this.setState({revealed: false});
-    // this.props.createConfidenceRating(this.state.currentCard.id,1);
+  rate(rating) {
+    return () => {
+      this.setState({
+        revealed: false,
+        currentCard: this.nextCard()
+      });
+      // this.props.createConfidenceRating(this.state.currentCard.id,1);
+    }
   }
 
   render() {
@@ -80,11 +85,19 @@ class CardStudy extends React.Component {
     if (this.state.revealed) {
       buttons = (
         <div className='card-btns'>
-          <button className='rating-btn one' onClick={this.rateOne}>1<small>Not At All</small></button>
-          <button className='rating-btn two'>2</button>
-          <button className='rating-btn three'>3</button>
-          <button className='rating-btn four'>4</button>
-          <button className='rating-btn five'>5<small>Perfectly</small></button>
+          <button className='rating-btn one'
+            onClick={this.rate(1)}>
+            1<small>Not At All</small>
+          </button>
+          <button className='rating-btn two'
+            onClick={this.rate(2)}>2
+          </button>
+          <button className='rating-btn three'>3
+          </button>
+          <button className='rating-btn four'>4
+          </button>
+          <button className='rating-btn five'>5<small>Perfectly</small>
+          </button>
         </div>
       );
       howWellText = 'How well did you know this?';
@@ -93,7 +106,11 @@ class CardStudy extends React.Component {
       let className = `reveal-btn`
       buttons = (
         <div className='card-btns'>
-          <button className={className} title='Press space on your keyboard' onClick={this.revealAnswer}>Reveal Answer</button>
+          <button className={className}
+            title='Press space on your keyboard'
+            onClick={this.revealAnswer}>
+            Reveal Answer
+          </button>
         </div>
       );
     }

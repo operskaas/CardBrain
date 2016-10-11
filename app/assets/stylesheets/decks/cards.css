@@ -307,7 +307,7 @@
 }
 
 .front {
-	z-index: 2;
+	/*z-index: 2;*/
 	/* for firefox 31 */
 	transform: rotateY(0deg);
 }

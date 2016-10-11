@@ -34,7 +34,7 @@ class Stats extends React.Component {
 
   render () {
     let percentage = this.masteryPercent();
-    if (percentage === NaN) {
+    if (percentage !== percentage) {
       percentage = 0;
     }
 
