@@ -1,6 +1,12 @@
 import React from 'react';
 
 class Search extends React.Component {
+
+  handleSearchSubmit(e) {
+    e.preventDefault();
+    debugger
+  }
+
   render () {
     return (
       <div className='search-cont'>
@@ -10,7 +16,7 @@ class Search extends React.Component {
             <strong>
               <i className="fa fa-search"></i>
             </strong>
-            <form className='search-form group'>
+            <form onSubmit={this.handleSearchSubmit} className='search-form group'>
               <input type='text'
                 placeholder='(e.g. MCAT, Norwegian, React)'>
 

@@ -1,7 +1,7 @@
 .search-cont {
   height: calc(100vh - 62px);
   overflow-y: hidden;
-  background: purple;
+  background: #333333;
   text-align: center;
 }
 
@@ -15,12 +15,13 @@
   margin-bottom: 32px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   color: white;
-  font-weight: 200;
+  font-weight: 100;
   letter-spacing: 1px;
 }
 
 .search h3 {
   font-size: 24px;
+  letter-spacing: 1.1px;
   color: white;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   margin-top: 32px;
@@ -49,11 +50,18 @@
 .search-form input {
   float: left;
   padding-left: 75px;
+  border: 1px solid transparent;
   height: 100%;
   box-sizing: border-box;
   width: calc(100% - 140px);
   background: rgba(0,0,0,0.5);
   text-align: left;
+  font-weight: 300;
+}
+
+.search-form input:focus {
+  border: 1px solid #66afe9;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 }
 
 .search-btn {
