@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createConfidenceRating, getCards } from '../../actions/card_actions';
 
+const _defaultCardState = { questionText: '', answerText: ''}
+
 class CardStudy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       revealed: false,
-      currentCard: { questionText: '', answerText: '' }
+      currentCard: _defaultCardState
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rate = this.rate.bind(this);
@@ -30,27 +32,28 @@ class CardStudy extends React.Component {
   nextCard(){
     const rand = Math.random();
     if (rand < 0.85) {
-      return this._randomCardWithRatingAtLeast(0);
+      return this._preferRandomCardWithRatingAtLeast(0);
     } else if (rand < 0.90) {
-      return this._randomCardWithRatingAtLeast(1);
+      return this._preferRandomCardWithRatingAtLeast(1);
     } else if (rand < 0.93) {
-      return this._randomCardWithRatingAtLeast(2);
+      return this._preferRandomCardWithRatingAtLeast(2);
     } else if (rand < 0.96) {
-      return this._randomCardWithRatingAtLeast(3);
+      return this._preferRandomCardWithRatingAtLeast(3);
     } else if (rand < 0.98) {
-      return this._randomCardWithRatingAtLeast(4);
+      return this._preferRandomCardWithRatingAtLeast(4);
     } else {
-      return this._randomCardWithRatingAtLeast(5);
+      return this._preferRandomCardWithRatingAtLeast(5);
     }
   }
 
-  _randomCardWithRatingAtLeast(rating) {
+  _preferRandomCardWithRatingAtLeast(rating) {
     for (var i = rating; i <= 5; i++) {
       const card = this._randomCardOfRating(i)
       if (card !== -1) {
         return card;
       }
     }
+    return this._preferRandomCardWithRatingAtLeast(rating - 1);
   }
 
   _randomCardOfRating(rating) {
@@ -68,17 +71,23 @@ class CardStudy extends React.Component {
   }
 
   rate(rating) {
-    return () => {
+    return (rating) => {
+      // this.props.createConfidenceRating(this.state.currentCard.id, rating);
+      const nextCard = this.nextCard()
       this.setState({
         revealed: false,
-        currentCard: this.nextCard()
+        currentCard: nextCard
       });
-      // this.props.createConfidenceRating(this.state.currentCard.id,1);
     }
   }
 
   render() {
-    const currentCard = this.state.currentCard;
+    let currentCard = this.state.currentCard;
+    // if (!currentCard) {
+    //   debugger
+    //   currentCard = _defaultCardState;
+    // }
+
     let buttons;
     let howWellText = ' ';
     let flipContClass = 'flip-container';
@@ -92,11 +101,15 @@ class CardStudy extends React.Component {
           <button className='rating-btn two'
             onClick={this.rate(2)}>2
           </button>
-          <button className='rating-btn three'>3
+          <button className='rating-btn three'
+            onClick={this.rate(3)}>3
           </button>
-          <button className='rating-btn four'>4
+          <button className='rating-btn four'
+            onClick={this.rate(4)}>4
           </button>
-          <button className='rating-btn five'>5<small>Perfectly</small>
+          <button className='rating-btn five'
+            onClick={this.rate(5)}>
+            5<small>Perfectly</small>
           </button>
         </div>
       );
@@ -114,7 +127,6 @@ class CardStudy extends React.Component {
         </div>
       );
     }
-
 
     return (
       <main className='card-study'>
