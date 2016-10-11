@@ -123,21 +123,35 @@
   font-weight: 100;
   background: #444444;
   border-radius: 2px;
-  padding: 33px 43px;
-  width: 80%;
+  padding: 0 16px;
+  width: 88%;
   box-sizing: border-box;
   margin: 5vh auto;
   margin-bottom: 8vh;
+  display: flex;
+  display: -webkit-flex;
+  align-content: space-around;
+  -webkit-align-content: space-around;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.mastered-card-count p {
+  width: 51px;
+  text-align: right;
 }
 
 .mastered-card-count strong {
   color: #949494;
-  font-size: 65px;
+  font-size: 70px;
+  margin: 0 10px;
 }
 
 .mastered-card-count small {
   font-size: 12px;
+  margin: 7px;
   display: block;
+  letter-spacing: 1.5px;
 }
 
 .mastered-card-count > * {
@@ -154,7 +168,7 @@
 }
 
 .confidence-counts li {
-  margin: 4vh 15px;
+  margin: 3vh 15px;
 }
 
 .confidence-progress {
