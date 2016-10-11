@@ -71,7 +71,10 @@ class NavBar extends React.Component {
             <a className='header-link' href='#/library'>Library</a>
           </li>
           <li>
-            <a className='header-link' href='#/search'>Search</a>
+            <a className='header-link' href='#/search'>
+              <strong><i className="fa fa-search"></i></strong>
+              Search
+            </a>
           </li>
         </ul>
         <div className='auth-nav'>
