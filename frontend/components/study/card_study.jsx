@@ -72,12 +72,17 @@ class CardStudy extends React.Component {
 
   rate(rating) {
     return ((e) => {
-      this.props.createConfidenceRating(this.state.currentCard.id, rating);
-      const nextCard = this.nextCard();
-      this.setState({
-        revealed: false,
-        currentCard: nextCard
-      });
+      this.props.createConfidenceRating(
+        this.state.currentCard.id,
+        rating,
+        () => {
+          this.setState({
+            revealed: false,
+            currentCard: this.nextCard()
+          });
+        }
+      );
+      // const nextCard = this.nextCard();
     });
   }
 
@@ -169,7 +174,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createConfidenceRating: (cardId, rating) => dispatch(createConfidenceRating(cardId, rating))
+  createConfidenceRating: (cardId, rating, cb) => dispatch(createConfidenceRating(cardId, rating, cb))
 });
 
 export default connect(

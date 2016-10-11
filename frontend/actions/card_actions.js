@@ -30,8 +30,9 @@ export const resetCardSave = () => ({
   type: RESET_CARD_SAVE
 });
 
-export const createConfidenceRating = (cardId, rating) => ({
+export const createConfidenceRating = (cardId, rating, cb) => ({
   type: CREATE_CONFIDENCE_RATING,
   cardId,
-  rating
+  rating,
+  cb
 });
