@@ -1,5 +1,6 @@
 export const GET_CARDS = 'GET_CARDS';
 export const RECEIVE_CARDS = 'RECEIVE_CARDS';
+export const RECEIVE_CARD = 'RECEIVE_CARD';
 export const CREATE_CARDS = 'CREATE_CARDS';
 export const RESET_CARD_SAVE = 'RESET_CARD_SAVE';
 export const CREATE_CONFIDENCE_RATING = 'CREATE_CONFIDENCE_RATING';
@@ -11,6 +12,11 @@ export const getCards = deckId => ({
 
 export const receiveCards = data => ({
   type: RECEIVE_CARDS,
+  data
+});
+
+export const receiveCard = data => ({
+  type: RECEIVE_CARD,
   data
 });
 

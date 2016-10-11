@@ -2,11 +2,10 @@ class Api::ConfidenceRatingsController < ApplicationController
   before_action :ensure_user_logged_in
 
   def create
-    @rating = ConfidenceRating.where(card_id: params[:cardId], user: current_user).first
+    @rating = ConfidenceRating.where(card_id: params[:confidence_rating][:card_id], user: current_user).first
     saved = false
-    debugger
     if @rating
-      if @rating.update(rating: params[:rating])
+      if @rating.update(rating: params[:confidence_rating][:rating])
         saved = true
       end
     else
@@ -18,6 +17,8 @@ class Api::ConfidenceRatingsController < ApplicationController
     end
 
     if saved
+      @card = @rating.card
+      @current_user = current_user
       render :create
     else
       render json: ['invalid rating params'], status: 422

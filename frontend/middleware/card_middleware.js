@@ -1,6 +1,7 @@
 import {
   GET_CARDS,
   receiveCards,
+  receiveCard,
   CREATE_CARDS,
   CREATE_CONFIDENCE_RATING
 } from '../actions/card_actions';
