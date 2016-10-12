@@ -21,7 +21,7 @@ class Api::SubjectsController < ApplicationController
     if @subject
       render :show
     else
-      render json: ['subject does not exist']
+      render json: ['subject does not exist'], status: 422
     end
   end
 

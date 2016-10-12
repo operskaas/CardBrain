@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { sendSearchQuery } from '../../actions/search_actions';
+import { hashHistory } from 'react-router';
 
 class Search extends React.Component {
 
@@ -26,8 +27,20 @@ class Search extends React.Component {
     this.props.sendSearchQuery(e.currentTarget.value);
   }
 
+  handleResultClick(idx, e) {
+    e.preventDefault();
+    const subjectId = this.props.results[idx].id
+    hashHistory.push(`/subject/${subjectId}`)
+  }
+
   render () {
-    const resultsList = this.props.results.map((result, idx) => <li key={idx}className='search-result-item'>{result.title}</li>);
+    const resultsList = this.props.results.map((result, idx) => {
+      return (
+        <li key={idx} className='search-result-item' onClick={this.handleResultClick.bind(this, idx)}>
+          {result.title}
+        </li>
+      );
+    });
     return (
       <div className='search-cont'>
         <div className='search'>
