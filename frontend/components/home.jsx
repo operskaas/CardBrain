@@ -30,20 +30,22 @@ class Home extends React.Component {
   render () {
     return (
       <div className='home'>
-        <div className='home-text'>
-          <h2>Study Smarter</h2>
-          <hr/>
-          <h4>Find, create, and share flashcards</h4>
-          <button onClick={this.openModal} className='blue-button'>Get Started</button>
+        <div className='home-text-cont'>
+          <div className='home-text'>
+            <h2>Study Smarter</h2>
+            <hr/>
+            <h4>Find, create, and share flashcards</h4>
+            <button onClick={this.openModal} className='blue-button'>Get Started</button>
+          </div>
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            style={modalStyles}
+            >
+            <button onClick={this.closeModal} className='modal-close-btn'>X</button>
+            <SessionFormContainer closeModal={this.closeModal} formType='signup'/>
+          </Modal>
         </div>
-        <Modal
-          isOpen={this.state.modalOpen}
-          onRequestClose={this.closeModal}
-          style={modalStyles}
-        >
-          <button onClick={this.closeModal} className='modal-close-btn'>X</button>
-          <SessionFormContainer closeModal={this.closeModal} formType='signup'/>
-        </Modal>
       </div>
     );
   }
