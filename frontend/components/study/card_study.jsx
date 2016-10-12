@@ -27,7 +27,6 @@ class CardStudy extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.state.setFirstCard) {
-      debugger
       this.makeFirstCardCurrent(nextProps);
     }
   }
@@ -38,7 +37,7 @@ class CardStudy extends React.Component {
 
   nextCard(){
 
-    const rand0Card = _randomCardOfRating(0);
+    const rand0Card = this._randomCardOfRating(0);
     if (rand0Card !== -1) {
       return rand0Card;
     }
