@@ -12,7 +12,16 @@ class Api::SubjectsController < ApplicationController
       @current_user = current_user
       render 'api/subject_follows/index'
     else
-      render :show, status: 422
+      render ['invalid subject paramsss'], status: 422
+    end
+  end
+
+  def show
+    @subject = Subject.find(params[:id])
+    if @subject
+      render :show
+    else
+      render json: ['subject does not exist']
     end
   end
 

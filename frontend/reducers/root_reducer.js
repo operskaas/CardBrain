@@ -3,12 +3,14 @@ import SessionReducer from './session_reducer';
 import SubjectFollowReducer from './subject_follow_reducer';
 import DeckReducer from './deck_reducer';
 import CardReducer from './card_reducer';
+import SearchReducer from './search_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
   subjectFollows: SubjectFollowReducer,
   decks: DeckReducer,
-  cards: CardReducer
+  cards: CardReducer,
+  searchResults: SearchReducer
 });
 
 export default RootReducer;
