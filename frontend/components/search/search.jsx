@@ -27,7 +27,7 @@ class Search extends React.Component {
   }
 
   render () {
-    const resultsList = this.props.results.map((result) => <li className='search-result-item'>(result.title)</li>);
+    const resultsList = this.props.results.map((result, idx) => <li key={idx}className='search-result-item'>{result.title}</li>);
     return (
       <div className='search-cont'>
         <div className='search'>
@@ -45,7 +45,7 @@ class Search extends React.Component {
               </input>
               <button className='search-btn'>Search</button>
             </form>
-            <ul>
+            <ul className='search-result-list'>
               {resultsList}
             </ul>
           </div>

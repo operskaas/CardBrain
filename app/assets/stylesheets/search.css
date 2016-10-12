@@ -78,3 +78,25 @@
 .search-btn:hover {
   background: black;
 }
+
+.search-result-list {
+  background: white;
+  left: 70px;
+  width: 400px;
+  position: absolute;
+  z-index: 1;
+  text-align: left;
+  border: 1px solid #7d7d7d;
+}
+
+.search-result-item {
+  padding: 10px;
+  font-size: 32px;
+  color: #575757;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background: #7d7d7d;
+  color: #bfbfbf;
+}
