@@ -4,13 +4,15 @@ import {
   setActiveSubjectFollow,
   CREATE_SUBJECT,
   UPDATE_SUBJECT,
-  DELETE_SUBJECT
+  DELETE_SUBJECT,
+  CREATE_SUBJECT_FOLLOW
 } from '../actions/subject_follow_actions';
 import {
   fetchCurrentUserSubjectFollows ,
   postSubject,
   patchSubject,
-  destroySubject
+  destroySubject,
+  postSubjectFollow
 } from '../util/subject_follow_api_util';
 
 const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
@@ -30,6 +32,10 @@ const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
       return next(action);
     case DELETE_SUBJECT:
       destroySubject(success, error, action.subjectId);
+      return next(action);
+    case CREATE_SUBJECT_FOLLOW:
+      success = (data) => dispatch(receiveSubjectFollow(data));
+      postSubjectFollow(success, error, action.userId, action.subjectId);
       return next(action);
     default:
       return next(action);

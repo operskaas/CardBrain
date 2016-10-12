@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getSubject } from '../../actions/subject_actions';
+import { createSubjectFollow } from '../../actions/subject_follow_actions';
 import Modal from 'react-modal';
 import modalStyles from '../../constants/modalStyles';
 import SessionFormContainer from '../session/session_form_container';

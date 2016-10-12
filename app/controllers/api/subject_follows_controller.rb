@@ -7,4 +7,9 @@ class Api::SubjectFollowsController < ApplicationController
     @activeId = @subjects.first.id unless @subjects.empty?
     @current_user = current_user
   end
+
+  def create
+    
+  end
+
 end

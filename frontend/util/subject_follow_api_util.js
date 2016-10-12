@@ -39,3 +39,14 @@ export const destroySubject = (success, error, subjectId) => {
     error
   });
 };
+
+export const postSubjectFollow = (success, error, userId, subjectId) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/subject_follows',
+    dataType: 'json',
+    data: {userId, subjectId},
+    success,
+    error
+  });
+};
