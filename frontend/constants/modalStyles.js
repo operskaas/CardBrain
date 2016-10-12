@@ -9,7 +9,8 @@ const modalStyles = {
     overflow: 'visible',
     boxShadow: '0px 4px 4px rgba(0,0,0,0.25)',
     color: '#555555',
-    padding: 0
+    padding: 0,
+    transition: '0.3s all'
   },
   overlay: {
     position: 'fixed',
@@ -20,7 +21,8 @@ const modalStyles = {
     height: '100%',
     height: '100vh',
     background: 'rgba(0,0,0,0.6)',
-    display: 'block'
+    display: 'block',
+    transition: '0.3s all'
   }
 }
 
