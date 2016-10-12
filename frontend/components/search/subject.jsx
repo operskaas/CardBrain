@@ -1,10 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getSubject } from '../../actions/subject_actions';
+import Modal from 'react-modal';
+import modalStyles from '../../constants/modalStyles';
+import SessionFormContainer from '../session/session_form_container';
 
 class Subject extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { modalOpen: false };
+    this.closeModal = this.closeModal.bind(this);
+  }
+
   componentDidMount () {
     this.props.getSubject(this.props.params.subjectId);
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
+  }
+
+  handleGetStartedClick(e) {
+    e.preventDefault();
+    const currentUser = this.props.currentUser;
+    if (currentUser.id) {
+      this.props.createSubjectFollow(currentUser.id, this.props.params.subjectId);
+    } else {
+      this.setState({modalOpen: true});
+    }
   }
 
   render () {
@@ -31,7 +54,7 @@ class Subject extends React.Component {
               <h4>Authored by {subject.author}</h4>
             </div>
             <div className='get-started'>
-              <button>Get Started</button>
+              <button onClick={this.handleGetStartedClick.bind(this)}>Get Started</button>
               <p>The subject will be automatically added to your library</p>
             </div>
           </div>
@@ -51,17 +74,27 @@ class Subject extends React.Component {
             </tbody>
           </table>
         </main>
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+        >
+          <button onClick={this.closeModal} className='modal-close-btn'>X</button>
+          <SessionFormContainer closeModal={this.closeModal} formType='signup'/>
+        </Modal>
       </div>
     );
   }
 };
 
 const mapStateToProps = state => ({
-  subject: state.subject
+  subject: state.subject,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  getSubject: (subjectId) => dispatch(getSubject(subjectId))
+  getSubject: (subjectId) => dispatch(getSubject(subjectId)),
+  createSubjectFollow: (userId, subjectId) => dispatch(createSubjectFollow(userId, subjectId))
 });
 
 export default connect(
