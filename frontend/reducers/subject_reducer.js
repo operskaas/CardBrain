@@ -1,6 +1,11 @@
 import { RECEIVE_SUBJECT } from '../actions/subject_actions';
 
-const _defaultSubjectSlice = {};
+const _defaultSubjectSlice = {
+  title: '',
+  id: 0,
+  author: '',
+  decks: []
+};
 
 const SubjectReducer = (prevState = _defaultSubjectSlice, action) => {
   switch (action.type) {

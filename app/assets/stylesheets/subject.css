@@ -1,5 +1,5 @@
 .subject-header {
-  height: 260px;
+  height: 242px;
   background-image: linear-gradient(to right, #00a8d7 0%, #76d176 100%);
 }
 
@@ -15,6 +15,7 @@
 .subject-info h1 {
   font-size: 72px;
   font-weight: 100;
+  letter-spacing: 3px;
 }
 
 .subject-info h4 {
@@ -56,4 +57,54 @@
 
 .get-started p {
   margin-top: 25px;
+}
+
+.subject-deck-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px 15%;
+  color: #333333;
+}
+
+.subject-deck-list h4 {
+  font-size: 24px;
+}
+
+.subject-deck-table {
+  font-size: 16px;
+  margin-top: 35px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.subject-deck-table > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.subject-deck-table th{
+  border-bottom: 2px solid #dddddd;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+.subject-deck-table th:first-child {
+  width: 70px;
+}
+
+.subject-deck-table th:nth-child(2) {
+  text-align: left;
+  width: 450px;
+}
+
+.subject-deck-table th:nth-child(3) {
+  width: 120px;
+}
+
+.subject-deck-table td:nth-child(2) {
+  text-align: left;
+}
+
+.subject-deck-table td {
+  padding: 8px;
+  border-bottom: 1px solid #dddddd;
 }

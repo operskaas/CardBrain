@@ -9,6 +9,17 @@ class Subject extends React.Component {
 
   render () {
     const subject = this.props.subject;
+
+    const deckItems = subject.decks.map((deck, idx) => {
+      return (
+        <tr key={idx} className='deck-table-body-row'>
+          <td>{idx}</td>
+          <td>{deck.title}</td>
+          <td>{deck.numCards}</td>
+        </tr>
+      );
+    });
+
     return (
       <div>
         <header className='subject-header group'>
@@ -25,10 +36,19 @@ class Subject extends React.Component {
             </div>
           </div>
         </header>
-        <main>
+        <main className='subject-deck-list'>
           <h4>Deck List</h4>
-          <table>
-            
+          <table className='subject-deck-table'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Deck Name</th>
+                <th>Num. of Cards</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deckItems}
+            </tbody>
           </table>
         </main>
       </div>
