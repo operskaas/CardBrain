@@ -330,6 +330,7 @@
   z-index:3;
   left: 0;
   display: none;
+  transition: 0.6s;
 }
 
 .flip-container.flipped .flipper {

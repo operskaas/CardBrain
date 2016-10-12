@@ -94,14 +94,14 @@ class CardStudy extends React.Component {
         () => {
           this.setState({
             oldCard: this.state.currentCard,
-            oldCardStyle: { display:'block' },
-            currCardStyle: { transition: 'all 0s' }
+            oldCardStyle: { display: 'block' },
+            currCardStyle: { transition: 'all 0s' },
+            currentCard: this.nextCard()
           });
           this.setState({
-            oldCardStyle: { display: 'block', left: '100px' }
+            oldCardStyle: { display: 'block', left: '1000px' }
           });
           this.setState({
-            currCardStyle: { transition: 'all 0s', transform: 'rotateY(0deg)'},
             revealed: false
           });
           setTimeout(() => {
