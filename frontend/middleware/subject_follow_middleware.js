@@ -15,6 +15,7 @@ import {
   destroySubject,
   postSubjectFollow
 } from '../util/subject_follow_api_util';
+import { hashHistory } from 'react-router';
 
 const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
   let error = (data) => console.log(data);
@@ -35,7 +36,10 @@ const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
       destroySubject(success, error, action.subjectId);
       return next(action);
     case CREATE_SUBJECT_FOLLOW:
-      success = (data) => dispatch(receiveSubjectFollow(data));
+      success = (data) => {
+        dispatch(receiveSubjectFollow(data))
+        hashHistory.push('/library');
+      };
       postSubjectFollow(success, error, action.userId, action.subjectId);
       return next(action);
     default:

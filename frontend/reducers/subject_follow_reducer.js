@@ -21,7 +21,7 @@ const SubjectFollowReducer = (prevState = _defaultSubjectFollowsSlice, action) =
       return newState;
     case RECEIVE_SUBJECT_FOLLOW:
       newState = merge({}, prevState);
-      newState.active = action.data.id;
+      newState.active = action.data.subjectFollow.id;
       return newState;
     default:
       return prevState;
