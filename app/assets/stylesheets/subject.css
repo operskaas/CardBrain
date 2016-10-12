@@ -1,0 +1,59 @@
+.subject-header {
+  height: 260px;
+  background-image: linear-gradient(to right, #00a8d7 0%, #76d176 100%);
+}
+
+.subject-header > div {
+  padding: 50px 150px;
+}
+
+.subject-info {
+  margin-left: 100px;
+  float: left;
+}
+
+.subject-info h1 {
+  font-size: 72px;
+  font-weight: 100;
+}
+
+.subject-info h4 {
+  font-size: 21px;
+  font-weight: 200;
+  color: #b8eff1;
+  margin-top: 40px;
+}
+
+.get-started {
+  float: right;
+  width: 360px;
+  height: 111px;
+  padding: 20px;
+  color: #76d176;
+  border: 1px solid #68ac68;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  background-image: -webkit-linear-gradient(left, #bfe9da -20%, #d1efdd 100%);
+  background-image: linear-gradient(to right, #bfe9da -20%, #d1efdd 100%);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.get-started button {
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  border-radius: 6px;
+  border: 1px solid #50c450;
+  background-image: linear-gradient(to bottom, #76d176 0%, #50c450 100%);
+}
+.get-started button:hover {
+  background: #50c450;
+}
+
+.get-started p {
+  margin-top: 25px;
+}

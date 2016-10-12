@@ -8,9 +8,29 @@ class Subject extends React.Component {
   }
 
   render () {
+    const subject = this.props.subject;
     return (
       <div>
-        This is subject land!
+        <header className='subject-header group'>
+          <div>
+            <div className='subject-info'>
+              <h1>
+                {subject.title}
+              </h1>
+              <h4>Authored by {subject.author}</h4>
+            </div>
+            <div className='get-started'>
+              <button>Get Started</button>
+              <p>The subject will be automatically added to your library</p>
+            </div>
+          </div>
+        </header>
+        <main>
+          <h4>Deck List</h4>
+          <table>
+            
+          </table>
+        </main>
       </div>
     );
   }

@@ -6,7 +6,6 @@ const SubjectMiddleware = ({ dispatch }) => next => action => {
     case GET_SUBJECT:
       let success = data => dispatch(receiveSubject(data));
       let error = data => console.log(data);
-      debugger
       fetchSubject(action.subjectId, success, error);
       return next(action);
     default:
