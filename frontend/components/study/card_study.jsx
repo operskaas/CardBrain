@@ -17,7 +17,8 @@ class CardStudy extends React.Component {
       firstCardsSet: false,
       currentCard: _defaultCardState,
       oldCard: _defaultCardState,
-      oldCardStyle: {display: 'none'}
+      oldCardStyle: {},
+      currCardStyle: {}
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rate = this.rate.bind(this);
@@ -92,15 +93,21 @@ class CardStudy extends React.Component {
         rating,
         () => {
           this.setState({
-            oldCardStyle: { display:'block' }
+            oldCard: this.state.currentCard,
+            oldCardStyle: { display:'block' },
+            currCardStyle: { transition: 'all 0s' }
           });
           this.setState({
-            oldCardStyle: {left: '1000px'},
+            oldCardStyle: { display: 'block', left: '100px' }
+          });
+          this.setState({
+            currCardStyle: { transition: 'all 0s', transform: 'rotateY(0deg)'},
             revealed: false
           });
           setTimeout(() => {
             this.setState({
-              oldCardStyle: { display:'none', left:'0' }
+              oldCardStyle: {},
+              currCardStyle: {}
             });
           }, 500);
         }
@@ -173,8 +180,8 @@ class CardStudy extends React.Component {
     return (
       <main className='card-study'>
         <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
-        <div className={flipContClass} >
-        	<div className="flipper">
+        <div className={flipContClass}>
+        	<div className="flipper" style={this.state.currCardStyle}>
         		<div className="front">
               <div className={cardClassName}>
                 <div className='side-text'>Q.</div>
@@ -199,19 +206,9 @@ class CardStudy extends React.Component {
         		</div>
         	</div>
         </div>
-        <div className='flip-container old-card' style={this.state.oldCardStyle}>
+
+        <div className='old-card' style={this.state.oldCardStyle}>
         	<div className="flipper">
-        		<div className="front">
-              <div className={cardClassName}>
-                <div className='side-text'>Q.</div>
-                <div className='card-text'>
-                  <p>
-                    {oldCard.questionText}
-                  </p>
-                </div>
-                <div className='edit-side'>Edit</div>
-              </div>
-        		</div>
         		<div className="back">
               <div className={cardClassName}>
                 <div className='side-text'>A.</div>

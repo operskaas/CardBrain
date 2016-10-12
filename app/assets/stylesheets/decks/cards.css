@@ -319,23 +319,24 @@
   width: 8%;
 }
 
-.flip-container {
+.flip-container, .old-card {
   position: absolute;
   left: 0;
 	perspective: 1000px;
   transition: 0.5s all;
 }
 
-.flip-container.old-card {
-  transform: rotateY(180deg);
-  z-index:3
+.old-card {
+  z-index:3;
+  left: 0;
+  display: none;
 }
 
 .flip-container.flipped .flipper {
 	transform: rotateY(180deg);
 }
 
-.flip-container, .front, .back {
+.flip-container, .old-card, .front, .back {
   width: 100%;
   height: 100%;
 }
@@ -364,4 +365,8 @@
 
 .back {
 	transform: rotateY(180deg);
+}
+
+.old-card .back {
+  transform: rotateY(0deg);
 }
