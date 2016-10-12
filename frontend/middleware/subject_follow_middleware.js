@@ -5,7 +5,8 @@ import {
   CREATE_SUBJECT,
   UPDATE_SUBJECT,
   DELETE_SUBJECT,
-  CREATE_SUBJECT_FOLLOW
+  CREATE_SUBJECT_FOLLOW,
+  receiveSubjectFollow
 } from '../actions/subject_follow_actions';
 import {
   fetchCurrentUserSubjectFollows ,

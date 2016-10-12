@@ -45,7 +45,12 @@ export const postSubjectFollow = (success, error, userId, subjectId) => {
     method: 'POST',
     url: 'api/subject_follows',
     dataType: 'json',
-    data: {userId, subjectId},
+    data: {
+      subject_follow: {
+        follower_id: userId,
+        subject_id: subjectId
+      }
+    },
     success,
     error
   });
