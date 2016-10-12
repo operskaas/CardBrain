@@ -16,12 +16,11 @@ class CardStudy extends React.Component {
       revealed: false,
       firstCardsSet: false,
       currentCard: _defaultCardState,
-      nextCard: _defaultCardState,
-      cardStyle: {}
+      oldCard: _defaultCardState,
+      oldCardStyle: {display: 'none'}
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rate = this.rate.bind(this);
-    this.moveCard = this.moveCard.bind(this);
   }
 
   revealAnswer() {
@@ -86,24 +85,24 @@ class CardStudy extends React.Component {
     return this.props.cards.indexOf(this.state.currentCard);
   }
 
-  moveCard() {
-    this.setState({cardStyle: {}})
-  }
-
   rate(rating) {
     return ((e) => {
       this.props.createConfidenceRating(
         this.state.currentCard.id,
         rating,
         () => {
-          this.moveCard();
+          this.setState({
+            oldCardStyle: { display:'block' }
+          });
+          this.setState({
+            oldCardStyle: {left: '1000px'},
+            revealed: false
+          });
           setTimeout(() => {
             this.setState({
-              revealed: false,
-              currentCard: this.nextCard(),
-              nextCard: this.nextCard()
+              oldCardStyle: { display:'none', left:'0' }
             });
-          }, 2000);
+          }, 500);
         }
       );
     });
@@ -111,7 +110,7 @@ class CardStudy extends React.Component {
 
   render() {
     const currentCard = this.state.currentCard;
-    const nextCard = this.state.nextCard;
+    const oldCard = this.state.oldCard;
 
     let currentRatingClass = '';
     if (currentCard.rating === 0) {
@@ -174,7 +173,7 @@ class CardStudy extends React.Component {
     return (
       <main className='card-study'>
         <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
-        <div className={flipContClass}>
+        <div className={flipContClass} >
         	<div className="flipper">
         		<div className="front">
               <div className={cardClassName}>
@@ -200,14 +199,14 @@ class CardStudy extends React.Component {
         		</div>
         	</div>
         </div>
-        <div className='flip-container behind'>
+        <div className='flip-container old-card' style={this.state.oldCardStyle}>
         	<div className="flipper">
         		<div className="front">
               <div className={cardClassName}>
                 <div className='side-text'>Q.</div>
                 <div className='card-text'>
                   <p>
-                    {nextCard.questionText}
+                    {oldCard.questionText}
                   </p>
                 </div>
                 <div className='edit-side'>Edit</div>
@@ -218,7 +217,7 @@ class CardStudy extends React.Component {
                 <div className='side-text'>A.</div>
                 <div className='card-text'>
                   <p>
-                    {nextCard.answerText}
+                    {oldCard.answerText}
                   </p>
                 </div>
                 <div className='edit-side'>Edit</div>

@@ -321,11 +321,14 @@
 
 .flip-container {
   position: absolute;
+  left: 0;
 	perspective: 1000px;
+  transition: 0.5s all;
 }
 
-.flip-container.behind {
-  z-index: -5;
+.flip-container.old-card {
+  transform: rotateY(180deg);
+  z-index:3
 }
 
 .flip-container.flipped .flipper {
