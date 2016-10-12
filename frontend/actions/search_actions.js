@@ -6,7 +6,9 @@ export const sendSearchQuery = query => ({
   query
 });
 
-export const receiveSearchResults = data => ({
+export const receiveSearchResults = data => {
+  return ({
   type: RECEIVE_SEARCH_RESULTS,
   data
-});
+  });
+};

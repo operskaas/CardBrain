@@ -14,7 +14,7 @@ class Search extends React.Component {
 
   handleSearchSubmit(e) {
     e.preventDefault();
-    this.props.sendSearchQuery(this.state.query);
+    // this.props.sendSearchQuery(this.state.query);
   }
 
   componentDidMount () {
@@ -23,9 +23,11 @@ class Search extends React.Component {
 
   handleSearchFieldChange (e) {
     this.setState({query: e.currentTarget.value});
+    this.props.sendSearchQuery(e.currentTarget.value);
   }
 
   render () {
+    const resultsList = this.props.results.map((result) => <li className='search-result-item'>(result.title)</li>);
     return (
       <div className='search-cont'>
         <div className='search'>
@@ -43,6 +45,9 @@ class Search extends React.Component {
               </input>
               <button className='search-btn'>Search</button>
             </form>
+            <ul>
+              {resultsList}
+            </ul>
           </div>
           <h3>Search over a dozen subjects...</h3>
         </div>
@@ -51,7 +56,9 @@ class Search extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  results: state.searchResults
+});
 
 const mapDispatchToProps = dispatch => ({
   sendSearchQuery: (query) => dispatch(sendSearchQuery(query))

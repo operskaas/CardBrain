@@ -49,7 +49,6 @@
       }
     }
   },
-  subjectSearchQuery: "Dog",
   searchResults: {
     1: {
       title: "Pepper Dog",

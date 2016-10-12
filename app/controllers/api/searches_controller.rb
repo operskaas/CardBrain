@@ -1,6 +1,7 @@
 class Api::SearchesController < ApplicationController
   def index
-    debugger
     query = params[:query]
+    @matched_subjects = Subject.where("title ~* ?", query)
+    render :index
   end
 end
