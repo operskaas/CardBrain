@@ -203,6 +203,7 @@
 
 .card-study {
   float: right;
+  position: relative;
   width: calc((100vw - 367px) * 0.87);
   height: 69%;
   margin: 5vh calc((100vw - 367px) * 0.05);
@@ -242,7 +243,7 @@
 }
 
 .study-toolbar {
-  margin-top: 3%;
+  margin-top: 72vh;
   font-weight: 300;
 }
 
@@ -319,7 +320,12 @@
 }
 
 .flip-container {
+  position: absolute;
 	perspective: 1000px;
+}
+
+.flip-container.behind {
+  z-index: -5;
 }
 
 .flip-container.flipped .flipper {

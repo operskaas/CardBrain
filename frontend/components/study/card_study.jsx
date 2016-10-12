@@ -14,11 +14,14 @@ class CardStudy extends React.Component {
     super(props);
     this.state = {
       revealed: false,
-      setFirstCard: false,
-      currentCard: _defaultCardState
+      firstCardsSet: false,
+      currentCard: _defaultCardState,
+      nextCard: _defaultCardState,
+      cardStyle: {}
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rate = this.rate.bind(this);
+    this.moveCard = this.moveCard.bind(this);
   }
 
   revealAnswer() {
@@ -26,13 +29,13 @@ class CardStudy extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.setFirstCard) {
-      this.makeFirstCardCurrent(nextProps);
+    if (!this.state.firstCardsSet) {
+      this.setfirstTwoCards(nextProps);
     }
   }
 
-  makeFirstCardCurrent(nextProps) {
-    this.setState({currentCard: nextProps.cards[0], setFirstCard: true });
+  setfirstTwoCards(nextProps) {
+    this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
   }
 
   nextCard(){
@@ -83,23 +86,32 @@ class CardStudy extends React.Component {
     return this.props.cards.indexOf(this.state.currentCard);
   }
 
+  moveCard() {
+    this.setState({cardStyle: {}})
+  }
+
   rate(rating) {
     return ((e) => {
       this.props.createConfidenceRating(
         this.state.currentCard.id,
         rating,
         () => {
-          this.setState({
-            revealed: false,
-            currentCard: this.nextCard()
-          });
+          this.moveCard();
+          setTimeout(() => {
+            this.setState({
+              revealed: false,
+              currentCard: this.nextCard(),
+              nextCard: this.nextCard()
+            });
+          }, 2000);
         }
       );
     });
   }
 
   render() {
-    let currentCard = this.state.currentCard;
+    const currentCard = this.state.currentCard;
+    const nextCard = this.state.nextCard;
 
     let currentRatingClass = '';
     if (currentCard.rating === 0) {
@@ -181,6 +193,32 @@ class CardStudy extends React.Component {
                 <div className='card-text'>
                   <p>
                     {currentCard.answerText}
+                  </p>
+                </div>
+                <div className='edit-side'>Edit</div>
+              </div>
+        		</div>
+        	</div>
+        </div>
+        <div className='flip-container behind'>
+        	<div className="flipper">
+        		<div className="front">
+              <div className={cardClassName}>
+                <div className='side-text'>Q.</div>
+                <div className='card-text'>
+                  <p>
+                    {nextCard.questionText}
+                  </p>
+                </div>
+                <div className='edit-side'>Edit</div>
+              </div>
+        		</div>
+        		<div className="back">
+              <div className={cardClassName}>
+                <div className='side-text'>A.</div>
+                <div className='card-text'>
+                  <p>
+                    {nextCard.answerText}
                   </p>
                 </div>
                 <div className='edit-side'>Edit</div>
