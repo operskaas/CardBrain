@@ -38,25 +38,30 @@ class CardStudy extends React.Component {
     this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
   }
 
-  masteryPercent() {
+  _masteryPercent() {
     let sumRating = 0;
     this.props.cards.forEach(card => sumRating += card.rating);
     return Math.floor((sumRating / (this.props.cards.length * 5)) * 100);
   }
 
   nextCard(){
+    let rand = Math.random();
     const rand0Card = this._randomCardOfRating(0);
-    if (rand0Card !== -1) {
+
+    if ((rand0Card !== -1) && (rand < 0.95)) {
       return rand0Card;
     }
-    const rand = Math.random();
-    if (rand < 0.4) {
+
+    const mastery = this._masteryPercent();
+    const weightedMastery = mastery * Math.random();
+
+    if (weightedMastery < 30) {
       return this._preferRandomCardWithRatingAtLeast(1);
-    } else if (rand < 0.4) {
+    } else if (weightedMastery < 50) {
       return this._preferRandomCardWithRatingAtLeast(2);
-    } else if (rand < 0.4) {
+    } else if (weightedMastery < 70) {
       return this._preferRandomCardWithRatingAtLeast(3);
-    } else if (rand < 0.5) {
+    } else if (weightedMastery < 90) {
       return this._preferRandomCardWithRatingAtLeast(4);
     } else {
       return this._preferRandomCardWithRatingAtLeast(5);
@@ -111,18 +116,7 @@ class CardStudy extends React.Component {
               transform: 'rotateZ(100deg)'
             }}), 0);
           setTimeout(() => this.setState({ currCardStyle: {} }), 0);
-          // this.setState({
-          //   oldCardStyle: { display: 'block', left: '1000px' },
-          //   revealed: false
-          // });
-          // this.setState({
-          //   revealed: false
-          // });
-          setTimeout(() => {
-            this.setState({
-              oldCardStyle: {},
-            });
-          }, 400);
+          setTimeout(() => this.setState({ oldCardStyle: {} }), 400);
         }
       );
     });
