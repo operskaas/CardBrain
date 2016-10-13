@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { sendSearchQuery } from '../../actions/search_actions';
+import { sendSearchQuery, clearSearchResults } from '../../actions/search_actions';
 import { hashHistory } from 'react-router';
 
 class Search extends React.Component {
@@ -20,6 +20,10 @@ class Search extends React.Component {
 
   componentDidMount () {
     setTimeout(() => ReactDOM.findDOMNode(this.refs.searchField).focus(), 0);
+  }
+
+  componentWillUnmount () {
+    this.props.clearSearchResults();
   }
 
   handleSearchFieldChange (e) {
@@ -72,7 +76,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendSearchQuery: (query) => dispatch(sendSearchQuery(query))
+  sendSearchQuery: (query) => dispatch(sendSearchQuery(query)),
+  clearSearchResults: () => dispatch(clearSearchResults())
 });
 
 export default connect(
