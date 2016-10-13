@@ -55,14 +55,14 @@ class Subject extends React.Component {
       actionRegion = (
         <div className='get-started'>
           <button onClick={this.handleGotoLibraryClick.bind(this)}>Go To Library</button>
-          <p>The subject is already in your library</p>
+          <p>This subject is already in your library</p>
         </div>
       );
     } else {
       actionRegion = (
         <div className='get-started'>
           <button onClick={this.handleGetStartedClick.bind(this)}>Get Started</button>
-          <p>The subject will be automatically added to your library</p>
+          <p>This subject will be automatically added to your library</p>
         </div>
       );
     }

@@ -5,13 +5,17 @@ import SessionForm from './session_form';
 import { withRouter, hashHistory } from 'react-router'
 
 const processForm = (ownProps, dispatch) => {
-  const cb = () => {
-    ownProps.closeModal();
-    hashHistory.push('/library');
-  }
   if (ownProps.formType === 'signup') {
+    const cb = () => {
+      ownProps.closeModal();
+      hashHistory.push('/search');
+    }
     return (user) => dispatch(signup(user, cb));
   } else if (ownProps.formType === 'login') {
+    const cb = () => {
+      ownProps.closeModal();
+      hashHistory.push('/library');
+    }
     return (user) => dispatch(login(user, cb));
   }
 };
