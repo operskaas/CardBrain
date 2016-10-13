@@ -100,10 +100,16 @@ class CardStudy extends React.Component {
           this.setState({
             oldCard: this.state.currentCard,
             currentCard: this.nextCard(),
-            oldCardStyle: { display: 'block', left: '1000px' },
+            oldCardStyle: { display: 'block' },
             currCardStyle: { transition: 'all 0s' },
             revealed: false
           });
+          setTimeout(() => this.setState({
+            oldCardStyle: {
+              display: 'block',
+              left: '1000px',
+              transform: 'rotateZ(100deg)'
+            }}), 0);
           setTimeout(() => this.setState({ currCardStyle: {} }), 0);
           // this.setState({
           //   oldCardStyle: { display: 'block', left: '1000px' },
@@ -116,7 +122,7 @@ class CardStudy extends React.Component {
             this.setState({
               oldCardStyle: {},
             });
-          }, 800);
+          }, 400);
         }
       );
     });
