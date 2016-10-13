@@ -195,7 +195,7 @@
   overflow: hidden;
   position: absolute;
   top: 53px;
-  right: 24%;
+  right: calc((100% - 550px) * 0.5);
 }
 
 .subject-menu button{

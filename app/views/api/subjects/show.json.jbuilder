@@ -1,6 +1,7 @@
 json.title @subject.title
 json.id @subject.id
 json.author @subject.owner.username
+json.userIsFollowing @userIsFollowing
 
 json.decks do
   json.array! @subject.decks do |deck|

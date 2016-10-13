@@ -4,6 +4,7 @@ const _defaultSubjectSlice = {
   title: '',
   id: 0,
   author: '',
+  userIsFollowing: false,
   decks: []
 };
 

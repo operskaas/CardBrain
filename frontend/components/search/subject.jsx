@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { hashHistory } from 'react-router';
 import { getSubject } from '../../actions/subject_actions';
 import { createSubjectFollow } from '../../actions/subject_follow_actions';
 import Modal from 'react-modal';
@@ -31,6 +32,11 @@ class Subject extends React.Component {
     }
   }
 
+  handleGotoLibraryClick(e) {
+    e.preventDefault();
+    hashHistory.push('/library');
+  }
+
   render () {
     const subject = this.props.subject;
 
@@ -44,6 +50,23 @@ class Subject extends React.Component {
       );
     });
 
+    let actionRegion;
+    if (subject.userIsFollowing) {
+      actionRegion = (
+        <div className='get-started'>
+          <button onClick={this.handleGotoLibraryClick.bind(this)}>Go To Library</button>
+          <p>The subject is already in your library</p>
+        </div>
+      );
+    } else {
+      actionRegion = (
+        <div className='get-started'>
+          <button onClick={this.handleGetStartedClick.bind(this)}>Get Started</button>
+          <p>The subject will be automatically added to your library</p>
+        </div>
+      );
+    }
+
     return (
       <div>
         <header className='subject-header group'>
@@ -54,10 +77,7 @@ class Subject extends React.Component {
               </h1>
               <h4>Authored by {subject.author}</h4>
             </div>
-            <div className='get-started'>
-              <button onClick={this.handleGetStartedClick.bind(this)}>Get Started</button>
-              <p>The subject will be automatically added to your library</p>
-            </div>
+            {actionRegion}
           </div>
         </header>
         <main className='subject-deck-list'>

@@ -18,6 +18,7 @@ class Api::SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
+    @userIsFollowing = SubjectFollow.exists?(subject:@subject, follower: current_user)
     if @subject
       render :show
     else
