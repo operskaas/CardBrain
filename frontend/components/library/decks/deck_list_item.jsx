@@ -68,6 +68,28 @@ class DeckListItem extends React.Component {
     if (this.state.deckMenuOpen) {
       deckMenuStyle = { display: 'block' };
     }
+
+    let actionButton = <noscript />;
+    let numCardsSub;
+    if (deck.numCards === 0) {
+      if (this.props.owner){
+        actionButton = (
+          <button className='deck-item-add-cards-btn' onClick={this.handleEditCardsClick}>
+            <span><i className="fa fa-plus" aria-hidden="true"/></span>Add Cards
+            </button>
+          );
+      }
+      numCardsSub = 'There are no cards in this deck yet'
+    } else {
+      numCardsSub = `Cards: ${deck.numCards}`;
+      actionButton = (
+        <button className='study-btn' style={studyBtnStyle} onClick={this.handleStudyBtnClick}>
+          <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
+          </button>
+        );
+    }
+
+
     return (
       <li className='deck-item group'>
         <div className='percentage'>
@@ -75,12 +97,10 @@ class DeckListItem extends React.Component {
         </div>
         <div className='deck-title'>
           <h5 onClick={this.handleStudyBtnClick}>{deck.title}</h5>
-          <span>Cards: {deck.numCards}</span>
+          <span>{numCardsSub}</span>
         </div>
         {menuBtn}
-        <button className='study-btn' style={studyBtnStyle} onClick={this.handleStudyBtnClick}>
-          <span><i className="fa fa-play-circle-o" aria-hidden="true"/></span>Study
-        </button>
+        {actionButton}
         <article style={deckMenuStyle} className='subject-menu deck-menu'>
           <button onClick={this.handleEditCardsClick}>
             <span className='menu-list-icon'>
