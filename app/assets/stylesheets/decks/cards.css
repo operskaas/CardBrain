@@ -320,6 +320,7 @@
 }
 
 .flip-container, .old-card {
+  cursor: pointer;
   position: absolute;
   left: 0;
 	perspective: 1000px;

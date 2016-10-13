@@ -54,9 +54,7 @@ class Search extends React.Component {
                 placeholder='(e.g. MCAT, Norwegian, React)'
                 ref='searchField'
                 onChange={this.handleSearchFieldChange}>
-
               </input>
-              <button className='search-btn'>Search</button>
             </form>
             <ul className='search-result-list'>
               {resultsList}

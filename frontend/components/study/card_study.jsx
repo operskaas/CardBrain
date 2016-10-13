@@ -125,7 +125,6 @@ class CardStudy extends React.Component {
 
   handleCurrCardClick (e) {
     e.preventDefault();
-    console.log('currCardClicked');
     if (this.state.revealed) {
       this.setState({ revealed: false });
     } else {
