@@ -22,6 +22,7 @@ class CardStudy extends React.Component {
     };
     this.revealAnswer = this.revealAnswer.bind(this);
     this.rate = this.rate.bind(this);
+    this.handleCurrCardClick = this.handleCurrCardClick.bind(this);
   }
 
   revealAnswer() {
@@ -122,6 +123,16 @@ class CardStudy extends React.Component {
     });
   }
 
+  handleCurrCardClick (e) {
+    e.preventDefault();
+    console.log('currCardClicked');
+    if (this.state.revealed) {
+      this.setState({ revealed: false });
+    } else {
+      this.setState({ revealed: true });
+    }
+  }
+
   render() {
     const currentCard = this.state.currentCard;
     const oldCard = this.state.oldCard;
@@ -174,7 +185,6 @@ class CardStudy extends React.Component {
       buttons = (
         <div className='card-btns'>
           <button className={className}
-            title='Press space on your keyboard'
             onClick={this.revealAnswer}>
             Reveal Answer
           </button>
@@ -187,7 +197,7 @@ class CardStudy extends React.Component {
     return (
       <main className='card-study'>
         <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
-        <div className={flipContClass}>
+        <div className={flipContClass} onClick={this.handleCurrCardClick}>
         	<div className="flipper" style={this.state.currCardStyle}>
         		<div className="front">
               <div className={cardClassName}>
