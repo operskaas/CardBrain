@@ -113,8 +113,8 @@ class CardStudy extends React.Component {
           setTimeout(() => this.setState({
             oldCardStyle: {
               display: 'block',
-              left: '1000px',
-              transform: 'rotateZ(100deg)'
+              left: '140%',
+              transform: 'rotateZ(70deg)'
             }}), 0);
           setTimeout(() => this.setState({ currCardStyle: {} }), 0);
           setTimeout(() => this.setState({ oldCardStyle: {} }), 400);
