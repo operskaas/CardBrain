@@ -154,3 +154,39 @@
   left: 97%;
   right: auto;
 }
+
+.no-decks {
+  background: #f9f9f9;
+  padding: 18px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.no-decks h4 {
+  margin: 10px 0;
+  color: #ff8a47;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+}
+
+.no-decks p {
+  margin: 20px 0;
+  color: black;
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+.large-create-deck-btn {
+  background: #29a5dc;
+  border: 1px solid #2196ca;
+  font-size: 18px;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+.large-create-deck-btn:hover {
+  background: #1e86b4;
+  border-color: #186f96;
+}
