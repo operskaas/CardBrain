@@ -1,7 +1,7 @@
 .search-cont {
   height: calc(100vh - 62px);
   overflow-y: hidden;
-  background: #51b3de;
+  background-image: linear-gradient(to right bottom, #00a8d7 0%, #76d176 100%);
   text-align: center;
 }
 
