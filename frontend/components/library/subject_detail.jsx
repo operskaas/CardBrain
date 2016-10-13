@@ -22,6 +22,16 @@ class SubjectDetail extends React.Component {
     this.handleClickWhileMenuOpen = this.handleClickWhileMenuOpen.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    // if (nextProps.isFetching || this.props.isFetching) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+
+    return true;
+  }
+
   toggleSubjectMenuOpen () {
     if (this.state.subjectMenuOpen) {
       this.closeSubjectMenu();
@@ -57,12 +67,12 @@ class SubjectDetail extends React.Component {
   }
 
   render () {
-    this.subject = this.props.subjectFollows.current[this.props.subjectId];
-    if (!this.subject) {
+    const subject = this.props.subjectFollows.current[this.props.subjectId];
+    if (!subject) {
       return (<p>loading...</p>);
     }
     const progressStyle = {
-      width: `${this.subject.mastery}%`
+      width: `${subject.mastery}%`
     };
 
     let display = 'none';
@@ -75,7 +85,7 @@ class SubjectDetail extends React.Component {
 
     let editSubjectButton = <noscript />
 
-    if (this.subject.owner) {
+    if (subject.owner) {
       editSubjectButton = (
         <button onClick={this.handleEditSubjectClick}>
           <span className='menu-icon'>
@@ -93,7 +103,7 @@ class SubjectDetail extends React.Component {
               <i className="fa fa-book deck-icon" ></i>
             </div>
             <div className='subject-detail-title'>
-              <h2>{this.subject.title}</h2>
+              <h2>{subject.title}</h2>
               <div className='progress-holder'>
                 <div style={progressStyle}className='progress'></div>
               </div>
@@ -116,11 +126,11 @@ class SubjectDetail extends React.Component {
               style={modalStyles}
             >
               <button onClick={this.closeModal} className='modal-close-btn'>X</button>
-              <EditSubjectForm title={this.subject.title} subjectId={this.props.subjectId} closeModal={this.closeModal}/>
+              <EditSubjectForm title={subject.title} subjectId={this.props.subjectId} closeModal={this.closeModal}/>
             </Modal>
           </header>
           <hr/>
-          <Decks subject={this.subject}/>
+          <Decks subject={subject}/>
         </div>
       </div>
     );
@@ -129,7 +139,8 @@ class SubjectDetail extends React.Component {
 
 const mapStateToProps = state => ({
   subjectFollows: state.subjectFollows,
-  subjectId: state.subjectFollows.active
+  subjectId: state.subjectFollows.active,
+  isFetching: state.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({

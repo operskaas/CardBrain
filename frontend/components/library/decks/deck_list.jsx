@@ -6,19 +6,28 @@ import DeckListItem from './deck_list_item';
 class DeckList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {isFetching: true};
+    setTimeout(() => this.setState({isFetching: false}), 300);
   }
 
   componentDidMount () {
     this.props.getDecks(this.props.subjectId);
+
   }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.subjectId !== nextProps.subjectId) {
       this.props.getDecks(nextProps.subjectId);
+      this.setState({isFetching: true});
+      setTimeout(() => this.setState({isFetching: false}), 400);
     }
   }
 
   render () {
+    if (this.state.isFetching) {
+      return <div className="loader">Loading...</div>;
+    }
+
     const deckIds = Object.keys(this.props.decks);
     let deckItems = <noscript />;
     if (deckIds.length === 0) {
