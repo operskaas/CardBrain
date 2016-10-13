@@ -34,7 +34,7 @@ class CardsEditForm extends React.Component {
     // }
 
     this.setState({
-      inputs: nextProps.cards
+      inputs: nextProps.cards.concat({questionText:'', answerText:''})
     })
 
     // if (nextProps.cardSave == true) {
@@ -43,9 +43,9 @@ class CardsEditForm extends React.Component {
 
     if (nextProps.cardSave) {
       this.setState({saveNotifShowing: true});
+      setTimeout(() => this.setState({saveNotifShowing: false}), 2500);
     }
 
-    setTimeout(() => this.setState({saveNotifShowing: false}), 2500);
   }
 
   handleDeleteClick(idx) {
