@@ -18,6 +18,10 @@ class Study extends React.Component {
     hashHistory.push('/library');
   }
 
+  handleSearchClick() {
+    hashHistory.push('/search');
+  }
+
   render () {
     return (
       <main className='study group'>
@@ -28,7 +32,7 @@ class Study extends React.Component {
           <span className='icon' onClick={this.handleLibraryClick}>
             <i className="fa fa-book" ></i>
           </span>
-          <span className='icon'>
+          <span className='icon' onClick={this.handleSearchClick}>
             <i className="fa fa-search" ></i>
           </span>
         </aside>

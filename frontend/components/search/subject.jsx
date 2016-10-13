@@ -43,7 +43,7 @@ class Subject extends React.Component {
     const deckItems = subject.decks.map((deck, idx) => {
       return (
         <tr key={idx} className='deck-table-body-row'>
-          <td>{idx}</td>
+          <td>{idx + 1}</td>
           <td>{deck.title}</td>
           <td>{deck.numCards}</td>
         </tr>
