@@ -18,7 +18,7 @@ class Stats extends React.Component {
 
   masteryPercent() {
     let sumRating = 0;
-    this.props.cards.forEach(card => sumRating += card.rating)
+    this.props.cards.forEach(card => sumRating += card.rating);
     return Math.floor((sumRating / (this.props.cards.length * 5)) * 100);
   }
 

@@ -38,8 +38,13 @@ class CardStudy extends React.Component {
     this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
   }
 
-  nextCard(){
+  masteryPercent() {
+    let sumRating = 0;
+    this.props.cards.forEach(card => sumRating += card.rating);
+    return Math.floor((sumRating / (this.props.cards.length * 5)) * 100);
+  }
 
+  nextCard(){
     const rand0Card = this._randomCardOfRating(0);
     if (rand0Card !== -1) {
       return rand0Card;
@@ -47,11 +52,11 @@ class CardStudy extends React.Component {
     const rand = Math.random();
     if (rand < 0.4) {
       return this._preferRandomCardWithRatingAtLeast(1);
-    } else if (rand < 0.6) {
+    } else if (rand < 0.4) {
       return this._preferRandomCardWithRatingAtLeast(2);
-    } else if (rand < 0.92) {
+    } else if (rand < 0.4) {
       return this._preferRandomCardWithRatingAtLeast(3);
-    } else if (rand < 0.98) {
+    } else if (rand < 0.5) {
       return this._preferRandomCardWithRatingAtLeast(4);
     } else {
       return this._preferRandomCardWithRatingAtLeast(5);
@@ -94,22 +99,24 @@ class CardStudy extends React.Component {
         () => {
           this.setState({
             oldCard: this.state.currentCard,
-            oldCardStyle: { display: 'block' },
+            currentCard: this.nextCard(),
+            oldCardStyle: { display: 'block', left: '1000px' },
             currCardStyle: { transition: 'all 0s' },
-            currentCard: this.nextCard()
-          });
-          this.setState({
-            oldCardStyle: { display: 'block', left: '1000px' }
-          });
-          this.setState({
             revealed: false
           });
+          // this.setState({
+          //   oldCardStyle: { display: 'block', left: '1000px' },
+          //   revealed: false
+          // });
+          // this.setState({
+          //   revealed: false
+          // });
           setTimeout(() => {
             this.setState({
               oldCardStyle: {},
               currCardStyle: {}
             });
-          }, 500);
+          }, 800);
         }
       );
     });
