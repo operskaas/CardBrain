@@ -104,6 +104,7 @@ class CardStudy extends React.Component {
             currCardStyle: { transition: 'all 0s' },
             revealed: false
           });
+          setTimeout(() => this.setState({ currCardStyle: {} }), 0);
           // this.setState({
           //   oldCardStyle: { display: 'block', left: '1000px' },
           //   revealed: false
@@ -114,7 +115,6 @@ class CardStudy extends React.Component {
           setTimeout(() => {
             this.setState({
               oldCardStyle: {},
-              currCardStyle: {}
             });
           }, 800);
         }
