@@ -14,7 +14,9 @@ When a user searches for and finds a subject they are interested in, they may cl
 
 ![alt text] (/docs/wireframes/gifs/search.gif)
 
-The library contains all of the user's followed subjects, including the subjects they created.
+The library contains all of the user's followed subjects, including the subjects they created. If a user selects a subject from the list on the left, the corresponding decks will be fetched and displayed in the main view.
+
+![alt text] (/docs/wireframes/gifs/library.gif)
 
 
 ### Decks and Cards
