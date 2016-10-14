@@ -63,7 +63,7 @@ class EditSubjectForm extends React.Component {
     }
 
     return (
-      <form onSubmit={this.handleFormSubmit} className='new-subject-form'>
+      <form onSubmit={this.handleFormSubmit} className='modal-form'>
         <h4 className='form-header'>Edit Subject</h4>
         {errors}
         <input

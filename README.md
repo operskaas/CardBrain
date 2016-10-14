@@ -12,21 +12,30 @@ When a user creates a subject, they a SubjectFollow is also created, which links
 
 When a user searches for and finds a subject they are interested in, they may click on the 'Get Started' button to create a SubjectFollow linking the user to the subject, thereby adding it to their library.
 
-![alt text] (/docs/wireframes/gifs/search.gif)
+![alt text] (/docs/wireframes/gifs/search.gif Searching in CardBrain)
 
 The library contains all of the user's followed subjects, including the subjects they created. If a user selects a subject from the list on the left, the corresponding decks will be fetched and displayed in the main view.
 
 ![alt text] (/docs/wireframes/gifs/library.gif)
 
+Subjects can be created, edited, and deleted. (Deleting a subject that was not created by the user will simply delete the SubjectFollow and remove it from the user's Library)
+
+![alt text] (/docs/wireframes/gifs/create-subject.gif)
 
 ### Decks and Cards
 Decks reference a subject via a subject_id, and also have an id, title, optional objective, and timestamps.
 
+They can be created and deleted.
+
+![alt text] (/docs/wireframes/gifs/deck.gif)
+
+
 Cards have a deck_id linking them to a deck, as well as answer_text, question_text, and timestamp fields.
 
 
+## Future Improvements
+### Multimedia Flashcards
+Adding sound and images to cards is a killer feature that I would like to implement.
 
-
-Currently the objective is not editable or readable after creation, but there are plans to implement that functionality.
-
-Adding sound and images to cards is a planned addition.
+### Editable Deck Objective
+I would like to make the deck objective editable and viewable by users, currently it is only stored in the DB.

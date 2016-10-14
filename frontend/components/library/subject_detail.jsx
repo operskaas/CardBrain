@@ -22,16 +22,6 @@ class SubjectDetail extends React.Component {
     this.handleClickWhileMenuOpen = this.handleClickWhileMenuOpen.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    // if (nextProps.isFetching || this.props.isFetching) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-
-    return true;
-  }
-
   toggleSubjectMenuOpen () {
     if (this.state.subjectMenuOpen) {
       this.closeSubjectMenu();
