@@ -31,6 +31,9 @@ greetings = Deck.create!(subject: norwegian, title: 'Greetings')
 foods = Deck.create!(subject: norwegian, title: 'Foods')
 sports = Deck.create!(subject: norwegian, title: 'Sports')
 quotes = Deck.create!(subject: ad, title: 'Quotes')
+reducers = Deck.create!(subject: redux, title: 'Reducers')
+provider = Deck.create!(subject: redux, title: 'Provider and Connect')
+
 
 
 hei = Card.create!(deck: greetings, question_text: 'hei', answer_text: 'hello / hey')
@@ -46,3 +49,13 @@ Card.create!(deck: quotes, question_text: 'Hi George Michael, proud of yourself?
 Card.create!(deck: quotes, question_text: 'How do you make a React.js app with a rails back-end?', answer_text: 'I don’t understand the question, and I won’t respond to it.')
 Card.create!(deck: quotes, question_text: 'Do you guys know where I can get one of those gold necklaces with a “T” on it?', answer_text: "That's a cross")
 Card.create!(deck: quotes, question_text: 'Why are you squeezing me with your body?', answer_text: 'It’s a hug, Michael. I’m hugging you')
+
+Card.create!(deck: reducers, question_text: 'What arguments should reducers expect?', answer_text: 'prevState and action')
+Card.create!(deck: reducers, question_text: 'What does it mean for a reducer to be pure?', answer_text: 'It should have no side effects and not mutate the prevState, only return a newState')
+Card.create!(deck: reducers, question_text: 'What should the reducer return during redux initialization?', answer_text: 'It should return a default state which is hard-coded')
+Card.create!(deck: reducers, question_text: 'After writing the reducer, how do you add it to you Redux loop?', answer_text: 'Add it to the RootReducer, using combineReducers')
+Card.create!(deck: reducers, question_text: 'What is a handy function to deep dup the prevState to avoid mutating it?', answer_text: 'merge, from lodash/merge. Can also use freeze to ensure prevState is not mutated')
+Card.create!(deck: provider, question_text: 'How do you give multiple components access to the store via context?', answer_text: 'Using a Provider')
+Card.create!(deck: provider, question_text: 'What does the connect function do?', answer_text: 'Enables a React component to subscribe to changes in state, as well as dispatch actions')
+Card.create!(deck: provider, question_text: 'What arguments does the connect function expect?', answer_text: 'mapStateToProps and mapDispatchToProps')
+Card.create!(deck: provider, question_text: 'What arguments does the connect function expect?', answer_text: 'mapStateToProps and mapDispatchToProps')
