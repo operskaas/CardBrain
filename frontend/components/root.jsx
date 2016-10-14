@@ -33,7 +33,7 @@ const Root = ({ store }) => {
           <Route path='search' component={Search}/>
           <Route path='library' component={LibraryContainer}
             onEnter={_redirectUnlessLoggedIn}/>
-          <Router path='edit/:deckId' component={CardsEditForm}
+          <Route path='edit/:deckId' component={CardsEditForm}
             onEnter={_redirectUnlessLoggedIn}/>
         </Route>
       </Router>
