@@ -12,25 +12,32 @@ When a user creates a subject, they a SubjectFollow is also created, which links
 
 When a user searches for and finds a subject they are interested in, they may click on the 'Get Started' button to create a SubjectFollow linking the user to the subject, thereby adding it to their library.
 
-![alt text] (/docs/wireframes/gifs/search.gif Searching in CardBrain)
+![search feature] (/docs/wireframes/gifs/search.gif)
 
 The library contains all of the user's followed subjects, including the subjects they created. If a user selects a subject from the list on the left, the corresponding decks will be fetched and displayed in the main view.
 
-![alt text] (/docs/wireframes/gifs/library.gif)
+![library] (/docs/wireframes/gifs/library.gif)
 
 Subjects can be created, edited, and deleted. (Deleting a subject that was not created by the user will simply delete the SubjectFollow and remove it from the user's Library)
 
-![alt text] (/docs/wireframes/gifs/create-subject.gif)
+![subjects] (/docs/wireframes/gifs/create-subject.gif)
 
 ### Decks and Cards
 Decks reference a subject via a subject_id, and also have an id, title, optional objective, and timestamps.
+They can be created and deleted in subjects that the user owns (created).
 
-They can be created and deleted.
-
-![alt text] (/docs/wireframes/gifs/deck.gif)
-
+![decks] (/docs/wireframes/gifs/deck.gif)
 
 Cards have a deck_id linking them to a deck, as well as answer_text, question_text, and timestamp fields.
+They can be created, deleted, and updated in decks that the user owns.
+
+![cards] (/docs/wireframes/gifs/cards.gif)
+
+### Studying and ConfidenceRatings
+A User can study a deck. The User can flip the same card repeatedly by clicking on the card, and move on to the next card by rating it. Every rating triggers the creation of a ConfidenceRating, which contains a `rating` between 1 and 5, as well as a `user_id` and `card_id` as foreign keys. The ConfidenceRatings are used to determine the user's overall mastery of the deck and subject. When studying, the user will tend to see cards that are rated lower more often, thereby ensuring the user spends more time on their weak points, and less time on the cards they are already confident about.
+
+![studying] (/docs/wireframes/gifs/study.gif)
+
 
 
 ## Future Improvements
