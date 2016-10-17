@@ -31,12 +31,14 @@ class CardStudy extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.state.firstCardsSet) {
-      this.setfirstTwoCards(nextProps);
+      this.setFirstCard(nextProps);
     }
   }
 
-  setfirstTwoCards(nextProps) {
-    this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
+  setFirstCard(nextProps) {
+    if (this.props.cards.length > 0) {
+      this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
+    }
   }
 
   _masteryPercent() {

@@ -5,7 +5,7 @@ const SearchMiddleware = ({ dispatch }) => next => action => {
   switch (action.type) {
     case SEND_SEARCH_QUERY:
       let success = data => dispatch(receiveSearchResults(data));
-      let error = data => console.log(data);
+      let error = () => {};
       postSearchQuery(action.query, success, error);
       return next(action);
     default:

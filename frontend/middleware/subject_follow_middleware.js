@@ -18,7 +18,7 @@ import {
 import { hashHistory } from 'react-router';
 
 const SubjectFollowMiddleware = ({ dispatch }) => next => action => {
-  let error = (data) => console.log(data);
+  let error = () => {};
   let success = (data) => {
     dispatch(receiveSubjectFollows(data));
   };

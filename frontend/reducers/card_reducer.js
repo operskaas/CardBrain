@@ -22,7 +22,6 @@ const CardReducer = (prevState = _defaultCardSlice, action) => {
       return newState;
     case RESET_CARD_SAVE:
       newState = merge({}, prevState);
-      debugger
       newState.cardSave = false;
       return newState;
     default:

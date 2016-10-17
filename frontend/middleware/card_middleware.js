@@ -13,7 +13,7 @@ import {
 } from '../util/card_api_util';
 
 const CardMiddleware = ({ dispatch }) => next => action => {
-  let error = (data) => console.log(data);
+  let error = () => {};
   let success = (data) => {
     dispatch(receiveCards(data));
   };

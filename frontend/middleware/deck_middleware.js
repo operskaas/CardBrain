@@ -7,7 +7,7 @@ import {
 import { fetchDecks, postDeck, destroyDeck } from '../util/deck_api_util';
 
 const DeckMiddleware = ({ dispatch }) => next => action => {
-  let error = (data) => console.log(data);
+  let error = () => {};
   let success = (data) => {
     dispatch(receiveDecks(data));
   };
