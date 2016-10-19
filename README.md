@@ -1,7 +1,7 @@
 # CardBrain
 [Live](https://card-brain.herokuapp.com)
 
-CardBrain is a web application inspired by BrainScape built using Ruby on Rails and React/Redux. It uses PostgreSQL and Redux.
+CardBrain is a web application inspired by BrainScape built using Ruby on Rails, React/Redux, and PostgreSQL.
 
 ## Features & Implementation
 
