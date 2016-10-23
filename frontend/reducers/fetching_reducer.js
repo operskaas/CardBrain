@@ -1,5 +1,4 @@
-import { GET_DECKS, CREATE_DECK, DELETE_DECK, RECEIVE_DECKS } from '../actions/deck_actions';
-import { SET_ACTIVE_SUBJECT_FOLLOW } from '../actions/subject_follow_actions';
+import { GET_DECKS, RECEIVE_DECKS } from '../actions/deck_actions';
 
 const _defaultFetchingSlice = false;
 
@@ -12,7 +11,6 @@ const FetchingReducer = (prevState = _defaultFetchingSlice, action) => {
     default:
       return prevState;
   }
-
 };
 
 export default FetchingReducer;

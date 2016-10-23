@@ -134,24 +134,29 @@ class CardStudy extends React.Component {
     }
   }
 
+  _currentRatingClass (currentRating) {
+    let currentRatingClass = '';
+    if (currentRating === 0) {
+      currentRatingClass += ' zero';
+    } else if (currentRating === 1) {
+      currentRatingClass += ' one';
+    } else if (currentRating === 2) {
+      currentRatingClass += ' two';
+    } else if (currentRating === 3) {
+      currentRatingClass += ' three';
+    } else if (currentRating === 4) {
+      currentRatingClass += ' four';
+    } else if (currentRating === 5) {
+      currentRatingClass += ' five';
+    }
+    return currentRatingClass;
+  }
+
   render() {
     const currentCard = this.state.currentCard;
     const oldCard = this.state.oldCard;
 
-    let currentRatingClass = '';
-    if (currentCard.rating === 0) {
-      currentRatingClass += ' zero';
-    } else if (currentCard.rating === 1) {
-      currentRatingClass += ' one';
-    } else if (currentCard.rating === 2) {
-      currentRatingClass += ' two';
-    } else if (currentCard.rating === 3) {
-      currentRatingClass += ' three';
-    } else if (currentCard.rating === 4) {
-      currentRatingClass += ' four';
-    } else if (currentCard.rating === 5) {
-      currentRatingClass += ' five';
-    }
+    const currentRatingClass = this._currentRatingClass(currentCard.rating);
 
     let buttons;
     let howWellText = ' ';
