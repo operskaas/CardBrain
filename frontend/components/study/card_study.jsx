@@ -36,7 +36,7 @@ class CardStudy extends React.Component {
   }
 
   setFirstCard(nextProps) {
-    if (this.props.cards.length > 0) {
+    if (nextProps.cards.length > 0) {
       this.setState({currentCard: nextProps.cards[0], firstCardsSet: true });
     }
   }
