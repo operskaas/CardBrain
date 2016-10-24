@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createConfidenceRating, getCards } from '../../actions/card_actions';
+import OldCard from './old_card';
 
 const _defaultCardState = {
   questionText: '',
@@ -230,21 +231,7 @@ class CardStudy extends React.Component {
         	</div>
         </div>
 
-        <div className='old-card' style={this.state.oldCardStyle}>
-        	<div className="flipper">
-        		<div className="back">
-              <div className={cardClassName}>
-                <div className='side-text'>A.</div>
-                <div className='card-text'>
-                  <p>
-                    {oldCard.answerText}
-                  </p>
-                </div>
-                <div className='edit-side'>Edit</div>
-              </div>
-        		</div>
-        	</div>
-        </div>
+        <OldCard cardClassName={cardClassName} oldCardStyle={this.state.oldCardStyle} answerText={oldCard.answerText}/>
         <div className='study-toolbar'>
           <p>{howWellText}</p>
           {buttons}
