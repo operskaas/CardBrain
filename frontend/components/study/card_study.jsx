@@ -212,7 +212,6 @@ class CardStudy extends React.Component {
             <BackCurrentCard cardClassName={cardClassName} answerText={currentCard.answerText}/>
         	</div>
         </div>
-
         <OldCard cardClassName={cardClassName} oldCardStyle={this.state.oldCardStyle} answerText={oldCard.answerText}/>
         <div className='study-toolbar'>
           <p>{howWellText}</p>
@@ -221,7 +220,6 @@ class CardStudy extends React.Component {
       </main>
     );
   }
-
 }
 
 const mapStateToProps = state => {
