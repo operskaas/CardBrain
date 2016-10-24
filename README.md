@@ -34,10 +34,50 @@ They can be created, deleted, and updated in decks that the user owns.
 ![cards] (/docs/wireframes/gifs/cards.gif)
 
 ### Studying and ConfidenceRatings
-A User can study a deck. The User can flip the same card repeatedly by clicking on the card, and move on to the next card by rating it. Every rating triggers the creation of a ConfidenceRating, which contains a `rating` between 1 and 5, as well as a `user_id` and `card_id` as foreign keys. The ConfidenceRatings are used to determine the user's overall mastery of the deck and subject. When studying, the user will tend to see cards that are rated lower more often, thereby ensuring the user spends more time on their weak points, and less time on the cards they are already confident about.
+A User can study a deck. The User can flip the same card repeatedly by clicking on the card, and move on to the next card by rating it. Every rating triggers the creation of a ConfidenceRating, which contains a `rating` between 1 and 5, as well as a `user_id` and `card_id` as foreign keys. The ConfidenceRatings are used to determine the user's overall mastery of the deck and subject.
 
 ![studying] (/docs/wireframes/gifs/study.gif)
 
+#### Card Choosing Algorithm
+When studying, the user will tend to see cards that are rated lower more often, thereby ensuring the user spends more time on their weak points, and less time on the cards they are already confident about. The algorithm that determines the next card to show has two major factors: the current `_masteryPercent()`, and a `rand` selector.
+
+If there is a card that the user hasn't seen yet (confidenceRating of 0), there is a 95% chance that the algorithm will choose a random unseen card. Otherwise, it will compute the `weightedMastery` as the product of the mastery and another random number. The `_preferRandomCardWithRatingAtLeast` function will try to find a card with rating of at least `rating`, but if it doesn't find a card with the supplied `rating`, it will keep incrementing `rating` until it finds a card with that rating. If there are no cards with rating at least `rating`, it will call itself with `rating - 1`.
+
+```javascript
+nextCard(){
+  let rand = Math.random();
+  const rand0Card = this._randomCardOfRating(0);
+
+  if ((rand0Card !== -1) && (rand < 0.95)) {
+    return rand0Card;
+  }
+
+  const mastery = this._masteryPercent();
+  const weightedMastery = mastery * Math.random();
+
+  if (weightedMastery < 30) {
+    return this._preferRandomCardWithRatingAtLeast(1);
+  } else if (weightedMastery < 50) {
+    return this._preferRandomCardWithRatingAtLeast(2);
+  } else if (weightedMastery < 70) {
+    return this._preferRandomCardWithRatingAtLeast(3);
+  } else if (weightedMastery < 90) {
+    return this._preferRandomCardWithRatingAtLeast(4);
+  } else {
+    return this._preferRandomCardWithRatingAtLeast(5);
+  }
+}
+
+_preferRandomCardWithRatingAtLeast(rating) {
+  for (var i = rating; i <= 5; i++) {
+    const card = this._randomCardOfRating(i)
+    if (card !== -1) {
+      return card;
+    }
+  }
+  return this._preferRandomCardWithRatingAtLeast(rating - 1);
+}
+```
 
 
 ## Future Improvements
