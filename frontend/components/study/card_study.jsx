@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createConfidenceRating, getCards } from '../../actions/card_actions';
 import OldCard from './old_card';
+import FrontCurrentCard from './front_current_card';
+import BackCurrentCard from './back_current_card';
 
 const _defaultCardState = {
   questionText: '',
@@ -206,28 +208,8 @@ class CardStudy extends React.Component {
         <h6>{this.currentCardIndex() + 1} of {this.props.cards.length}</h6>
         <div className={flipContClass} onClick={this.handleCurrCardClick}>
         	<div className="flipper" style={this.state.currCardStyle}>
-        		<div className="front">
-              <div className={cardClassName}>
-                <div className='side-text'>Q.</div>
-                <div className='card-text'>
-                  <p>
-                    {currentCard.questionText}
-                  </p>
-                </div>
-                <div className='edit-side'>Edit</div>
-              </div>
-        		</div>
-        		<div className="back">
-              <div className={cardClassName}>
-                <div className='side-text'>A.</div>
-                <div className='card-text'>
-                  <p>
-                    {currentCard.answerText}
-                  </p>
-                </div>
-                <div className='edit-side'>Edit</div>
-              </div>
-        		</div>
+            <FrontCurrentCard cardClassName={cardClassName} questionText={currentCard.questionText}/>
+            <BackCurrentCard cardClassName={cardClassName} answerText={currentCard.answerText}/>
         	</div>
         </div>
 
